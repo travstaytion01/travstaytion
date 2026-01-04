@@ -263,44 +263,64 @@ function formatAccommodation(acc: string): string {
   return accommodations[acc] || acc;
 }
 
-// Send WhatsApp notification via WhatsApp Business API
-async function sendWhatsAppNotification(data: {
+// Send Telegram notification (100% FREE, unlimited messages)
+// Setup: 1) Message @BotFather on Telegram, send /newbot, follow steps to get BOT_TOKEN
+//        2) Message your bot, then visit: https://api.telegram.org/bot<TOKEN>/getUpdates to get CHAT_ID
+async function sendTelegramNotification(data: {
   name: string;
+  email: string;
   phone: string;
   destination: string;
   travelDate: string;
   adults: string;
   children: string;
   budget: string;
+  tripType: string;
 }) {
-  const ownerPhone = '919999959915'; // Your WhatsApp number
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
   
-  const message = `🔔 *New Quote Request!*
-  
-👤 *Customer:* ${data.name}
-📞 *Phone:* ${data.phone || 'Not provided'}
-📍 *Destination:* ${data.destination}
-📅 *Travel Date:* ${formatDate(data.travelDate)}
-👥 *Travelers:* ${data.adults} Adults, ${data.children || '0'} Children
-💰 *Budget:* ${formatBudget(data.budget) || 'Not specified'}
-
-_Check your email for the detailed PDF quote._`;
-
-  // Using CallMeBot WhatsApp API (free for personal use)
-  // You can also use Twilio, WATI, or other services for production
-  const callMeBotApiKey = process.env.CALLMEBOT_API_KEY;
-  
-  if (callMeBotApiKey) {
-    try {
-      const encodedMessage = encodeURIComponent(message);
-      const url = `https://api.callmebot.com/whatsapp.php?phone=${ownerPhone}&text=${encodedMessage}&apikey=${callMeBotApiKey}`;
-      await fetch(url);
-    } catch (error) {
-      console.error('WhatsApp notification failed:', error);
-    }
+  if (!botToken || !chatId) {
+    console.log('Telegram not configured - skipping notification');
+    return;
   }
-  
-  return message;
+
+  const message = `🔔 *New Quote Request\\!*
+
+👤 *Customer:* ${escapeMarkdown(data.name)}
+📧 *Email:* ${escapeMarkdown(data.email)}
+📞 *Phone:* ${escapeMarkdown(data.phone || 'Not provided')}
+
+✈️ *Trip Details:*
+📍 *Destination:* ${escapeMarkdown(data.destination)}
+📅 *Travel Date:* ${escapeMarkdown(formatDate(data.travelDate))}
+👥 *Travelers:* ${data.adults} Adults, ${data.children || '0'} Children
+💰 *Budget:* ${escapeMarkdown(formatBudget(data.budget) || 'Not specified')}
+🏨 *Trip Type:* ${escapeMarkdown(formatTripType(data.tripType) || 'Not specified')}
+
+_Check your email for the detailed PDF quote\\._`;
+
+  try {
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: 'MarkdownV2',
+      }),
+    });
+    console.log('Telegram notification sent successfully');
+  } catch (error) {
+    console.error('Telegram notification failed:', error);
+  }
+}
+
+// Escape special characters for Telegram MarkdownV2
+function escapeMarkdown(text: string): string {
+  if (!text) return '';
+  return text.replace(/[_*\[\]()~`>#+\-=|{}.!\\]/g, '\\$&');
 }
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -447,8 +467,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       // Don't fail the request if email fails
     }
     
-    // Send WhatsApp notification
-    await sendWhatsAppNotification(quoteData);
+    // Send Telegram notification (FREE alternative to WhatsApp)
+    await sendTelegramNotification(quoteData);
     
     res.status(200).json({ success: true });
   } catch (error) {
