@@ -210,66 +210,69 @@ export default function DubaiPackagesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[55vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] md:h-[55vh] flex items-center justify-center overflow-hidden pt-16 pb-24 md:pt-0 md:pb-0">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
             alt="Dubai skyline with Burj Khalifa"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
         </div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <span className="inline-block px-4 py-1.5 bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-300 text-sm font-medium mb-4">
+            🌴 Most Popular Destination
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
             Dubai Vacation Packages
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto mb-8">
+          <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-6 md:mb-8 px-4">
             Customise your Dubai holiday, get insider tips from real travellers!
           </p>
           <Link
             href="#packages"
-            className="inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="inline-block bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Explore Packages
           </Link>
         </div>
         
         {/* Trust Badges */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900 to-blue-800 py-4">
-          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-8 md:gap-16 flex-wrap">
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900/95 to-blue-800/95 backdrop-blur-sm py-3 md:py-4">
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4 sm:gap-6 md:gap-16">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-700 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>
               </div>
               <div>
-                <p className="text-white font-bold flex items-center gap-1">
+                <p className="text-white font-bold text-sm sm:text-base flex items-center gap-1">
                   4.8 <span className="text-yellow-400">★</span>
                 </p>
-                <p className="text-blue-200 text-xs">from 1425+ travellers</p>
+                <p className="text-blue-200 text-[10px] sm:text-xs">1425+ reviews</p>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                <span className="text-xl font-bold text-blue-600">G</span>
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
+                <span className="text-lg sm:text-xl font-bold text-blue-600">G</span>
               </div>
               <div>
-                <p className="text-white font-bold flex items-center gap-1">
+                <p className="text-white font-bold text-sm sm:text-base flex items-center gap-1">
                   4.6 <span className="text-yellow-400">★</span>
                 </p>
-                <p className="text-blue-200 text-xs">from 8250+ travellers</p>
+                <p className="text-blue-200 text-[10px] sm:text-xs">8250+ reviews</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="hidden sm:flex items-center gap-2">
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
               <div>
-                <p className="text-white font-bold">Trusted</p>
-                <p className="text-blue-200 text-xs">by 50K+ customers</p>
+                <p className="text-white font-bold text-sm sm:text-base">Trusted</p>
+                <p className="text-blue-200 text-[10px] sm:text-xs">50K+ customers</p>
               </div>
             </div>
           </div>
@@ -277,40 +280,34 @@ export default function DubaiPackagesPage() {
       </section>
 
       {/* Filters Section */}
-      <section className="py-6 bg-white border-b sticky top-0 z-30 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center gap-4">
-            <button className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-full text-gray-700 hover:border-emerald-500 hover:text-emerald-600 transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-              </svg>
-              Filters
-            </button>
-            
+      <section className="py-3 sm:py-4 md:py-6 bg-white border-b sticky top-0 z-30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
             <select
               value={filterBudget}
               onChange={(e) => setFilterBudget(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:border-emerald-500"
+              className="flex-shrink-0 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:border-emerald-500 bg-white"
             >
               <option value="all">All Budgets</option>
-              <option value="budget">Under ₹50,000</option>
-              <option value="mid">₹50,000 - ₹75,000</option>
-              <option value="luxury">Above ₹75,000</option>
+              <option value="budget">Under ₹50K</option>
+              <option value="mid">₹50K - ₹75K</option>
+              <option value="luxury">Above ₹75K</option>
             </select>
 
             <select
               value={filterNights}
               onChange={(e) => setFilterNights(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:border-emerald-500"
+              className="flex-shrink-0 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:border-emerald-500 bg-white"
             >
-              <option value="all">All Durations</option>
+              <option value="all">All Nights</option>
               <option value="3">3 Nights</option>
               <option value="4-5">4-5 Nights</option>
               <option value="6+">6+ Nights</option>
             </select>
 
-            <div className="ml-auto hidden md:flex items-center gap-2 text-gray-600">
-              <span>{filteredPackages.length} packages found</span>
+            <div className="ml-auto hidden sm:flex items-center gap-2 text-gray-600 text-sm">
+              <span className="font-medium text-emerald-600">{filteredPackages.length}</span>
+              <span>packages</span>
             </div>
           </div>
         </div>
