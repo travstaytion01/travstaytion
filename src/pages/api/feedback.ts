@@ -12,27 +12,50 @@ const clientConfig = {
 };
 
 // Email transporter configuration
-const createTransporter = () => {
+const createTransporter = async () => {
   const smtpPass = process.env.SMTP_PASS;
+  const smtpUser = process.env.SMTP_USER || 'holidays@travstaytion.com';
+  const smtpHost = process.env.SMTP_HOST || 'smtp.hostinger.com';
+  const smtpPort = parseInt(process.env.SMTP_PORT || '465');
+  
+  console.log('SMTP Config:', { 
+    host: smtpHost, 
+    port: smtpPort, 
+    user: smtpUser, 
+    passLength: smtpPass ? smtpPass.length : 0 
+  });
   
   if (!smtpPass) {
     console.warn('SMTP_PASS not configured - emails will not be sent');
     return null;
   }
   
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.hostinger.com',
-    port: parseInt(process.env.SMTP_PORT || '465'),
-    secure: true,
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: smtpPort,
+    secure: smtpPort === 465,
     auth: {
-      user: process.env.SMTP_USER || 'holidays@travstaytion.com',
+      user: smtpUser,
       pass: smtpPass,
     },
-    // Add connection timeout
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 15000,
+    tls: {
+      rejectUnauthorized: false,
+    },
+    connectionTimeout: 30000,
+    greetingTimeout: 30000,
+    socketTimeout: 60000,
+    debug: true,
+    logger: true,
   });
+  
+  try {
+    await transporter.verify();
+    console.log('SMTP connection verified successfully');
+    return transporter;
+  } catch (verifyError) {
+    console.error('SMTP verification failed:', verifyError);
+    return transporter;
+  }
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -54,12 +77,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
     // Send email notifications
     try {
-      const transporter = createTransporter();
+      const transporter = await createTransporter();
       
       if (!transporter) {
         console.log('Email transporter not available - skipping emails');
       } else {
-        console.log('Sending feedback emails...');
+        console.log('Attempting to send feedback emails...');
         
         // Email to owner with feedback details
         await transporter.sendMail({
