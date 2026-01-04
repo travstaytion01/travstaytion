@@ -3,35 +3,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us | TravStaytion - Your Trusted Travel Partner",
-  description: "Learn about TravStaytion - over 15 years of experience crafting unforgettable travel experiences. Meet our team and discover our mission to make your dream vacation a reality.",
+  description: "Learn about TravStaytion - over 15 years of experience crafting unforgettable travel experiences. Discover our mission to make your dream vacation a reality.",
 };
-
-const team = [
-  {
-    name: "Sarah Mitchell",
-    role: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80",
-    bio: "With 20+ years in the travel industry, Sarah founded TravStaytion to create personalized travel experiences.",
-  },
-  {
-    name: "David Chen",
-    role: "Head of Operations",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80",
-    bio: "David ensures every trip runs smoothly, managing our global network of partners and suppliers.",
-  },
-  {
-    name: "Emma Rodriguez",
-    role: "Lead Travel Consultant",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80",
-    bio: "Emma has visited 50+ countries and specializes in crafting unique honeymoon and luxury experiences.",
-  },
-  {
-    name: "Michael Thompson",
-    role: "Adventure Specialist",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80",
-    bio: "A former mountaineer, Michael designs thrilling adventure packages for adrenaline seekers.",
-  },
-];
 
 const values = [
   {
@@ -149,39 +122,6 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
                 <p className="text-gray-600">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Team</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
-              Meet the Experts
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member) => (
-              <div
-                key={member.name}
-                className="text-center group"
-              >
-                <div className="relative mb-6 overflow-hidden rounded-2xl">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-72 object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                    <p className="text-white text-sm">{member.bio}</p>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900">{member.name}</h3>
-                <p className="text-blue-600 font-medium">{member.role}</p>
               </div>
             ))}
           </div>
