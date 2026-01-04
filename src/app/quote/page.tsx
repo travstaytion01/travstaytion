@@ -104,7 +104,7 @@ export default function QuotePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[40vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[35vh] sm:h-[40vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80"
@@ -113,11 +113,14 @@ export default function QuotePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-4">
+            📝 Free Personalized Quote
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
             Request Your Free Quote
           </h1>
-          <p className="text-xl text-gray-200">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto">
             Tell us about your dream vacation and we&apos;ll create a personalized package just for you.
           </p>
         </div>
@@ -125,67 +128,67 @@ export default function QuotePage() {
 
       {/* Form Section */}
       {error && (
-        <div className="max-w-lg mx-auto mt-6 mb-2 text-center text-red-600 font-semibold bg-red-50 border border-red-200 rounded-lg p-2">{error}</div>
+        <div className="max-w-lg mx-auto mt-4 sm:mt-6 mb-2 text-center text-red-600 font-semibold bg-red-50 border border-red-200 rounded-lg p-2 mx-4 sm:mx-auto text-sm sm:text-base">{error}</div>
       )}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-10 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <form onSubmit={handleSubmit} className="bg-white rounded-3xl shadow-xl p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="bg-white rounded-2xl sm:rounded-3xl shadow-xl p-5 sm:p-8 md:p-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {/* Personal Information */}
-              <div className="md:col-span-2">
-                <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <span className="w-8 h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+              <div className="sm:col-span-2">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+                  <span className="w-7 h-7 sm:w-8 sm:h-8 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-xs sm:text-sm font-bold">1</span>
                   Personal Information
                 </h3>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Full Name *</label>
                 <input
                   type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                   placeholder="John Doe"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email Address *</label>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                   placeholder="john@example.com"
                 />
               </div>
 
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Phone Number</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                   placeholder="+1 (555) 123-4567"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Preferred Contact Method</label>
+                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Preferred Contact Method</label>
                 <div className="relative">
                   <select
                     name="contactMethod"
                     value={formData.contactMethod}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none pr-10"
+                    className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 appearance-none pr-10 text-sm sm:text-base"
                     aria-label="Preferred Contact Method"
                   >
                     <option value="email">Email</option>

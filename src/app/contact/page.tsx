@@ -72,7 +72,7 @@ export default function ContactPage() {
         <div className="max-w-lg mx-auto mt-6 mb-2 text-center text-red-600 font-semibold bg-red-50 border border-red-200 rounded-lg p-2">{error}</div>
       )}
       {/* Hero Section */}
-      <section className="relative h-[45vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[35vh] sm:h-[40vh] lg:h-[45vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
@@ -81,35 +81,35 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 to-teal-900/70" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-sm font-medium mb-4">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             We&apos;re Here to Help
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 sm:mb-4">
             Contact Us
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto">
             Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
           </p>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
             {/* Contact Info */}
             <div>
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Get in Touch</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6">
+              <span className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Get in Touch</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 sm:mb-6">
                 Let&apos;s Plan Your Perfect Trip
               </h2>
-              <p className="text-gray-600 mb-10 text-lg leading-relaxed">
+              <p className="text-gray-600 mb-8 sm:mb-10 text-sm sm:text-base lg:text-lg leading-relaxed">
                 Whether you have a question about destinations, pricing, or need help planning your dream vacation, our team is ready to answer all your questions.
               </p>
 
               {/* Contact Cards */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* Owner Card */}
                 <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-center gap-5">

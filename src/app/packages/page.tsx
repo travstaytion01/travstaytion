@@ -82,7 +82,7 @@ export default function PackagesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[45vh] lg:h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920&q=80"
@@ -91,30 +91,33 @@ export default function PackagesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-4">
+            ✨ Curated Experiences
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Curated Travel Packages
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto">
             Choose from our carefully designed packages or let us create a custom itinerary just for you.
           </p>
         </div>
       </section>
 
       {/* Destination Packages Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <span className="text-emerald-600 font-semibold text-sm uppercase tracking-wider">Explore by Destination</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+          <div className="text-center mb-8 sm:mb-12">
+            <span className="text-emerald-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Explore by Destination</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2">
               Destination-Specific Packages
             </h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-600 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base">
               Handpicked vacation packages tailored for each destination with the best hotels, activities, and experiences
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {destinationPackages.map((dest) => (
               <Link
                 key={dest.name}

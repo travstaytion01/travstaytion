@@ -49,53 +49,56 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[45vh] lg:h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1522199710521-72d69614c702?w=1920&q=80"
-            alt="Travel team"
+            alt="Travel adventure"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-4">
+            ✨ Since 2009
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             About TravStaytion
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto">
             Your trusted partner in creating unforgettable travel experiences since 2009.
           </p>
         </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
             <div>
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Story</span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-6">
+              <span className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Story</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 sm:mb-6">
                 Crafting Dreams Into Journeys
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
                 TravStaytion was born from a simple belief: everyone deserves to experience the magic of travel. What started as a small team of passionate travelers in 2009 has grown into one of the most trusted names in the travel industry.
               </p>
-              <p className="text-gray-600 mb-4">
+              <p className="text-gray-600 mb-4 text-sm sm:text-base leading-relaxed">
                 We&apos;ve helped over 10,000 travelers explore more than 50 destinations worldwide. From intimate honeymoon getaways to grand family adventures, we take pride in crafting each journey with meticulous attention to detail.
               </p>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
                 Our success is measured not by the number of trips we book, but by the smiles on our travelers&apos; faces and the memories they bring back home.
               </p>
             </div>
-            <div className="relative">
+            <div className="relative mt-8 lg:mt-0">
               <img
                 src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80"
                 alt="Travel adventure"
-                className="rounded-2xl shadow-2xl"
+                className="rounded-2xl shadow-2xl w-full"
               />
-              <div className="absolute -bottom-8 -left-8 bg-gradient-to-r from-blue-600 to-teal-500 text-white p-6 rounded-2xl shadow-xl">
-                <p className="text-4xl font-bold">15+</p>
-                <p className="text-sm">Years of Excellence</p>
+              <div className="absolute -bottom-4 sm:-bottom-8 -left-4 sm:-left-8 bg-gradient-to-r from-blue-600 to-teal-500 text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl">
+                <p className="text-2xl sm:text-4xl font-bold">15+</p>
+                <p className="text-xs sm:text-sm">Years of Excellence</p>
               </div>
             </div>
           </div>
@@ -103,25 +106,25 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Our Values</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+          <div className="text-center mb-10 sm:mb-16">
+            <span className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Values</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2">
               What Drives Us
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {values.map((value) => (
               <div
                 key={value.title}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-white p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                <div className="w-14 h-14 bg-gradient-to-br from-blue-600 to-teal-500 rounded-xl flex items-center justify-center text-white mb-6">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-600 to-teal-500 rounded-lg sm:rounded-xl flex items-center justify-center text-white mb-4 sm:mb-6">
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{value.title}</h3>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed">{value.description}</p>
               </div>
             ))}
           </div>
@@ -129,9 +132,9 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-teal-500">
+      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-teal-500">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
             {[
               { value: "10,000+", label: "Happy Travelers" },
               { value: "50+", label: "Destinations" },
@@ -139,8 +142,8 @@ export default function AboutPage() {
               { value: "98%", label: "Satisfaction Rate" },
             ].map((stat) => (
               <div key={stat.label}>
-                <p className="text-4xl md:text-5xl font-bold text-white">{stat.value}</p>
-                <p className="text-blue-100 mt-2">{stat.label}</p>
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">{stat.value}</p>
+                <p className="text-blue-100 mt-1 sm:mt-2 text-xs sm:text-sm lg:text-base">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -148,17 +151,17 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
             Ready to Start Your Journey?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Let our team of experts help you plan the vacation of your dreams.
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 mb-6 sm:mb-8">
+            Let us help you plan the vacation of your dreams.
           </p>
           <Link
             href="/quote"
-            className="inline-block bg-gradient-to-r from-blue-600 to-teal-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="inline-block bg-gradient-to-r from-blue-600 to-teal-500 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Get Your Free Quote
           </Link>

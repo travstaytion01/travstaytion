@@ -85,7 +85,7 @@ export default function DestinationsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[45vh] lg:h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80"
@@ -94,20 +94,27 @@ export default function DestinationsPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+          <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-4">
+            🌍 Explore the World
+          </span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             Explore Our Destinations
           </h1>
-          <p className="text-xl text-gray-200 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 max-w-2xl mx-auto">
             Discover handpicked destinations around the world, each offering unique experiences and unforgettable memories.
           </p>
         </div>
       </section>
 
       {/* Destinations Grid */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Popular Destinations</h2>
+            <p className="mt-2 text-gray-600 text-sm sm:text-base">Choose from our handpicked selection of amazing places</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {destinations.map((destination) => (
               <DestinationCard key={destination.name} {...destination} />
             ))}
@@ -116,17 +123,17 @@ export default function DestinationsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-teal-500">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-teal-500">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Can&apos;t Find Your Dream Destination?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-base sm:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
             We offer custom travel packages to over 100 destinations worldwide. Contact us to plan your perfect trip!
           </p>
           <a
             href="/quote"
-            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="inline-block bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Request Custom Package
           </a>
