@@ -263,66 +263,6 @@ function formatAccommodation(acc: string): string {
   return accommodations[acc] || acc;
 }
 
-// Send Telegram notification (100% FREE, unlimited messages)
-// Setup: 1) Message @BotFather on Telegram, send /newbot, follow steps to get BOT_TOKEN
-//        2) Message your bot, then visit: https://api.telegram.org/bot<TOKEN>/getUpdates to get CHAT_ID
-async function sendTelegramNotification(data: {
-  name: string;
-  email: string;
-  phone: string;
-  destination: string;
-  travelDate: string;
-  adults: string;
-  children: string;
-  budget: string;
-  tripType: string;
-}) {
-  const botToken = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-  
-  if (!botToken || !chatId) {
-    console.log('Telegram not configured - skipping notification');
-    return;
-  }
-
-  const message = `🔔 *New Quote Request\\!*
-
-👤 *Customer:* ${escapeMarkdown(data.name)}
-📧 *Email:* ${escapeMarkdown(data.email)}
-📞 *Phone:* ${escapeMarkdown(data.phone || 'Not provided')}
-
-✈️ *Trip Details:*
-📍 *Destination:* ${escapeMarkdown(data.destination)}
-📅 *Travel Date:* ${escapeMarkdown(formatDate(data.travelDate))}
-👥 *Travelers:* ${data.adults} Adults, ${data.children || '0'} Children
-💰 *Budget:* ${escapeMarkdown(formatBudget(data.budget) || 'Not specified')}
-🏨 *Trip Type:* ${escapeMarkdown(formatTripType(data.tripType) || 'Not specified')}
-
-_Check your email for the detailed PDF quote\\._`;
-
-  try {
-    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-    await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-        parse_mode: 'MarkdownV2',
-      }),
-    });
-    console.log('Telegram notification sent successfully');
-  } catch (error) {
-    console.error('Telegram notification failed:', error);
-  }
-}
-
-// Escape special characters for Telegram MarkdownV2
-function escapeMarkdown(text: string): string {
-  if (!text) return '';
-  return text.replace(/[_*\[\]()~`>#+\-=|{}.!\\]/g, '\\$&');
-}
-
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -466,9 +406,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       console.error('Email sending failed:', emailError);
       // Don't fail the request if email fails
     }
-    
-    // Send Telegram notification (FREE alternative to WhatsApp)
-    await sendTelegramNotification(quoteData);
     
     res.status(200).json({ success: true });
   } catch (error) {
