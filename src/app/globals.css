@@ -13,6 +13,123 @@ input, textarea {
 select, select option {
   color: #374151 !important; /* Tailwind gray-700 */
 }
+
+/* ============================================
+   BEAUTIFUL DATE PICKER STYLES
+   ============================================ */
+
+/* Custom date input wrapper styling */
+.date-input-wrapper {
+  position: relative;
+}
+
+.date-input-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Date input base styles */
+input[type="date"] {
+  position: relative;
+  padding-left: 44px !important;
+  cursor: pointer;
+  background-color: #ffffff;
+  background-image: linear-gradient(to right, #f0f9ff, #ffffff);
+}
+
+input[type="date"]:hover {
+  background-image: linear-gradient(to right, #e0f2fe, #f0f9ff);
+  border-color: #3b82f6 !important;
+}
+
+input[type="date"]:focus {
+  background-image: linear-gradient(to right, #dbeafe, #eff6ff);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15), 0 4px 12px rgba(59, 130, 246, 0.1);
+}
+
+/* Hide the default calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  cursor: pointer;
+  opacity: 0.7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  background-color: rgba(59, 130, 246, 0.1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232563eb'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+}
+
+/* Style the date picker dropdown (Webkit browsers) */
+input[type="date"]::-webkit-datetime-edit {
+  padding: 0;
+  font-weight: 500;
+}
+
+input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  padding: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-text {
+  color: #9ca3af;
+  padding: 0 4px;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: #374151;
+  font-weight: 500;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field:focus,
+input[type="date"]::-webkit-datetime-edit-day-field:focus,
+input[type="date"]::-webkit-datetime-edit-year-field:focus {
+  background-color: #dbeafe;
+  color: #1e40af;
+  outline: none;
+}
+
+/* Empty date placeholder styling */
+input[type="date"]:not(:valid)::-webkit-datetime-edit {
+  color: #9ca3af;
+}
+
+/* Firefox specific styles */
+input[type="date"]::-moz-focus-inner {
+  border: 0;
+}
+
+/* Calendar popup styling for modern browsers */
+::-webkit-calendar-picker-indicator {
+  filter: none;
+}
+
 /* Custom animation utilities for premium cards */
 @keyframes float {
   0%, 100% { transform: translate(-50%, 0); }
