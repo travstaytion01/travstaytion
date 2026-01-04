@@ -14,14 +14,25 @@ const clientConfig = {
 
 // Email transporter configuration
 const createTransporter = () => {
+  const smtpPass = process.env.SMTP_PASS;
+  
+  if (!smtpPass) {
+    console.warn('SMTP_PASS not configured - emails will not be sent');
+    return null;
+  }
+  
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.hostinger.com',
     port: parseInt(process.env.SMTP_PORT || '465'),
     secure: true,
     auth: {
       user: process.env.SMTP_USER || 'holidays@travstaytion.com',
-      pass: process.env.SMTP_PASS || '', // Set this in Vercel environment variables
+      pass: smtpPass,
     },
+    // Add connection timeout
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 };
 
@@ -319,14 +330,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const transporter = createTransporter();
       
-      // Email to owner
-      await transporter.sendMail({
-        from: '"TravStaytion" <holidays@travstaytion.com>',
-        to: 'holidays@travstaytion.com',
-        subject: `📋 New Quote Request: ${name} - ${destination}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 20px; text-align: center;">
+      if (!transporter) {
+        console.log('Email transporter not available - skipping emails');
+      } else {
+        console.log('Sending emails...');
+        
+        // Email to owner
+        await transporter.sendMail({
+          from: '"TravStaytion" <holidays@travstaytion.com>',
+          to: 'holidays@travstaytion.com',
+          subject: `📋 New Quote Request: ${name} - ${destination}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 20px; text-align: center;">
               <h1 style="color: white; margin: 0;">New Quote Request!</h1>
             </div>
             <div style="padding: 20px; background: #f9fafb;">
@@ -402,6 +418,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           },
         ],
       });
+      
+        console.log('Emails sent successfully');
+      }
     } catch (emailError) {
       console.error('Email sending failed:', emailError);
       // Don't fail the request if email fails

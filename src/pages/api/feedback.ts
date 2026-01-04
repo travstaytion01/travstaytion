@@ -13,14 +13,25 @@ const clientConfig = {
 
 // Email transporter configuration
 const createTransporter = () => {
+  const smtpPass = process.env.SMTP_PASS;
+  
+  if (!smtpPass) {
+    console.warn('SMTP_PASS not configured - emails will not be sent');
+    return null;
+  }
+  
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.hostinger.com',
     port: parseInt(process.env.SMTP_PORT || '465'),
     secure: true,
     auth: {
       user: process.env.SMTP_USER || 'holidays@travstaytion.com',
-      pass: process.env.SMTP_PASS || '',
+      pass: smtpPass,
     },
+    // Add connection timeout
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 };
 
@@ -45,28 +56,33 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     try {
       const transporter = createTransporter();
       
-      // Email to owner with feedback details
-      await transporter.sendMail({
-        from: '"TravStaytion" <holidays@travstaytion.com>',
-        to: 'holidays@travstaytion.com',
-        subject: `💬 New Feedback from ${name}`,
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 25px; text-align: center;">
-              <h1 style="color: white; margin: 0;">New Customer Feedback!</h1>
-            </div>
-            <div style="padding: 25px; background: #f9fafb;">
-              <div style="background: white; border-radius: 12px; padding: 20px; border-left: 4px solid #14b8a6;">
-                <h2 style="color: #1f2937; margin-top: 0;">Customer Details</h2>
-                <table style="width: 100%; border-collapse: collapse;">
-                  <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; width: 100px;"><strong>👤 Name:</strong></td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${name}</td>
-                  </tr>
-                  <tr>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;"><strong>📧 Email:</strong></td>
-                    <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
-                  </tr>
+      if (!transporter) {
+        console.log('Email transporter not available - skipping emails');
+      } else {
+        console.log('Sending feedback emails...');
+        
+        // Email to owner with feedback details
+        await transporter.sendMail({
+          from: '"TravStaytion" <holidays@travstaytion.com>',
+          to: 'holidays@travstaytion.com',
+          subject: `💬 New Feedback from ${name}`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+              <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 25px; text-align: center;">
+                <h1 style="color: white; margin: 0;">New Customer Feedback!</h1>
+              </div>
+              <div style="padding: 25px; background: #f9fafb;">
+                <div style="background: white; border-radius: 12px; padding: 20px; border-left: 4px solid #14b8a6;">
+                  <h2 style="color: #1f2937; margin-top: 0;">Customer Details</h2>
+                  <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                      <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; width: 100px;"><strong>👤 Name:</strong></td>
+                      <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${name}</td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;"><strong>📧 Email:</strong></td>
+                      <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;"><a href="mailto:${email}" style="color: #2563eb;">${email}</a></td>
+                    </tr>
                 </table>
               </div>
               
@@ -131,7 +147,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             </div>
           </div>
         `,
-      });
+        });
+        
+        console.log('Feedback emails sent successfully');
+      }
     } catch (emailError) {
       console.error('Feedback email sending failed:', emailError);
       // Don't fail the request if email fails

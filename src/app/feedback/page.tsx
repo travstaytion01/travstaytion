@@ -38,16 +38,76 @@ export default function FeedbackPage() {
 
   if (isSubmitted) {
     return (
-      <main className="min-h-screen w-full flex items-center justify-center px-4 py-16 sm:py-20 bg-gradient-to-br from-blue-50 via-white to-teal-100">
-        <div className="bg-white/80 rounded-2xl sm:rounded-3xl shadow-2xl border border-blue-100 p-8 sm:p-12 text-center max-w-md mx-auto">
-          <div className="w-16 h-16 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
-            <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
+      <main className="min-h-screen w-full flex items-center justify-center px-4 py-12 bg-gradient-to-br from-blue-50 via-white to-teal-50">
+        <div className="max-w-lg w-full">
+          {/* Success Card */}
+          <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-10 text-center border border-blue-100 relative overflow-hidden">
+            {/* Decorative Background */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-yellow-100 to-orange-100 rounded-full translate-x-16 -translate-y-16 opacity-60" />
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-100 to-teal-100 rounded-full -translate-x-20 translate-y-20 opacity-60" />
+            
+            <div className="relative z-10">
+              {/* Animated Heart Icon */}
+              <div className="w-24 h-24 mx-auto mb-6 relative">
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full animate-pulse opacity-20" />
+                <div className="absolute inset-2 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shadow-lg">
+                  <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                </div>
+              </div>
+              
+              {/* Thank You Message */}
+              <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-600 mb-3">
+                We Love Your Feedback! 💝
+              </h2>
+              <p className="text-xl text-gray-800 font-semibold mb-2">
+                Thank You So Much!
+              </p>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Your feedback means the world to us! It helps us create better travel experiences for everyone.
+              </p>
+              
+              {/* Appreciation Box */}
+              <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-2xl p-6 mb-8 border border-rose-100">
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <span className="text-2xl">⭐</span>
+                  <span className="text-2xl">⭐</span>
+                  <span className="text-2xl">⭐</span>
+                  <span className="text-2xl">⭐</span>
+                  <span className="text-2xl">⭐</span>
+                </div>
+                <p className="text-gray-700 text-sm">
+                  Your voice matters! We read every piece of feedback to improve our services.
+                </p>
+              </div>
+              
+              {/* Ready for Next Trip */}
+              <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-2xl p-5 mb-8 border border-blue-100">
+                <p className="text-blue-800 font-medium mb-2">Ready for your next adventure? 🌍</p>
+                <p className="text-gray-600 text-sm">Let us help you plan your dream vacation!</p>
+              </div>
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="/"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-8 py-3.5 rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                  </svg>
+                  Back to Home
+                </a>
+                <a
+                  href="/quote"
+                  className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 border-2 border-blue-600 px-8 py-3.5 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300"
+                >
+                  Plan a Trip ✈️
+                </a>
+              </div>
+            </div>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-green-600 mb-4">Thank you!</h2>
-          <p className="text-sm sm:text-base text-gray-700 mb-8">We appreciate your feedback and will use it to improve our services.</p>
-          <a href="/" className="inline-block bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 sm:px-8 py-3 rounded-lg font-semibold hover:shadow-xl transition-all duration-300">Back to Home</a>
         </div>
       </main>
     );
