@@ -19,7 +19,7 @@ const createTransporter = () => {
     port: parseInt(process.env.SMTP_PORT || '465'),
     secure: true,
     auth: {
-      user: process.env.SMTP_USER || 'info@travstaytion.com',
+      user: process.env.SMTP_USER || 'holidays@travstaytion.com',
       pass: process.env.SMTP_PASS || '', // Set this in Vercel environment variables
     },
   });
@@ -204,7 +204,7 @@ function generateQuotePDF(data: {
   doc.setFontSize(9);
   doc.setTextColor(lightGray[0], lightGray[1], lightGray[2]);
   doc.text('TravStaytion | Your Journey, Our Passion', 20, footerY);
-  doc.text('📞 +91 99999 59915 | ✉️ info@travstaytion.com', 20, footerY + 8);
+  doc.text('📞 +91 99999 59915 | ✉️ holidays@travstaytion.com', 20, footerY + 8);
   doc.text('🌐 www.travstaytion.com', 20, footerY + 16);
   
   doc.setFontSize(8);
@@ -361,8 +361,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       
       // Email to owner
       await transporter.sendMail({
-        from: '"TravStaytion" <info@travstaytion.com>',
-        to: 'info@travstaytion.com',
+        from: '"TravStaytion" <holidays@travstaytion.com>',
+        to: 'holidays@travstaytion.com',
         subject: `📋 New Quote Request: ${name} - ${destination}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -394,7 +394,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       
       // Confirmation email to customer
       await transporter.sendMail({
-        from: '"TravStaytion" <info@travstaytion.com>',
+        from: '"TravStaytion" <holidays@travstaytion.com>',
         to: email,
         subject: `Your Travel Quote Request - ${destination}`,
         html: `
