@@ -110,21 +110,6 @@ export default function ContactPage() {
 
               {/* Contact Cards */}
               <div className="space-y-4 sm:space-y-6">
-                {/* Owner Card */}
-                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                  <div className="flex items-center gap-5">
-                    <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-teal-500 rounded-2xl flex items-center justify-center shadow-lg">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <div>
-                      <p className="text-sm text-gray-500 font-medium">Travel Consultant</p>
-                      <p className="text-xl font-bold text-gray-900">Ashmeet Singh</p>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Phone Card */}
                 <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-center gap-5">
