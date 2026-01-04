@@ -51,7 +51,7 @@ const destinations = [
     name: "Dubai, UAE",
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
     description: "See the Burj Khalifa, shop in grand malls, go desert dune bashing, and enjoy luxury in the Middle East’s most dynamic city.",
-    price: "₹49,999",
+    price: "₹39,999",
     rating: 5,
     days: "5 Days / 4 Nights",
   },

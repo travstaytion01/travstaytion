@@ -136,7 +136,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 font-medium">Email Us</p>
-                      <a href="mailto:info@travstaytion.com" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
+                      <a href="mailto:holidays@travstaytion.com" className="text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors">
                         Holidays@travstaytion.com
                       </a>
                     </div>

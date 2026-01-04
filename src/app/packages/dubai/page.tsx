@@ -183,24 +183,26 @@ export default function DubaiPackagesPage() {
   const [filterBudget, setFilterBudget] = useState<string>("all");
   const [filterNights, setFilterNights] = useState<string>("all");
 
-  const filteredPackages = dubaiPackages.filter((pkg) => {
-    let budgetMatch = true;
-    let nightsMatch = true;
+  const filteredPackages = dubaiPackages
+    .filter((pkg) => {
+      let budgetMatch = true;
+      let nightsMatch = true;
 
-    if (filterBudget !== "all") {
-      if (filterBudget === "budget") budgetMatch = pkg.price < 50000;
-      else if (filterBudget === "mid") budgetMatch = pkg.price >= 50000 && pkg.price < 75000;
-      else if (filterBudget === "luxury") budgetMatch = pkg.price >= 75000;
-    }
+      if (filterBudget !== "all") {
+        if (filterBudget === "budget") budgetMatch = pkg.price < 50000;
+        else if (filterBudget === "mid") budgetMatch = pkg.price >= 50000 && pkg.price < 75000;
+        else if (filterBudget === "luxury") budgetMatch = pkg.price >= 75000;
+      }
 
-    if (filterNights !== "all") {
-      if (filterNights === "3") nightsMatch = pkg.nights === 3;
-      else if (filterNights === "4-5") nightsMatch = pkg.nights >= 4 && pkg.nights <= 5;
-      else if (filterNights === "6+") nightsMatch = pkg.nights >= 6;
-    }
+      if (filterNights !== "all") {
+        if (filterNights === "3") nightsMatch = pkg.nights === 3;
+        else if (filterNights === "4-5") nightsMatch = pkg.nights >= 4 && pkg.nights <= 5;
+        else if (filterNights === "6+") nightsMatch = pkg.nights >= 6;
+      }
 
-    return budgetMatch && nightsMatch;
-  });
+      return budgetMatch && nightsMatch;
+    })
+    .sort((a, b) => a.price - b.price);
 
   const handleCustomize = (pkg: typeof dubaiPackages[number]) => {
     setSelectedPackage(pkg);
