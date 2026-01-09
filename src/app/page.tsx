@@ -94,6 +94,53 @@ export default function Home() {
           </div>
         </div>
 
+        {/* MOBILE ONLY - Floating Mini Destination Pills */}
+        <div className="sm:hidden absolute top-[18%] left-2 animate-float-slow">
+          <div className="bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 shadow-lg flex items-center gap-1.5 transform -rotate-12">
+            <div className="w-6 h-6 rounded-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=100&q=80" alt="Maldives" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-semibold text-gray-700">Maldives</span>
+            <span className="text-[8px]">🏝️</span>
+          </div>
+        </div>
+        
+        <div className="sm:hidden absolute top-[22%] right-2 animate-float-medium">
+          <div className="bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 shadow-lg flex items-center gap-1.5 transform rotate-12">
+            <div className="w-6 h-6 rounded-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=100&q=80" alt="Dubai" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-semibold text-gray-700">Dubai</span>
+            <span className="text-[8px]">🏙️</span>
+          </div>
+        </div>
+        
+        <div className="sm:hidden absolute top-[55%] left-1 animate-float-slow-reverse">
+          <div className="bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 shadow-lg flex items-center gap-1.5 transform rotate-6">
+            <div className="w-6 h-6 rounded-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=100&q=80" alt="Bali" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-semibold text-gray-700">Bali</span>
+            <span className="text-[8px]">🌴</span>
+          </div>
+        </div>
+        
+        <div className="sm:hidden absolute top-[60%] right-1 animate-float-medium">
+          <div className="bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 shadow-lg flex items-center gap-1.5 transform -rotate-6">
+            <div className="w-6 h-6 rounded-full overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=100&q=80" alt="Japan" className="w-full h-full object-cover" />
+            </div>
+            <span className="text-[9px] font-semibold text-gray-700">Japan</span>
+            <span className="text-[8px]">🌸</span>
+          </div>
+        </div>
+
+        {/* MOBILE ONLY - Floating Travel Icons */}
+        <div className="sm:hidden absolute top-[30%] left-3 text-lg animate-float-medium opacity-70">✈️</div>
+        <div className="sm:hidden absolute top-[42%] right-4 text-base animate-float-slow opacity-60">🗺️</div>
+        <div className="sm:hidden absolute top-[75%] left-4 text-base animate-float-slow-reverse opacity-50">📸</div>
+        <div className="sm:hidden absolute top-[72%] right-5 text-lg animate-float-medium opacity-60">🧳</div>
+
         {/* LEFT SIDE - Floating Destination Cards (Hidden on mobile) */}
         <div className="hidden lg:block absolute left-4 xl:left-8 top-1/2 -translate-y-1/2 space-y-4">
           {/* Destination Card 1 */}
@@ -140,7 +187,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Travel Icons - Scattered around (hidden on small mobile) */}
+        {/* Travel Icons - Scattered around (Tablet and up) */}
         <div className="hidden sm:block absolute top-[12%] left-[15%] lg:left-[22%] text-2xl lg:text-3xl animate-float-slow opacity-60">🗺️</div>
         <div className="hidden sm:block absolute top-[65%] right-[12%] lg:right-[20%] text-2xl lg:text-3xl animate-float-medium opacity-50">🧳</div>
         <div className="hidden md:block absolute top-[75%] left-[10%] lg:left-[18%] text-xl lg:text-2xl animate-float-slow-reverse opacity-40">📸</div>
@@ -150,10 +197,10 @@ export default function Home() {
         {/* Main Content */}
         <div className="relative z-10 flex flex-col items-center text-center px-4">
           {/* Subtitle */}
-          <p className="text-blue-600 font-semibold text-[10px] sm:text-xs lg:text-sm uppercase tracking-[0.2em] mb-2 sm:mb-3 animate-fade-in-down flex items-center gap-2">
-            <span className="hidden sm:inline-block w-8 h-[1px] bg-blue-400"></span>
+          <p className="text-blue-600 font-semibold text-[10px] sm:text-xs lg:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-2 sm:mb-3 animate-fade-in-down flex items-center gap-1 sm:gap-2">
+            <span className="w-4 sm:w-8 h-[1px] bg-gradient-to-r from-transparent to-blue-400"></span>
             ✈ EXPERIENCE THE WORLD
-            <span className="hidden sm:inline-block w-8 h-[1px] bg-blue-400"></span>
+            <span className="w-4 sm:w-8 h-[1px] bg-gradient-to-l from-transparent to-blue-400"></span>
           </p>
           
           {/* Main heading */}
