@@ -79,10 +79,10 @@ export default function RootLayout({
         <meta name="theme-color" content="#2563eb" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 overflow-x-hidden`}
       >
         <Navbar />
-        <main className="min-h-screen pt-16">
+        <main className="min-h-screen pt-14 sm:pt-16 lg:pt-18">
           {children}
         </main>
         <Footer />

@@ -46,18 +46,24 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
       <style>{`
         .floating-whatsapp-container {
           position: fixed;
-          bottom: 32px;
-          right: 32px;
+          bottom: 20px;
+          right: 20px;
           z-index: 1000;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
+        @media (min-width: 640px) {
+          .floating-whatsapp-container {
+            bottom: 32px;
+            right: 32px;
+          }
+        }
         .floating-whatsapp-btn {
           position: relative;
           border-radius: 50%;
-          width: 68px;
-          height: 68px;
+          width: 56px;
+          height: 56px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -68,15 +74,27 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
           animation: pulse 1.5s infinite;
           backdrop-filter: blur(6px);
         }
+        @media (min-width: 640px) {
+          .floating-whatsapp-btn {
+            width: 68px;
+            height: 68px;
+          }
+        }
         .floating-whatsapp-glass {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 60px;
-          height: 60px;
+          width: 48px;
+          height: 48px;
           border-radius: 50%;
           background: rgba(255,255,255,0.18);
           box-shadow: 0 2px 8px rgba(37,211,102,0.10);
+        }
+        @media (min-width: 640px) {
+          .floating-whatsapp-glass {
+            width: 60px;
+            height: 60px;
+          }
         }
         .floating-whatsapp-btn:hover {
           transform: scale(1.10) rotate(-6deg);
@@ -88,20 +106,26 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
           100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
         }
         .floating-whatsapp-tooltip {
-          margin-top: 8px;
-          padding: 6px 14px;
-          background: rgba(18,140,126,0.95);
-          color: white;
-          border-radius: 16px;
-          font-size: 0.95rem;
-          font-weight: 500;
-          box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-          opacity: 0;
-          transition: opacity 0.2s;
-          pointer-events: none;
+          display: none;
         }
-        .floating-whatsapp-btn:hover + .floating-whatsapp-tooltip {
-          opacity: 1;
+        @media (min-width: 640px) {
+          .floating-whatsapp-tooltip {
+            display: block;
+            margin-top: 8px;
+            padding: 6px 14px;
+            background: rgba(18,140,126,0.95);
+            color: white;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+          }
+          .floating-whatsapp-btn:hover + .floating-whatsapp-tooltip {
+            opacity: 1;
+          }
         }
       `}</style>
     </div>

@@ -71,11 +71,11 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Immersive Airplane Window Experience */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
+      <section className="relative min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
         {/* Animated Sky Background */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Sun glow */}
-          <div className="absolute top-10 right-10 sm:top-20 sm:right-20 w-24 h-24 sm:w-40 sm:h-40 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-80" />
+          <div className="absolute top-8 right-8 sm:top-16 sm:right-16 w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-80" />
           
           {/* Animated Clouds - Different sizes for depth */}
           <div className="absolute top-[10%] left-[5%] w-20 h-8 sm:w-40 sm:h-16 bg-white/80 rounded-full blur-md animate-floatUp" style={{ animationDuration: '20s' }} />
