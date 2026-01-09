@@ -157,33 +157,58 @@ export default function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={`lg:hidden overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[500px] pb-6' : 'max-h-0'}`}>
-          <div className="flex flex-col space-y-1 pt-4 border-t">
-            <Link href="/" className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-xl hover:bg-blue-50" onClick={() => setIsOpen(false)}>
+        <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <div className="flex flex-col pt-4 pb-2 border-t border-gray-100">
+            {/* Mobile Menu Items */}
+            <Link 
+              href="/" 
+              className="flex items-center gap-3 mx-2 px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-all rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 group" 
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+              </span>
               Home
             </Link>
-            <Link href="/destinations" className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-xl hover:bg-blue-50" onClick={() => setIsOpen(false)}>
+            
+            <Link 
+              href="/destinations" 
+              className="flex items-center gap-3 mx-2 px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-all rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 group" 
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="w-8 h-8 rounded-lg bg-teal-100 flex items-center justify-center text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </span>
               Destinations
             </Link>
             
             {/* Mobile Packages Section */}
-            <div className="px-4 py-3">
-              <p className="text-gray-700 font-medium mb-2">Packages</p>
-              <div className="pl-4 space-y-1">
-                <Link href="/packages" className="block py-2 text-gray-600 hover:text-blue-600 transition-colors" onClick={() => setIsOpen(false)}>
+            <div className="mx-2 px-4 py-3">
+              <div className="flex items-center gap-3 text-gray-700 font-medium mb-3">
+                <span className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>
+                </span>
+                Packages
+              </div>
+              <div className="ml-11 space-y-1 border-l-2 border-gray-100 pl-4">
+                <Link 
+                  href="/packages" 
+                  className="block py-2 px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all text-sm font-medium" 
+                  onClick={() => setIsOpen(false)}
+                >
                   All Packages
                 </Link>
                 {destinationPackages.map((dest) => (
                   <Link
                     key={dest.href}
                     href={dest.href}
-                    className="flex items-center gap-2 py-2 text-gray-600 hover:text-blue-600 transition-colors"
+                    className="flex items-center gap-2 py-2 px-3 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all text-sm"
                     onClick={() => setIsOpen(false)}
                   >
                     <span>{dest.icon}</span>
                     <span>{dest.name}</span>
                     {dest.badge && (
-                      <span className="text-xs bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-2 py-0.5 rounded-full">
+                      <span className="text-[10px] bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-2 py-0.5 rounded-full font-medium">
                         {dest.badge}
                       </span>
                     )}
@@ -192,19 +217,37 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/about" className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-xl hover:bg-blue-50" onClick={() => setIsOpen(false)}>
+            <Link 
+              href="/about" 
+              className="flex items-center gap-3 mx-2 px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-all rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 group" 
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </span>
               About Us
             </Link>
-            <Link href="/contact" className="px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-xl hover:bg-blue-50" onClick={() => setIsOpen(false)}>
+            
+            <Link 
+              href="/contact" 
+              className="flex items-center gap-3 mx-2 px-4 py-3 text-gray-700 hover:text-blue-600 font-medium transition-all rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-teal-50 group" 
+              onClick={() => setIsOpen(false)}
+            >
+              <span className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+              </span>
               Contact
             </Link>
-            <div className="pt-2">
+            
+            {/* CTA Button */}
+            <div className="mx-2 mt-3 pt-3 border-t border-gray-100">
               <Link
                 href="/quote"
-                className="block bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 py-3 rounded-xl font-semibold text-center shadow-md"
+                className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 py-3.5 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all"
                 onClick={() => setIsOpen(false)}
               >
-                Get a Quote
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                Get Free Quote
               </Link>
             </div>
           </div>

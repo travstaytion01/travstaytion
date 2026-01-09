@@ -71,11 +71,11 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Immersive Airplane Window Experience */}
-      <section className="relative min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
+      <section className="relative h-[calc(100svh-3.5rem)] sm:h-[calc(100svh-4rem)] lg:h-[calc(100vh-4.5rem)] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
         {/* Animated Sky Background */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Sun glow */}
-          <div className="absolute top-8 right-8 sm:top-16 sm:right-16 w-20 h-20 sm:w-32 sm:h-32 lg:w-40 lg:h-40 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-80" />
+          <div className="absolute top-4 right-4 sm:top-12 sm:right-12 w-16 h-16 sm:w-28 sm:h-28 lg:w-36 lg:h-36 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-80" />
           
           {/* Animated Clouds - Different sizes for depth */}
           <div className="absolute top-[10%] left-[5%] w-20 h-8 sm:w-40 sm:h-16 bg-white/80 rounded-full blur-md animate-floatUp" style={{ animationDuration: '20s' }} />
@@ -104,27 +104,27 @@ export default function Home() {
         </div>
 
         {/* Main Content Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
           <div className="flex flex-col items-center text-center">
             
             {/* Animated Header Text */}
-            <div className="mb-4 sm:mb-6 animate-heroReveal">
-              <p className="text-blue-600 font-medium text-xs sm:text-sm md:text-base uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+            <div className="mb-2 sm:mb-4 animate-heroReveal">
+              <p className="text-blue-600 font-medium text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em]">
                 ✈ EXPERIENCE THE WORLD
               </p>
             </div>
             
-            <h1 className="mb-6 sm:mb-8 animate-heroReveal" style={{ animationDelay: '0.15s' }}>
-              <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-blue-900 leading-tight">
+            <h1 className="mb-3 sm:mb-5 animate-heroReveal" style={{ animationDelay: '0.15s' }}>
+              <span className="block text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 leading-tight">
                 YOUR JOURNEY
               </span>
-              <span className="block text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-500 to-blue-600 mt-1 sm:mt-2">
+              <span className="block text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-500 to-blue-600 mt-1">
                 BEGINS HERE
               </span>
             </h1>
             
             {/* Airplane Window - Responsive & Interactive */}
-            <div className="relative w-[200px] h-[260px] sm:w-[280px] sm:h-[360px] md:w-[320px] md:h-[420px] lg:w-[380px] lg:h-[500px] my-4 sm:my-6 animate-heroReveal" style={{ animationDelay: '0.3s' }}>
+            <div className="relative w-[160px] h-[200px] sm:w-[220px] sm:h-[280px] md:w-[260px] md:h-[340px] lg:w-[300px] lg:h-[390px] my-2 sm:my-4 animate-heroReveal" style={{ animationDelay: '0.3s' }}>
               
               {/* Outer Frame Shadow */}
               <div className="absolute inset-0 bg-gradient-to-b from-gray-300 to-gray-400 rounded-[45%] shadow-[0_20px_60px_rgba(0,0,0,0.3)]" />
@@ -174,34 +174,34 @@ export default function Home() {
             <div className="animate-heroReveal" style={{ animationDelay: '0.45s' }}>
               <Link
                 href="/packages"
-                className="group relative inline-flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 bg-gradient-to-br from-blue-600 via-blue-500 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-110 my-4 sm:my-6"
+                className="group relative inline-flex flex-col items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-blue-600 via-blue-500 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-110 my-2 sm:my-4"
               >
                 {/* Animated ring */}
                 <span className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping opacity-40" style={{ animationDuration: '2s' }} />
                 <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-700 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative text-[10px] sm:text-xs font-light tracking-wider">Let&apos;s</span>
-                <span className="relative text-base sm:text-lg md:text-xl font-bold">GO</span>
-                <svg className="relative w-3 h-3 sm:w-4 sm:h-4 mt-0.5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="relative text-[9px] sm:text-[10px] font-light tracking-wider">Let&apos;s</span>
+                <span className="relative text-sm sm:text-base md:text-lg font-bold">GO</span>
+                <svg className="relative w-2.5 h-2.5 sm:w-3 sm:h-3 mt-0.5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
                 </svg>
               </Link>
             </div>
             
             {/* Tagline */}
-            <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-md sm:max-w-lg md:max-w-xl mx-auto leading-relaxed animate-heroReveal px-4" style={{ animationDelay: '0.6s' }}>
+            <p className="text-gray-600 text-xs sm:text-sm md:text-base max-w-sm sm:max-w-md md:max-w-lg mx-auto leading-relaxed animate-heroReveal px-4" style={{ animationDelay: '0.6s' }}>
               Crafting <span className="text-blue-600 font-semibold">unforgettable journeys</span> to the world&apos;s most extraordinary destinations
             </p>
             
             {/* Trust Badges - Mobile Optimized */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mt-6 sm:mt-8 animate-heroReveal" style={{ animationDelay: '0.75s' }}>
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 animate-heroReveal" style={{ animationDelay: '0.75s' }}>
               {[
                 { icon: "⭐", text: "4.9 Rating" },
                 { icon: "✈️", text: "10K+ Trips" },
                 { icon: "🌍", text: "50+ Destinations" },
               ].map((badge) => (
-                <div key={badge.text} className="flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-md border border-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-default">
-                  <span className="text-base sm:text-lg">{badge.icon}</span>
-                  <span className="text-xs sm:text-sm font-semibold text-gray-700">{badge.text}</span>
+                <div key={badge.text} className="flex items-center gap-1 sm:gap-1.5 bg-white/90 backdrop-blur-sm px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md border border-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-default">
+                  <span className="text-sm sm:text-base">{badge.icon}</span>
+                  <span className="text-[10px] sm:text-xs font-semibold text-gray-700">{badge.text}</span>
                 </div>
               ))}
             </div>
