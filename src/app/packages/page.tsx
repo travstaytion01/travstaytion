@@ -105,9 +105,9 @@ export default function PackagesPage() {
       </section>
 
       {/* Destination Packages Section */}
-      <section className="py-12 sm:py-16 bg-white">
+      <section className="py-12 sm:py-16 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
             <span className="text-emerald-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Explore by Destination</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2">
               Destination-Specific Packages
@@ -118,11 +118,12 @@ export default function PackagesPage() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {destinationPackages.map((dest) => (
+            {destinationPackages.map((dest, index) => (
               <Link
                 key={dest.name}
                 href={dest.href}
-                className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500"
+                className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 animate-on-scroll-stagger"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="relative h-64 overflow-hidden">
                   {dest.isPopular && (
@@ -133,6 +134,7 @@ export default function PackagesPage() {
                   <img
                     src={dest.image}
                     alt={dest.name}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -148,7 +150,7 @@ export default function PackagesPage() {
                     <p className="text-xs text-gray-500">{dest.packageCount} packages available</p>
                   </div>
                   <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
                   </div>
@@ -160,9 +162,9 @@ export default function PackagesPage() {
       </section>
 
       {/* Packages Grid */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-on-scroll">
             <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Package Types</span>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
               Travel By Interest
@@ -172,16 +174,18 @@ export default function PackagesPage() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {packages.map((pkg) => (
+            {packages.map((pkg, index) => (
               <div
                 key={pkg.name}
-                className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer"
+                className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer animate-on-scroll-stagger hover:-translate-y-2"
+                style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => { setSelectedPkg(pkg); setOpen(true); }}
               >
                 <div className="relative h-56 overflow-hidden">
                   <img
                     src={pkg.image}
                     alt={pkg.name}
+                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -243,8 +247,8 @@ export default function PackagesPage() {
       <PackageModal open={open} onClose={() => { setOpen(false); setSelectedPkg(null); }} pkg={selectedPkg} />
 
       {/* Custom Package CTA */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="py-16 bg-white overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 text-center animate-on-scroll">
           <h2 className="text-3xl font-bold text-gray-900 mb-4">
             Need Something Different?
           </h2>
@@ -253,9 +257,12 @@ export default function PackagesPage() {
           </p>
           <Link
             href="/quote"
-            className="inline-block bg-gradient-to-r from-blue-600 to-teal-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Request Custom Package
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </Link>
         </div>
       </section>

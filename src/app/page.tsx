@@ -277,7 +277,7 @@ export default function Home() {
       {/* Features Section - Fully Responsive */}
       <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-14 lg:mb-16">
+          <div className="text-center mb-10 sm:mb-14 lg:mb-16 animate-on-scroll">
             <p className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2 sm:mb-3">WHY TRAVELERS CHOOSE US</p>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
               Travel with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">Confidence</span>
@@ -288,9 +288,10 @@ export default function Home() {
             {features.map((feature, index) => (
               <div
                 key={feature.title}
-                className="group text-center p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-white hover:bg-gradient-to-br hover:from-blue-600 hover:to-teal-500 transition-all duration-300 shadow-sm hover:shadow-xl border border-gray-100 hover:border-transparent hover:-translate-y-1 sm:hover:-translate-y-2"
+                className="group text-center p-3 sm:p-4 md:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-white hover:bg-gradient-to-br hover:from-blue-600 hover:to-teal-500 transition-all duration-500 shadow-sm hover:shadow-xl border border-gray-100 hover:border-transparent hover:-translate-y-1 sm:hover:-translate-y-2 animate-on-scroll-stagger"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 md:mb-4 lg:mb-5 bg-gradient-to-br from-blue-100 to-teal-100 group-hover:from-white/20 group-hover:to-white/20 rounded-lg sm:rounded-xl flex items-center justify-center text-blue-600 group-hover:text-white transition-all">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mx-auto mb-2 sm:mb-3 md:mb-4 lg:mb-5 bg-gradient-to-br from-blue-100 to-teal-100 group-hover:from-white/20 group-hover:to-white/20 rounded-lg sm:rounded-xl flex items-center justify-center text-blue-600 group-hover:text-white transition-all group-hover:scale-110 group-hover:rotate-3">
                   {feature.icon}
                 </div>
                 <h3 className="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-900 group-hover:text-white mb-1 sm:mb-2 transition-colors">{feature.title}</h3>
@@ -302,9 +303,9 @@ export default function Home() {
       </section>
 
       {/* Destinations Section - Fully Responsive */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-white">
+      <section className="py-12 sm:py-16 lg:py-24 bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-10 lg:mb-14">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-8 sm:mb-10 lg:mb-14 animate-on-scroll">
             <div>
               <p className="text-teal-600 font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2 sm:mb-3">POPULAR DESTINATIONS</p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900">
@@ -323,25 +324,37 @@ export default function Home() {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {destinations.map((destination) => (
-              <DestinationCard key={destination.name} {...destination} />
+            {destinations.map((destination, index) => (
+              <DestinationCard key={destination.name} {...destination} index={index} />
             ))}
           </div>
         </div>
       </section>
 
       {/* Stats Section - Fully Responsive */}
-      <section className="py-10 sm:py-14 lg:py-20 bg-gradient-to-r from-blue-600 to-teal-500">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-14 lg:py-20 bg-gradient-to-r from-blue-600 to-teal-500 relative overflow-hidden">
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" />
+          <div className="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full translate-x-1/3 translate-y-1/3 animate-pulse-slow" />
+          <div className="absolute top-1/2 left-1/2 w-32 h-32 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 animate-float-slow" />
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 text-center">
             {[
-              { value: "10K+", label: "Happy Travelers" },
-              { value: "50+", label: "Destinations" },
-              { value: "15+", label: "Years Experience" },
-              { value: "4.9★", label: "Rating" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">{stat.value}</p>
+              { value: "10K+", label: "Happy Travelers", icon: "😊" },
+              { value: "50+", label: "Destinations", icon: "🌍" },
+              { value: "15+", label: "Years Experience", icon: "🏆" },
+              { value: "4.9★", label: "Rating", icon: "⭐" },
+            ].map((stat, index) => (
+              <div 
+                key={stat.label} 
+                className="animate-on-scroll-stagger group cursor-default"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="text-3xl sm:text-4xl mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white group-hover:scale-110 transition-transform duration-300">{stat.value}</p>
                 <p className="text-white/80 text-xs sm:text-sm md:text-base mt-1 sm:mt-2">{stat.label}</p>
               </div>
             ))}
@@ -355,11 +368,12 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1920&q=80"
             alt="Travel adventure"
+            loading="lazy"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-teal-900/80" />
         </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6">
             Ready for Your Next Trip?
           </h2>
@@ -369,13 +383,16 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               href="/quote"
-              className="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105"
+              className="group bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-700 hover:to-teal-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold transition-all shadow-lg hover:shadow-xl hover:scale-105 flex items-center justify-center gap-2"
             >
               Get Free Quote
+              <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </Link>
             <Link
               href="/contact"
-              className="bg-transparent hover:bg-white/10 text-white border-2 border-white/50 hover:border-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold transition-colors"
+              className="bg-transparent hover:bg-white/10 text-white border-2 border-white/50 hover:border-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-sm sm:text-base lg:text-lg font-semibold transition-all hover:scale-105"
             >
               Contact Us
             </Link>

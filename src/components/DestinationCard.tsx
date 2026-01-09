@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DestinationModal from "./DestinationModal";
 
 interface DestinationCardProps {
@@ -10,17 +10,51 @@ interface DestinationCardProps {
   price: string;
   rating: number;
   days: string;
+  index?: number;
 }
 
-export default function DestinationCard({ name, image, description, price, rating, days }: DestinationCardProps) {
+export default function DestinationCard({ name, image, description, price, rating, days, index = 0 }: DestinationCardProps) {
   const [open, setOpen] = React.useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: "50px" }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <div className="group bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100">
+      <div 
+        ref={cardRef}
+        className={`group bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 ${
+          isVisible 
+            ? 'opacity-100 translate-y-0' 
+            : 'opacity-0 translate-y-8'
+        }`}
+        style={{ 
+          transitionDelay: `${index * 150}ms`,
+          transitionProperty: 'opacity, transform, box-shadow'
+        }}
+      >
         <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden cursor-pointer" onClick={() => setOpen(true)}>
           <img
             src={image}
             alt={name}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
           />
           {/* Overlay gradient */}
@@ -29,6 +63,16 @@ export default function DestinationCard({ name, image, description, price, ratin
           {/* Days badge */}
           <div className="absolute top-3 sm:top-4 right-3 sm:right-4 bg-white/95 backdrop-blur-sm px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full shadow-lg">
             <span className="text-xs sm:text-sm font-semibold text-gray-800">{days}</span>
+          </div>
+
+          {/* Hover overlay with icon */}
+          <div className="absolute inset-0 bg-gradient-to-t from-blue-600/80 to-teal-500/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+            <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300">
+              <svg className="w-6 h-6 sm:w-7 sm:h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            </div>
           </div>
           
           {/* Rating and name overlay */}

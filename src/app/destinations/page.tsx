@@ -108,23 +108,29 @@ export default function DestinationsPage() {
       </section>
 
       {/* Destinations Grid */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12">
+          <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Popular Destinations</h2>
             <p className="mt-2 text-gray-600 text-sm sm:text-base">Choose from our handpicked selection of amazing places</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {destinations.map((destination) => (
-              <DestinationCard key={destination.name} {...destination} />
+            {destinations.map((destination, index) => (
+              <DestinationCard key={destination.name} {...destination} index={index} />
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-teal-500">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-blue-600 to-teal-500 relative overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" />
+          <div className="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full translate-x-1/3 translate-y-1/3 animate-pulse-slow" />
+        </div>
+        
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10 animate-on-scroll">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Can&apos;t Find Your Dream Destination?
           </h2>
@@ -133,9 +139,12 @@ export default function DestinationsPage() {
           </p>
           <a
             href="/quote"
-            className="inline-block bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="group inline-flex items-center gap-2 bg-white text-blue-600 px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Request Custom Package
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </a>
         </div>
       </section>

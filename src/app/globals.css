@@ -862,9 +862,43 @@ input:focus, textarea:focus, select:focus, button:focus {
 .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
 .stagger-children > *:nth-child(6) { animation-delay: 0.6s; }
 
-/* Initial state for animated elements */
+/* ============================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================ */
+
+/* Initial state for scroll-triggered elements */
 .animate-on-scroll {
   opacity: 0;
+  transform: translateY(30px);
+  animation: scrollReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-on-scroll-stagger {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: scrollRevealStagger 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes scrollReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollRevealStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 /* 3D card flip on hover */
