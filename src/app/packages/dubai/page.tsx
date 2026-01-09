@@ -212,7 +212,7 @@ export default function DubaiPackagesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] md:h-[55vh] flex items-center justify-center overflow-hidden pt-16 pb-24 md:pt-0 md:pb-0">
+      <section className="relative min-h-[60vh] md:h-[55vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24 pb-24 md:pt-16 md:pb-0">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"

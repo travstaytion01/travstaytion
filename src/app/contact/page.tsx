@@ -72,7 +72,7 @@ export default function ContactPage() {
         <div className="max-w-lg mx-auto mt-6 mb-2 text-center text-red-600 font-semibold bg-red-50 border border-red-200 rounded-lg p-2">{error}</div>
       )}
       {/* Hero Section */}
-      <section className="relative h-[35vh] sm:h-[40vh] lg:h-[45vh] flex items-center justify-center overflow-hidden">
+      <section className="relative pt-14 sm:pt-16 h-[35vh] sm:h-[40vh] lg:h-[45vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"

@@ -38,7 +38,7 @@ export default function FeedbackPage() {
 
   if (isSubmitted) {
     return (
-      <main className="min-h-screen w-full flex items-center justify-center px-4 py-12 bg-gradient-to-br from-blue-50 via-white to-teal-50">
+      <main className="min-h-screen w-full flex items-center justify-center px-4 pt-20 pb-12 bg-gradient-to-br from-blue-50 via-white to-teal-50">
         <div className="max-w-lg w-full">
           {/* Success Card */}
           <div className="bg-white rounded-3xl shadow-2xl p-8 sm:p-10 text-center border border-blue-100 relative overflow-hidden">
@@ -114,7 +114,7 @@ export default function FeedbackPage() {
   }
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center px-4 py-16 sm:py-20 bg-gradient-to-br from-blue-50 via-white to-teal-100">
+    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-20 pb-16 sm:pt-24 sm:pb-20 bg-gradient-to-br from-blue-50 via-white to-teal-100">
       <div className="relative w-full max-w-3xl motion-safe:animate-fadein">
         {/* Decorative Icon - positioned above card */}
         <div className="flex justify-center mb-6">

@@ -178,7 +178,7 @@ export default function QuotePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[35vh] sm:h-[40vh] flex items-center justify-center overflow-hidden">
+      <section className="relative pt-14 sm:pt-16 h-[35vh] sm:h-[40vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80"
