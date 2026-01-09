@@ -70,97 +70,104 @@ const features = [
 export default function Home() {
   return (
     <>
-      {/* Hero Section - Exact viewport fit with navbar offset */}
+      {/* Hero Section - Fits exactly in viewport */}
       <section className="relative h-[100dvh] pt-14 sm:pt-16 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
-        {/* Background Elements */}
+        {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {/* Sun glow */}
-          <div className="absolute top-12 right-8 sm:top-16 sm:right-16 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-70 animate-pulse-slow" />
+          {/* Sun glow - animated */}
+          <div className="absolute -top-10 -right-10 sm:top-8 sm:right-8 w-40 h-40 sm:w-56 sm:h-56 lg:w-72 lg:h-72 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-60 animate-pulse-slow" />
           
-          {/* Floating clouds */}
-          <div className="absolute top-[15%] left-[5%] w-24 h-10 sm:w-40 sm:h-16 lg:w-56 lg:h-20 bg-white/60 rounded-full blur-xl animate-float-slow" />
-          <div className="absolute top-[20%] right-[8%] w-32 h-12 sm:w-52 sm:h-18 lg:w-72 lg:h-24 bg-white/50 rounded-full blur-2xl animate-float-slow-reverse" />
-          <div className="absolute top-[30%] left-[15%] w-20 h-8 sm:w-36 sm:h-12 lg:w-48 lg:h-16 bg-white/40 rounded-full blur-xl animate-float-medium" />
+          {/* Floating clouds with animations */}
+          <div className="absolute top-[12%] left-[3%] w-20 h-8 sm:w-36 sm:h-14 lg:w-48 lg:h-18 bg-white/70 rounded-full blur-xl animate-float-slow" />
+          <div className="absolute top-[8%] right-[5%] w-28 h-10 sm:w-44 sm:h-16 lg:w-60 lg:h-20 bg-white/60 rounded-full blur-2xl animate-float-slow-reverse" />
+          <div className="absolute top-[25%] left-[12%] w-16 h-6 sm:w-28 sm:h-10 lg:w-40 lg:h-14 bg-white/50 rounded-full blur-xl animate-float-medium" />
+          <div className="absolute top-[18%] right-[20%] w-14 h-5 sm:w-24 sm:h-8 lg:w-32 lg:h-12 bg-white/40 rounded-full blur-lg animate-float-slow" />
           
-          {/* Mountain/wave silhouette */}
-          <div className="absolute bottom-0 left-0 right-0 h-[15%] sm:h-[18%] lg:h-[20%]">
+          {/* Wave silhouette at bottom */}
+          <div className="absolute bottom-0 left-0 right-0 h-[12%] sm:h-[15%] lg:h-[18%]">
             <svg viewBox="0 0 1440 320" className="absolute bottom-0 w-full h-full" preserveAspectRatio="none">
-              <path fill="rgba(30, 58, 138, 0.15)" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,138.7C1120,128,1280,160,1360,176L1440,192L1440,320L0,320Z" />
-              <path fill="rgba(20, 184, 166, 0.1)" d="M0,224L60,218.7C120,213,240,203,360,213.3C480,224,600,256,720,261.3C840,267,960,245,1080,224C1200,203,1320,181,1380,170.7L1440,160L1440,320L0,320Z" />
+              <path fill="rgba(30, 58, 138, 0.12)" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,138.7C1120,128,1280,160,1360,176L1440,192L1440,320L0,320Z" />
+              <path fill="rgba(20, 184, 166, 0.08)" d="M0,224L60,218.7C120,213,240,203,360,213.3C480,224,600,256,720,261.3C840,267,960,245,1080,224C1200,203,1320,181,1380,170.7L1440,160L1440,320L0,320Z" />
             </svg>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-4 pb-6 sm:pb-4">
-          {/* Subtitle with animation */}
-          <p className="text-blue-600 font-semibold text-[11px] sm:text-sm lg:text-base uppercase tracking-[0.25em] mb-3 sm:mb-4 lg:mb-5 animate-fade-in-down">
+        {/* Main Content - Carefully sized to fit viewport */}
+        <div className="relative z-10 flex flex-col items-center text-center px-4 max-h-[calc(100dvh-4rem)] sm:max-h-[calc(100dvh-5rem)]">
+          {/* Subtitle */}
+          <p className="text-blue-600 font-semibold text-[10px] sm:text-xs lg:text-sm uppercase tracking-[0.2em] mb-2 sm:mb-3 animate-fade-in-down">
             ✈ EXPERIENCE THE WORLD
           </p>
           
-          {/* Main heading with animation */}
-          <h1 className="mb-5 sm:mb-6 lg:mb-8 animate-fade-in-up">
-            <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-blue-900 tracking-tight">YOUR JOURNEY</span>
-            <span className="block text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 mt-1 sm:mt-2">BEGINS HERE</span>
+          {/* Main heading */}
+          <h1 className="mb-3 sm:mb-4 lg:mb-5 animate-fade-in-up">
+            <span className="block text-[1.6rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 tracking-tight">YOUR JOURNEY</span>
+            <span className="block text-lg sm:text-2xl md:text-3xl lg:text-4xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 mt-0.5 sm:mt-1">BEGINS HERE</span>
           </h1>
           
-          {/* Airplane Window with animation */}
-          <div className="relative w-40 h-52 sm:w-56 sm:h-72 md:w-64 md:h-80 lg:w-72 lg:h-96 xl:w-80 xl:h-[26rem] mb-5 sm:mb-6 lg:mb-8 animate-scale-in">
-            {/* Outer frame */}
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 rounded-[45%] shadow-2xl" />
+          {/* Airplane Window - sized to fit */}
+          <div className="relative w-32 h-40 sm:w-44 sm:h-56 md:w-52 md:h-64 lg:w-60 lg:h-[19rem] mb-3 sm:mb-4 lg:mb-5 animate-scale-in group">
+            {/* Outer frame with shadow */}
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 rounded-[45%] shadow-2xl group-hover:shadow-3xl transition-shadow duration-500" />
             {/* Inner bezel */}
-            <div className="absolute inset-1 sm:inset-2 bg-gradient-to-b from-gray-50 to-gray-200 rounded-[44%] p-1.5 sm:p-2 lg:p-3">
-              <div className="w-full h-full bg-gradient-to-b from-gray-500 to-gray-700 rounded-[42%] p-1 sm:p-1.5">
-                {/* Window view */}
+            <div className="absolute inset-[3px] sm:inset-1 lg:inset-2 bg-gradient-to-b from-gray-50 to-gray-200 rounded-[44%] p-1 sm:p-1.5 lg:p-2">
+              <div className="w-full h-full bg-gradient-to-b from-gray-500 to-gray-700 rounded-[42%] p-[2px] sm:p-1">
+                {/* Window view with slow zoom */}
                 <div className="relative w-full h-full rounded-[40%] overflow-hidden">
                   <img 
                     src="https://images.unsplash.com/photo-1520483601560-389dff434fdf?w=800&q=85" 
                     alt="Tropical Paradise View" 
                     className="w-full h-full object-cover animate-slow-zoom" 
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-500/25 via-transparent to-blue-500/15" />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-500/20 via-transparent to-blue-500/10" />
                 </div>
               </div>
             </div>
-            {/* Glass reflection */}
-            <div className="absolute top-5 left-6 sm:top-7 sm:left-8 lg:top-9 lg:left-10 w-5 h-14 sm:w-7 sm:h-20 lg:w-9 lg:h-24 bg-white/50 rounded-full blur-[3px] -rotate-12 animate-shimmer" />
+            {/* Glass reflection - animated shimmer */}
+            <div className="absolute top-3 left-4 sm:top-5 sm:left-6 lg:top-6 lg:left-7 w-4 h-10 sm:w-5 sm:h-14 lg:w-6 lg:h-18 bg-white/50 rounded-full blur-[2px] -rotate-12 animate-shimmer" />
           </div>
           
-          {/* CTA Button with pulse animation */}
-          <Link href="/packages" className="group relative w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-blue-600 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 flex flex-col items-center justify-center mb-5 sm:mb-6 lg:mb-8 animate-bounce-gentle">
-            {/* Pulse ring */}
-            <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600 to-teal-500 animate-ping-slow opacity-30" />
+          {/* CTA Button with animations */}
+          <Link href="/packages" className="group relative w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-600 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 flex flex-col items-center justify-center mb-3 sm:mb-4 lg:mb-5 animate-bounce-gentle">
+            {/* Pulse ring effect */}
+            <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600 to-teal-500 animate-ping-slow opacity-25" />
             <span className="absolute inset-0 rounded-full ring-4 ring-white/40" />
-            <span className="text-[9px] sm:text-[11px] lg:text-xs font-light tracking-wide relative z-10">Let&apos;s</span>
-            <span className="text-base sm:text-lg lg:text-xl font-bold relative z-10">GO</span>
-            <svg className="w-3 h-3 sm:w-3.5 sm:h-3.5 lg:w-4 lg:h-4 mt-0.5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+            <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-light tracking-wide relative z-10">Let&apos;s</span>
+            <span className="text-sm sm:text-base lg:text-lg font-bold relative z-10">GO</span>
+            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 mt-0.5 relative z-10 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
           </Link>
           
-          {/* Tagline with fade animation */}
-          <p className="text-gray-600 text-sm sm:text-base lg:text-lg max-w-xs sm:max-w-md lg:max-w-lg mb-4 sm:mb-5 lg:mb-6 leading-relaxed animate-fade-in">
+          {/* Tagline */}
+          <p className="text-gray-600 text-[11px] sm:text-sm lg:text-base max-w-[260px] sm:max-w-sm lg:max-w-md mb-2 sm:mb-3 lg:mb-4 leading-relaxed animate-fade-in">
             Crafting <span className="text-blue-600 font-semibold">unforgettable journeys</span> to extraordinary destinations
           </p>
           
-          {/* Trust Badges with staggered animation */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 lg:gap-4">
+          {/* Trust Badges - compact */}
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 lg:gap-3">
             {[{ icon: "⭐", text: "4.9 Rating" }, { icon: "✈️", text: "10K+ Trips" }, { icon: "🌍", text: "50+ Destinations" }].map((b, i) => (
               <div 
                 key={b.text} 
-                className="flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 lg:px-5 lg:py-2.5 rounded-full shadow-md border border-gray-100 text-[11px] sm:text-sm lg:text-base font-medium text-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in-up"
-                style={{ animationDelay: `${(i + 1) * 150}ms` }}
+                className="flex items-center gap-1 sm:gap-1.5 bg-white/90 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-full shadow-md border border-gray-100 text-[9px] sm:text-xs lg:text-sm font-medium text-gray-700 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in-up"
+                style={{ animationDelay: `${(i + 1) * 100}ms` }}
               >
-                <span className="text-sm sm:text-base lg:text-lg">{b.icon}</span>
+                <span className="text-xs sm:text-sm lg:text-base">{b.icon}</span>
                 <span>{b.text}</span>
               </div>
             ))}
           </div>
         </div>
         
-        {/* Flying plane animation */}
-        <div className="absolute top-[18%] right-[8%] sm:top-[20%] sm:right-[12%] text-2xl sm:text-3xl lg:text-4xl animate-fly-plane">✈️</div>
+        {/* Flying planes - decorative */}
+        <div className="absolute top-[15%] right-[6%] sm:top-[18%] sm:right-[10%] text-xl sm:text-2xl lg:text-3xl animate-fly-plane">✈️</div>
+        <div className="hidden sm:block absolute top-[30%] left-[4%] text-lg sm:text-xl opacity-40 animate-fly-plane-reverse">✈️</div>
         
-        {/* Additional floating plane */}
-        <div className="hidden lg:block absolute top-[35%] left-[5%] text-xl opacity-30 animate-fly-plane-reverse">✈️</div>
+        {/* Scroll indicator - subtle bounce */}
+        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 animate-bounce-slow opacity-50">
+          <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </div>
       </section>
 
       {/* Features Section - Fully Responsive */}

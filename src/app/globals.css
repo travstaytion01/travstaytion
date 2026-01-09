@@ -316,6 +316,15 @@ input[type="date"]::-moz-focus-inner {
   animation: slow-zoom 20s ease-out forwards;
 }
 
+/* Slow bounce for scroll indicator */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0) translateX(-50%); }
+  50% { transform: translateY(6px) translateX(-50%); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
 @import "tailwindcss";
 
 :root {
