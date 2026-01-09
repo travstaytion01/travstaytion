@@ -70,22 +70,20 @@ const features = [
 export default function Home() {
   return (
     <>
-      {/* Hero Section - Immersive Airplane Window Experience */}
-      <section className="relative h-[calc(100svh-3.5rem)] sm:h-[calc(100svh-4rem)] lg:h-[calc(100vh-4.5rem)] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
+      {/* Hero Section - Fits exactly in viewport */}
+      <section className="relative h-[calc(100vh-3.5rem)] sm:h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
         {/* Animated Sky Background */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Sun glow */}
-          <div className="absolute top-4 right-4 sm:top-12 sm:right-12 w-16 h-16 sm:w-28 sm:h-28 lg:w-36 lg:h-36 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-80" />
+          <div className="absolute top-4 right-4 sm:top-12 sm:right-12 w-16 h-16 sm:w-28 sm:h-28 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-80" />
           
-          {/* Animated Clouds - Different sizes for depth */}
-          <div className="absolute top-[10%] left-[5%] w-20 h-8 sm:w-40 sm:h-16 bg-white/80 rounded-full blur-md animate-floatUp" style={{ animationDuration: '20s' }} />
-          <div className="absolute top-[20%] right-[10%] w-32 h-12 sm:w-64 sm:h-20 bg-white/60 rounded-full blur-lg animate-floatUp" style={{ animationDuration: '25s', animationDelay: '-5s' }} />
-          <div className="absolute top-[35%] left-[15%] w-24 h-10 sm:w-48 sm:h-16 bg-white/50 rounded-full blur-xl animate-floatUp" style={{ animationDuration: '30s', animationDelay: '-10s' }} />
-          <div className="absolute top-[50%] right-[20%] w-16 h-6 sm:w-32 sm:h-12 bg-white/40 rounded-full blur-lg animate-floatUp" style={{ animationDuration: '22s', animationDelay: '-15s' }} />
-          <div className="absolute top-[15%] left-[60%] w-28 h-10 sm:w-56 sm:h-18 bg-white/70 rounded-full blur-xl animate-floatUp" style={{ animationDuration: '28s', animationDelay: '-8s' }} />
+          {/* Animated Clouds */}
+          <div className="absolute top-[15%] left-[5%] w-16 h-6 sm:w-32 sm:h-12 bg-white/70 rounded-full blur-md animate-floatUp" style={{ animationDuration: '20s' }} />
+          <div className="absolute top-[25%] right-[10%] w-24 h-8 sm:w-48 sm:h-16 bg-white/50 rounded-full blur-lg animate-floatUp" style={{ animationDuration: '25s', animationDelay: '-5s' }} />
+          <div className="absolute top-[10%] left-[50%] w-20 h-8 sm:w-40 sm:h-14 bg-white/60 rounded-full blur-xl animate-floatUp" style={{ animationDuration: '28s', animationDelay: '-8s' }} />
           
           {/* Mountain Range Silhouette */}
-          <div className="absolute bottom-0 left-0 right-0 h-[25%] sm:h-[30%]">
+          <div className="absolute bottom-0 left-0 right-0 h-[20%]">
             <svg viewBox="0 0 1440 320" className="absolute bottom-0 w-full h-full" preserveAspectRatio="none">
               <defs>
                 <linearGradient id="mountainGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -103,123 +101,81 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Main Content Container */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
-          <div className="flex flex-col items-center text-center">
-            
-            {/* Animated Header Text */}
-            <div className="mb-2 sm:mb-4 animate-heroReveal">
-              <p className="text-blue-600 font-medium text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.15em] sm:tracking-[0.2em]">
-                ✈ EXPERIENCE THE WORLD
-              </p>
-            </div>
-            
-            <h1 className="mb-3 sm:mb-5 animate-heroReveal" style={{ animationDelay: '0.15s' }}>
-              <span className="block text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 leading-tight">
-                YOUR JOURNEY
-              </span>
-              <span className="block text-xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-500 to-blue-600 mt-1">
-                BEGINS HERE
-              </span>
-            </h1>
-            
-            {/* Airplane Window - Responsive & Interactive */}
-            <div className="relative w-[160px] h-[200px] sm:w-[220px] sm:h-[280px] md:w-[260px] md:h-[340px] lg:w-[300px] lg:h-[390px] my-2 sm:my-4 animate-heroReveal" style={{ animationDelay: '0.3s' }}>
-              
-              {/* Outer Frame Shadow */}
-              <div className="absolute inset-0 bg-gradient-to-b from-gray-300 to-gray-400 rounded-[45%] shadow-[0_20px_60px_rgba(0,0,0,0.3)]" />
-              
-              {/* Window Frame */}
-              <div className="absolute inset-1 sm:inset-2 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-[44%] p-2 sm:p-3 md:p-4">
-                
-                {/* Inner Bezel */}
-                <div className="relative w-full h-full bg-gradient-to-b from-gray-600 to-gray-800 rounded-[42%] p-1 sm:p-1.5 md:p-2">
-                  
-                  {/* Glass Window */}
-                  <div className="relative w-full h-full rounded-[40%] overflow-hidden">
-                    
-                    {/* Destination Image with Ken Burns effect */}
-                    <div className="absolute inset-0 animate-slow-zoom">
-                      <img
-                        src="https://images.unsplash.com/photo-1520483601560-389dff434fdf?w=800&q=80"
-                        alt="Aurora Borealis over mountains"
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    
-                    {/* Atmospheric Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-teal-600/40 via-transparent to-blue-900/30" />
-                    
-                    {/* Aurora Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-green-400/20 via-transparent to-transparent animate-gradientFlow opacity-60" />
-                    
-                    {/* Twinkling Stars */}
-                    <div className="absolute top-[10%] left-[20%] w-1 h-1 bg-white rounded-full animate-sparkle" />
-                    <div className="absolute top-[15%] right-[25%] w-1.5 h-1.5 bg-white rounded-full animate-sparkle" style={{ animationDelay: '-0.5s' }} />
-                    <div className="absolute top-[8%] left-[50%] w-1 h-1 bg-white rounded-full animate-sparkle" style={{ animationDelay: '-1s' }} />
-                    <div className="absolute top-[20%] right-[40%] w-0.5 h-0.5 bg-white rounded-full animate-sparkle" style={{ animationDelay: '-1.5s' }} />
-                    <div className="absolute top-[12%] left-[35%] w-1 h-1 bg-white rounded-full animate-sparkle" style={{ animationDelay: '-2s' }} />
-                  </div>
+        {/* Main Content - Centered with flex */}
+        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 w-full">
+          
+          {/* Header Text */}
+          <p className="text-blue-600 font-medium text-[10px] sm:text-xs md:text-sm uppercase tracking-[0.15em] mb-2 sm:mb-3">
+            ✈ EXPERIENCE THE WORLD
+          </p>
+          
+          <h1 className="mb-4 sm:mb-6">
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 leading-tight">
+              YOUR JOURNEY
+            </span>
+            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-teal-500 to-blue-600 mt-1">
+              BEGINS HERE
+            </span>
+          </h1>
+          
+          {/* Airplane Window - Compact */}
+          <div className="relative w-[140px] h-[180px] sm:w-[180px] sm:h-[230px] md:w-[220px] md:h-[280px] lg:w-[260px] lg:h-[340px] mb-4 sm:mb-6">
+            {/* Outer Frame */}
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-300 to-gray-400 rounded-[45%] shadow-[0_10px_40px_rgba(0,0,0,0.25)]" />
+            {/* Window Frame */}
+            <div className="absolute inset-1 sm:inset-2 bg-gradient-to-b from-gray-100 via-gray-200 to-gray-300 rounded-[44%] p-1.5 sm:p-2 md:p-3">
+              {/* Inner Bezel */}
+              <div className="relative w-full h-full bg-gradient-to-b from-gray-600 to-gray-800 rounded-[42%] p-1 sm:p-1.5">
+                {/* Glass Window */}
+                <div className="relative w-full h-full rounded-[40%] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1520483601560-389dff434fdf?w=800&q=80"
+                    alt="Tropical paradise"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-600/30 via-transparent to-blue-900/20" />
                 </div>
               </div>
-              
-              {/* Glass Reflection */}
-              <div className="absolute top-4 left-6 sm:top-6 sm:left-8 md:top-8 md:left-10 w-8 h-16 sm:w-12 sm:h-24 md:w-16 md:h-32 bg-gradient-to-br from-white/50 via-white/20 to-transparent rounded-full blur-sm transform -rotate-12 pointer-events-none" />
-              
-              {/* Secondary Reflection */}
-              <div className="absolute top-8 left-10 sm:top-12 sm:left-14 md:top-16 md:left-20 w-4 h-8 sm:w-6 sm:h-12 md:w-8 md:h-16 bg-gradient-to-br from-white/30 to-transparent rounded-full blur-sm transform -rotate-12 pointer-events-none" />
             </div>
-            
-            {/* CTA Button - Innovative Circular Design */}
-            <div className="animate-heroReveal" style={{ animationDelay: '0.45s' }}>
-              <Link
-                href="/packages"
-                className="group relative inline-flex flex-col items-center justify-center w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-gradient-to-br from-blue-600 via-blue-500 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-110 my-2 sm:my-4"
-              >
-                {/* Animated ring */}
-                <span className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping opacity-40" style={{ animationDuration: '2s' }} />
-                <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-700 to-teal-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative text-[9px] sm:text-[10px] font-light tracking-wider">Let&apos;s</span>
-                <span className="relative text-sm sm:text-base md:text-lg font-bold">GO</span>
-                <svg className="relative w-2.5 h-2.5 sm:w-3 sm:h-3 mt-0.5 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </Link>
-            </div>
-            
-            {/* Tagline */}
-            <p className="text-gray-600 text-xs sm:text-sm md:text-base max-w-sm sm:max-w-md md:max-w-lg mx-auto leading-relaxed animate-heroReveal px-4" style={{ animationDelay: '0.6s' }}>
-              Crafting <span className="text-blue-600 font-semibold">unforgettable journeys</span> to the world&apos;s most extraordinary destinations
-            </p>
-            
-            {/* Trust Badges - Mobile Optimized */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 animate-heroReveal" style={{ animationDelay: '0.75s' }}>
-              {[
-                { icon: "⭐", text: "4.9 Rating" },
-                { icon: "✈️", text: "10K+ Trips" },
-                { icon: "🌍", text: "50+ Destinations" },
-              ].map((badge) => (
-                <div key={badge.text} className="flex items-center gap-1 sm:gap-1.5 bg-white/90 backdrop-blur-sm px-2.5 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-md border border-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-default">
-                  <span className="text-sm sm:text-base">{badge.icon}</span>
-                  <span className="text-[10px] sm:text-xs font-semibold text-gray-700">{badge.text}</span>
-                </div>
-              ))}
-            </div>
+            {/* Glass Reflection */}
+            <div className="absolute top-3 left-5 sm:top-5 sm:left-7 w-6 h-12 sm:w-10 sm:h-20 bg-gradient-to-br from-white/40 to-transparent rounded-full blur-sm -rotate-12" />
+          </div>
+          
+          {/* CTA Button */}
+          <Link
+            href="/packages"
+            className="group relative inline-flex flex-col items-center justify-center w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-600 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 mb-4 sm:mb-5"
+          >
+            <span className="absolute inset-0 rounded-full border-2 border-white/30 animate-ping opacity-40" style={{ animationDuration: '2s' }} />
+            <span className="text-[8px] sm:text-[9px] font-light tracking-wider">Let&apos;s</span>
+            <span className="text-xs sm:text-sm md:text-base font-bold">GO</span>
+            <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          </Link>
+          
+          {/* Tagline */}
+          <p className="text-gray-600 text-xs sm:text-sm max-w-xs sm:max-w-sm mx-auto mb-3 sm:mb-4">
+            Crafting <span className="text-blue-600 font-semibold">unforgettable journeys</span> to extraordinary destinations
+          </p>
+          
+          {/* Trust Badges */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+            {[
+              { icon: "⭐", text: "4.9 Rating" },
+              { icon: "✈️", text: "10K+ Trips" },
+              { icon: "🌍", text: "50+ Destinations" },
+            ].map((badge) => (
+              <div key={badge.text} className="flex items-center gap-1 bg-white/90 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-1.5 rounded-full shadow-sm border border-gray-100">
+                <span className="text-xs sm:text-sm">{badge.icon}</span>
+                <span className="text-[9px] sm:text-[10px] font-semibold text-gray-700">{badge.text}</span>
+              </div>
+            ))}
           </div>
         </div>
         
         {/* Flying Plane Animation */}
-        <div className="absolute top-[20%] sm:top-[25%] left-0 text-2xl sm:text-3xl md:text-4xl animate-flyPlane opacity-70">✈️</div>
-        
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="flex flex-col items-center gap-1">
-            <span className="text-gray-500 text-[10px] sm:text-xs uppercase tracking-wider hidden sm:block">Scroll</span>
-            <svg className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </div>
+        <div className="absolute top-[25%] right-[10%] text-xl sm:text-2xl md:text-3xl animate-flyPlane opacity-60">✈️</div>
       </section>
 
       {/* Features Section - Fully Responsive */}
