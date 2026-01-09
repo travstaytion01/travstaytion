@@ -319,7 +319,7 @@ export default function ContactPage() {
             Call us directly or fill out the form above. We&apos;ll get back to you within 24 hours.
           </p>
           <a
-            href="tel:+919999955589"
+            href="tel:+919999959915"
             className="inline-flex items-center gap-3 bg-white text-blue-600 px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -197,11 +197,11 @@ export default function Home() {
               {[
                 { icon: "⭐", text: "4.9 Rating" },
                 { icon: "✈️", text: "10K+ Trips" },
-                { icon: "🛡️", text: "100% Safe" },
+                { icon: "🌍", text: "50+ Destinations" },
               ].map((badge) => (
-                <div key={badge.text} className="flex items-center gap-1.5 sm:gap-2 bg-white/80 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-sm border border-gray-100">
-                  <span className="text-sm sm:text-base">{badge.icon}</span>
-                  <span className="text-xs sm:text-sm font-medium text-gray-700">{badge.text}</span>
+                <div key={badge.text} className="flex items-center gap-1.5 sm:gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 sm:px-5 sm:py-2.5 rounded-full shadow-md border border-gray-100 hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-default">
+                  <span className="text-base sm:text-lg">{badge.icon}</span>
+                  <span className="text-xs sm:text-sm font-semibold text-gray-700">{badge.text}</span>
                 </div>
               ))}
             </div>

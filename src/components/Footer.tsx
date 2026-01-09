@@ -7,12 +7,30 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-teal-400 rounded-lg flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xl">T</span>
+            <div className="flex items-center mb-4">
+              <div className="flex items-center">
+                <span className="text-lg sm:text-xl font-black text-white tracking-wide">TRAV</span>
+                <span className="text-lg sm:text-xl font-black text-white tracking-wide relative">
+                  <span className="absolute -top-2 left-1/2 -translate-x-1/2">
+                    <svg width="20" height="8" viewBox="0 0 28 12">
+                      <path d="M2 10 L14 2 L26 10" stroke="#C4915A" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  S
+                </span>
+                <span className="text-lg sm:text-xl font-black text-white tracking-wide">TAYTI</span>
+                <span className="text-lg sm:text-xl font-black text-white tracking-wide relative">
+                  O
+                  <span className="absolute -top-1 -right-3">
+                    <svg width="12" height="12" viewBox="0 0 24 24" className="text-white">
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                </span>
+                <span className="text-lg sm:text-xl font-black text-white tracking-wide ml-1">N</span>
               </div>
-              <span className="text-xl font-bold">TravStaytion</span>
             </div>
+            <p className="text-xs text-[#C4915A] tracking-widest mb-3">TRAVEL BEYOND BOUNDARIES</p>
             <p className="text-gray-400 mb-6 max-w-md text-sm sm:text-base leading-relaxed">
               Your trusted partner for unforgettable travel experiences. We craft personalized journeys to the world&apos;s most stunning destinations.
             </p>

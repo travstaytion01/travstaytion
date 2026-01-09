@@ -37,13 +37,31 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18 py-3">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2.5 group">
-            <div className="w-11 h-11 bg-gradient-to-br from-blue-600 to-teal-500 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
-              <span className="text-white font-bold text-xl">T</span>
+          <Link href="/" className="flex items-center group">
+            <div className="flex items-center gap-1">
+              {/* Logo Icon with Roof */}
+              <div className="relative">
+                <span className="text-lg sm:text-xl md:text-2xl font-black text-[#1E3A5F] tracking-wide">TRAV</span>
+                <span className="text-lg sm:text-xl md:text-2xl font-black text-[#1E3A5F] tracking-wide relative">
+                  <span className="absolute -top-2 sm:-top-3 left-1/2 -translate-x-1/2">
+                    <svg width="28" height="12" viewBox="0 0 28 12" className="w-5 h-2 sm:w-7 sm:h-3">
+                      <path d="M2 10 L14 2 L26 10" stroke="#C4915A" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </span>
+                  S
+                </span>
+                <span className="text-lg sm:text-xl md:text-2xl font-black text-[#1E3A5F] tracking-wide">TAYTI</span>
+                <span className="text-lg sm:text-xl md:text-2xl font-black text-[#1E3A5F] tracking-wide relative">
+                  O
+                  <span className="absolute -top-1 -right-3 sm:-right-4">
+                    <svg width="16" height="16" viewBox="0 0 24 24" className="w-3 h-3 sm:w-4 sm:h-4 text-[#1E3A5F]">
+                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                </span>
+                <span className="text-lg sm:text-xl md:text-2xl font-black text-[#1E3A5F] tracking-wide">N</span>
+              </div>
             </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-teal-500 bg-clip-text text-transparent">
-              TravStaytion
-            </span>
           </Link>
 
           {/* Desktop Navigation */}
