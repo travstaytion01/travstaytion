@@ -71,61 +71,62 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Exact viewport fit with navbar offset */}
-      <section className="relative h-screen pt-14 sm:pt-16 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
+      <section className="relative h-[100dvh] pt-14 sm:pt-16 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 right-8 w-20 h-20 sm:w-32 sm:h-32 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-70" />
-          <div className="absolute top-[20%] left-[5%] w-16 h-6 sm:w-28 sm:h-10 bg-white/60 rounded-full blur-md" />
-          <div className="absolute top-[15%] right-[15%] w-20 h-8 sm:w-36 sm:h-12 bg-white/50 rounded-full blur-lg" />
-          <div className="absolute bottom-0 left-0 right-0 h-[15%] sm:h-[18%]">
+          <div className="absolute top-16 right-6 w-24 h-24 sm:w-40 sm:h-40 bg-gradient-to-br from-yellow-200 via-orange-100 to-transparent rounded-full blur-3xl opacity-60" />
+          <div className="absolute top-[18%] left-[8%] w-20 h-8 sm:w-32 sm:h-12 bg-white/50 rounded-full blur-xl" />
+          <div className="absolute top-[12%] right-[12%] w-28 h-10 sm:w-44 sm:h-14 bg-white/40 rounded-full blur-2xl" />
+          <div className="absolute bottom-0 left-0 right-0 h-[12%] sm:h-[16%]">
             <svg viewBox="0 0 1440 320" className="absolute bottom-0 w-full h-full" preserveAspectRatio="none">
-              <path fill="rgba(30, 58, 138, 0.15)" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,138.7C1120,128,1280,160,1360,176L1440,192L1440,320L0,320Z" />
-              <path fill="rgba(20, 184, 166, 0.1)" d="M0,224L60,218.7C120,213,240,203,360,213.3C480,224,600,256,720,261.3C840,267,960,245,1080,224C1200,203,1320,181,1380,170.7L1440,160L1440,320L0,320Z" />
+              <path fill="rgba(30, 58, 138, 0.12)" d="M0,160L80,176C160,192,320,224,480,213.3C640,203,800,149,960,138.7C1120,128,1280,160,1360,176L1440,192L1440,320L0,320Z" />
+              <path fill="rgba(20, 184, 166, 0.08)" d="M0,224L60,218.7C120,213,240,203,360,213.3C480,224,600,256,720,261.3C840,267,960,245,1080,224C1200,203,1320,181,1380,170.7L1440,160L1440,320L0,320Z" />
             </svg>
           </div>
         </div>
 
         {/* Content */}
-        <div className="relative z-10 flex flex-col items-center text-center px-4 py-4">
-          <p className="text-blue-600 font-semibold text-[10px] sm:text-xs uppercase tracking-widest mb-2">
+        <div className="relative z-10 flex flex-col items-center text-center px-4 pb-8 sm:pb-4">
+          <p className="text-blue-600 font-semibold text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-2 sm:mb-3">
             ✈ EXPERIENCE THE WORLD
           </p>
           
-          <h1 className="mb-3 sm:mb-4">
-            <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-blue-900">YOUR JOURNEY</span>
-            <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500">BEGINS HERE</span>
+          <h1 className="mb-4 sm:mb-5">
+            <span className="block text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-blue-900 tracking-tight">YOUR JOURNEY</span>
+            <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl font-light text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 mt-1">BEGINS HERE</span>
           </h1>
           
           {/* Airplane Window */}
-          <div className="relative w-32 h-40 sm:w-44 sm:h-56 md:w-52 md:h-64 lg:w-60 lg:h-72 mb-3 sm:mb-4">
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-300 to-gray-400 rounded-[45%] shadow-lg" />
-            <div className="absolute inset-1 bg-gradient-to-b from-gray-100 to-gray-200 rounded-[44%] p-1.5">
-              <div className="w-full h-full bg-gradient-to-b from-gray-500 to-gray-700 rounded-[42%] p-1">
-                <div className="w-full h-full rounded-[40%] overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1520483601560-389dff434fdf?w=600&q=80" alt="Destination" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-teal-500/20 to-blue-500/10" />
+          <div className="relative w-36 h-44 sm:w-48 sm:h-60 md:w-56 md:h-72 lg:w-64 lg:h-80 mb-4 sm:mb-5">
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 rounded-[45%] shadow-xl" />
+            <div className="absolute inset-[3px] sm:inset-1 bg-gradient-to-b from-gray-50 to-gray-200 rounded-[44%] p-[6px] sm:p-2">
+              <div className="w-full h-full bg-gradient-to-b from-gray-500 to-gray-700 rounded-[42%] p-[3px] sm:p-1">
+                <div className="relative w-full h-full rounded-[40%] overflow-hidden">
+                  <img src="https://images.unsplash.com/photo-1520483601560-389dff434fdf?w=600&q=80" alt="Tropical Paradise View" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-teal-500/20 via-transparent to-blue-500/10" />
                 </div>
               </div>
             </div>
-            <div className="absolute top-3 left-4 w-5 h-10 sm:w-7 sm:h-14 bg-white/30 rounded-full blur-sm -rotate-12" />
+            {/* Glass reflection */}
+            <div className="absolute top-4 left-5 sm:top-5 sm:left-6 w-4 h-10 sm:w-6 sm:h-16 bg-white/40 rounded-full blur-[2px] -rotate-12" />
           </div>
           
           {/* CTA Button */}
-          <Link href="/packages" className="group w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-600 to-teal-500 text-white rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all flex flex-col items-center justify-center mb-3 sm:mb-4">
-            <span className="text-[7px] sm:text-[8px] font-light">Let's</span>
-            <span className="text-[10px] sm:text-xs font-bold">GO</span>
-            <svg className="w-2 h-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+          <Link href="/packages" className="group w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18 bg-gradient-to-br from-blue-600 to-teal-500 text-white rounded-full shadow-lg hover:shadow-2xl hover:scale-110 transition-all duration-300 flex flex-col items-center justify-center mb-4 sm:mb-5 ring-4 ring-white/50">
+            <span className="text-[8px] sm:text-[9px] font-light tracking-wide">Let&apos;s</span>
+            <span className="text-sm sm:text-base font-bold">GO</span>
+            <svg className="w-2.5 h-2.5 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
           </Link>
           
           {/* Tagline */}
-          <p className="text-gray-600 text-[11px] sm:text-xs md:text-sm max-w-[280px] sm:max-w-xs mb-2 sm:mb-3">
+          <p className="text-gray-600 text-xs sm:text-sm md:text-base max-w-[300px] sm:max-w-sm mb-3 sm:mb-4 leading-relaxed">
             Crafting <span className="text-blue-600 font-semibold">unforgettable journeys</span> to extraordinary destinations
           </p>
           
           {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
             {[{ icon: "⭐", text: "4.9 Rating" }, { icon: "✈️", text: "10K+ Trips" }, { icon: "🌍", text: "50+ Destinations" }].map((b) => (
-              <div key={b.text} className="flex items-center gap-1 bg-white/80 px-2 py-1 rounded-full shadow-sm text-[8px] sm:text-[9px] font-medium text-gray-700">
+              <div key={b.text} className="flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full shadow-sm border border-gray-100 text-[10px] sm:text-xs font-medium text-gray-700">
                 <span>{b.icon}</span><span>{b.text}</span>
               </div>
             ))}
@@ -133,7 +134,7 @@ export default function Home() {
         </div>
         
         {/* Plane decoration */}
-        <div className="absolute top-[22%] right-[12%] text-lg sm:text-xl opacity-50">✈️</div>
+        <div className="absolute top-[20%] right-[10%] text-xl sm:text-2xl opacity-40 rotate-45">✈️</div>
       </section>
 
       {/* Features Section - Fully Responsive */}
