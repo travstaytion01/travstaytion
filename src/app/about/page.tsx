@@ -72,10 +72,10 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
-            <div>
+            <div className="animate-on-scroll">
               <span className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Story</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 sm:mb-6">
                 Crafting Dreams Into Journeys
@@ -90,10 +90,11 @@ export default function AboutPage() {
                 Our success is measured not by the number of trips we book, but by the smiles on our travelers&apos; faces and the memories they bring back home.
               </p>
             </div>
-            <div className="relative mt-8 lg:mt-0">
+            <div className="relative mt-8 lg:mt-0 animate-on-scroll">
               <img
                 src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=600&q=80"
                 alt="Travel adventure"
+                loading="lazy"
                 className="rounded-2xl shadow-2xl w-full"
               />
               <div className="absolute -bottom-4 sm:-bottom-8 -left-4 sm:-left-8 bg-gradient-to-r from-blue-600 to-teal-500 text-white p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-xl">
@@ -106,19 +107,20 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 sm:mb-16">
+          <div className="text-center mb-10 sm:mb-16 animate-on-scroll">
             <span className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Our Values</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2">
               What Drives Us
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {values.map((value) => (
+            {values.map((value, index) => (
               <div
                 key={value.title}
-                className="bg-white p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="bg-white p-5 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 active:scale-[0.98] animate-on-scroll-stagger touch-manipulation"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-600 to-teal-500 rounded-lg sm:rounded-xl flex items-center justify-center text-white mb-4 sm:mb-6">
                   {value.icon}
@@ -132,17 +134,27 @@ export default function AboutPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-teal-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 bg-gradient-to-r from-blue-600 to-teal-500 relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" />
+          <div className="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full translate-x-1/3 translate-y-1/3 animate-pulse-slow" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
             {[
-              { value: "10,000+", label: "Happy Travelers" },
-              { value: "50+", label: "Destinations" },
-              { value: "15+", label: "Years Experience" },
-              { value: "98%", label: "Satisfaction Rate" },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">{stat.value}</p>
+              { value: "10,000+", label: "Happy Travelers", icon: "😊" },
+              { value: "50+", label: "Destinations", icon: "🌍" },
+              { value: "15+", label: "Years Experience", icon: "🏆" },
+              { value: "98%", label: "Satisfaction Rate", icon: "⭐" },
+            ].map((stat, index) => (
+              <div 
+                key={stat.label}
+                className="animate-on-scroll-stagger group cursor-default"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="text-2xl sm:text-3xl mb-2 group-hover:scale-125 transition-transform duration-300">{stat.icon}</div>
+                <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white group-hover:scale-110 transition-transform duration-300">{stat.value}</p>
                 <p className="text-blue-100 mt-1 sm:mt-2 text-xs sm:text-sm lg:text-base">{stat.label}</p>
               </div>
             ))}
@@ -151,8 +163,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white overflow-hidden">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center animate-on-scroll">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
             Ready to Start Your Journey?
           </h2>
@@ -161,9 +173,12 @@ export default function AboutPage() {
           </p>
           <Link
             href="/quote"
-            className="inline-block bg-gradient-to-r from-blue-600 to-teal-500 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-8 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 touch-manipulation focus:outline-none focus:ring-4 focus:ring-blue-300"
           >
             Get Your Free Quote
+            <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
           </Link>
         </div>
       </section>

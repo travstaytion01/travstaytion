@@ -40,7 +40,7 @@ export default function DestinationCard({ name, image, description, price, ratin
     <>
       <div 
         ref={cardRef}
-        className={`group bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 ${
+        className={`group bg-white rounded-2xl sm:rounded-3xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 active:scale-[0.98] border border-gray-100 touch-manipulation ${
           isVisible 
             ? 'opacity-100 translate-y-0' 
             : 'opacity-0 translate-y-8'
@@ -50,7 +50,14 @@ export default function DestinationCard({ name, image, description, price, ratin
           transitionProperty: 'opacity, transform, box-shadow'
         }}
       >
-        <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden cursor-pointer" onClick={() => setOpen(true)}>
+        <div 
+          className="relative h-48 sm:h-56 lg:h-64 overflow-hidden cursor-pointer" 
+          onClick={() => setOpen(true)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => e.key === 'Enter' && setOpen(true)}
+          aria-label={`View details for ${name}`}
+        >
           <img
             src={image}
             alt={name}
@@ -103,7 +110,7 @@ export default function DestinationCard({ name, image, description, price, ratin
             </div>
             <Link
               href="/quote"
-              className="bg-gradient-to-r from-blue-600 to-teal-500 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 whitespace-nowrap"
+              className="bg-gradient-to-r from-blue-600 to-teal-500 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold hover:shadow-lg hover:scale-105 active:scale-95 transition-all duration-300 whitespace-nowrap touch-manipulation focus:outline-none focus:ring-2 focus:ring-blue-300"
             >
               Book Now
             </Link>

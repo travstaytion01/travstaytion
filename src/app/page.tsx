@@ -144,9 +144,9 @@ export default function Home() {
         {/* LEFT SIDE - Floating Destination Cards (Hidden on mobile) */}
         <div className="hidden lg:block absolute left-4 xl:left-8 top-1/2 -translate-y-1/2 space-y-4">
           {/* Destination Card 1 */}
-          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform -rotate-6 hover:rotate-0 hover:scale-110 transition-all duration-500 animate-float-slow cursor-pointer group">
+          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform -rotate-6 hover:rotate-0 hover:scale-110 active:scale-105 transition-all duration-500 animate-float-slow cursor-pointer group touch-manipulation">
             <div className="w-full h-20 xl:h-24 rounded-xl overflow-hidden mb-2">
-              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=400&q=80" alt="Maldives" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img src="https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=400&q=80" alt="Maldives" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
             </div>
             <p className="font-bold text-gray-800 text-sm">Maldives</p>
             <p className="text-[10px] text-gray-500">From ₹84,999</p>
@@ -154,9 +154,9 @@ export default function Home() {
           </div>
           
           {/* Destination Card 2 */}
-          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform rotate-3 hover:rotate-0 hover:scale-110 transition-all duration-500 animate-float-medium cursor-pointer group ml-8">
+          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform rotate-3 hover:rotate-0 hover:scale-110 active:scale-105 transition-all duration-500 animate-float-medium cursor-pointer group ml-8 touch-manipulation">
             <div className="w-full h-20 xl:h-24 rounded-xl overflow-hidden mb-2">
-              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80" alt="Bali" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=400&q=80" alt="Bali" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
             </div>
             <p className="font-bold text-gray-800 text-sm">Bali</p>
             <p className="text-[10px] text-gray-500">From ₹54,999</p>
@@ -167,9 +167,9 @@ export default function Home() {
         {/* RIGHT SIDE - Floating Elements (Hidden on mobile) */}
         <div className="hidden lg:block absolute right-4 xl:right-8 top-1/2 -translate-y-1/2 space-y-4">
           {/* Destination Card 3 */}
-          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform rotate-6 hover:rotate-0 hover:scale-110 transition-all duration-500 animate-float-slow-reverse cursor-pointer group">
+          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform rotate-6 hover:rotate-0 hover:scale-110 active:scale-105 transition-all duration-500 animate-float-slow-reverse cursor-pointer group touch-manipulation">
             <div className="w-full h-20 xl:h-24 rounded-xl overflow-hidden mb-2">
-              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80" alt="Dubai" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400&q=80" alt="Dubai" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
             </div>
             <p className="font-bold text-gray-800 text-sm">Dubai</p>
             <p className="text-[10px] text-gray-500">From ₹47,126</p>
@@ -177,9 +177,9 @@ export default function Home() {
           </div>
           
           {/* Destination Card 4 */}
-          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform -rotate-3 hover:rotate-0 hover:scale-110 transition-all duration-500 animate-float-medium cursor-pointer group mr-8">
+          <div className="relative w-36 xl:w-44 bg-white/90 backdrop-blur-md rounded-2xl shadow-xl p-3 transform -rotate-3 hover:rotate-0 hover:scale-110 active:scale-105 transition-all duration-500 animate-float-medium cursor-pointer group mr-8 touch-manipulation">
             <div className="w-full h-20 xl:h-24 rounded-xl overflow-hidden mb-2">
-              <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=400&q=80" alt="Japan" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=400&q=80" alt="Japan" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
             </div>
             <p className="font-bold text-gray-800 text-sm">Japan</p>
             <p className="text-[10px] text-gray-500">From ₹1,29,999</p>
@@ -210,9 +210,9 @@ export default function Home() {
           </h1>
           
           {/* Airplane Window */}
-          <div className="relative w-36 h-44 sm:w-48 sm:h-60 md:w-56 md:h-72 lg:w-64 lg:h-80 mb-3 sm:mb-4 lg:mb-5 animate-scale-in group">
+          <div className="relative w-36 h-44 sm:w-48 sm:h-60 md:w-56 md:h-72 lg:w-64 lg:h-80 mb-3 sm:mb-4 lg:mb-5 animate-scale-in group touch-manipulation">
             {/* Glow behind window */}
-            <div className="absolute -inset-4 bg-gradient-to-b from-blue-400/20 to-teal-400/20 rounded-[50%] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute -inset-4 bg-gradient-to-b from-blue-400/20 to-teal-400/20 rounded-[50%] blur-2xl opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500" />
             {/* Outer frame */}
             <div className="absolute inset-0 bg-gradient-to-b from-gray-200 via-gray-300 to-gray-400 rounded-[45%] shadow-2xl" />
             {/* Inner bezel */}
@@ -222,6 +222,8 @@ export default function Home() {
                   <img 
                     src="https://images.unsplash.com/photo-1520483601560-389dff434fdf?w=800&q=85" 
                     alt="Tropical Paradise View" 
+                    loading="eager"
+                    fetchPriority="high"
                     className="w-full h-full object-cover animate-slow-zoom" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-teal-500/20 via-transparent to-blue-500/10" />
@@ -233,12 +235,12 @@ export default function Home() {
           </div>
           
           {/* CTA Button */}
-          <Link href="/packages" className="group relative w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-600 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 transition-all duration-300 flex flex-col items-center justify-center mb-3 sm:mb-4 lg:mb-5 animate-bounce-gentle">
-            <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600 to-teal-500 animate-ping-slow opacity-25" />
-            <span className="absolute inset-0 rounded-full ring-4 ring-white/40" />
+          <Link href="/packages" className="group relative w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-600 to-teal-500 text-white rounded-full shadow-xl hover:shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 flex flex-col items-center justify-center mb-3 sm:mb-4 lg:mb-5 animate-bounce-gentle focus:outline-none focus:ring-4 focus:ring-blue-300 touch-manipulation" aria-label="Explore travel packages">
+            <span className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-600 to-teal-500 animate-ping-slow opacity-25" aria-hidden="true" />
+            <span className="absolute inset-0 rounded-full ring-4 ring-white/40" aria-hidden="true" />
             <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-light tracking-wide relative z-10">Let&apos;s</span>
             <span className="text-sm sm:text-base lg:text-lg font-bold relative z-10">GO</span>
-            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 mt-0.5 relative z-10 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+            <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 lg:w-3.5 lg:h-3.5 mt-0.5 relative z-10 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
           </Link>
           
           {/* Tagline */}
