@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 export default function Navbar() {
@@ -37,34 +38,15 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16 lg:h-18">
           {/* Logo */}
-          <Link href="/" className="flex flex-col group flex-shrink-0">
-            <div className="flex items-center relative">
-              {/* TRAVSTAYTION with roof over A, plane from O */}
-              <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black text-[#1E3A5F] tracking-tight">TRAVST</span>
-              <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black text-[#1E3A5F] tracking-tight relative">
-                <span className="absolute -top-1.5 sm:-top-2 md:-top-2.5 left-1/2 -translate-x-1/2">
-                  <svg viewBox="0 0 28 12" className="w-3.5 h-1.5 sm:w-5 sm:h-2 md:w-6 md:h-2.5">
-                    <path d="M2 10 L14 2 L26 10" stroke="#C4915A" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </span>
-                A
-              </span>
-              <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black text-[#1E3A5F] tracking-tight">YTI</span>
-              <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black text-[#1E3A5F] tracking-tight relative">
-                O
-                <span className="absolute -top-0.5 sm:-top-1 -right-2 sm:-right-3 md:-right-4">
-                  <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-4 md:h-4 text-[#1E3A5F] transform -rotate-45">
-                    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"/>
-                  </svg>
-                </span>
-              </span>
-              <span className="text-sm sm:text-lg md:text-xl lg:text-2xl font-black text-[#1E3A5F] tracking-tight ml-1 sm:ml-1.5">N</span>
-            </div>
-            {/* Underline and Tagline */}
-            <div className="flex flex-col">
-              <div className="h-[1px] sm:h-0.5 bg-gradient-to-r from-[#C4915A] to-[#D4A574] mt-0.5" />
-              <span className="text-[6px] sm:text-[7px] md:text-[8px] lg:text-[9px] text-[#8B7355] tracking-[0.08em] sm:tracking-[0.12em] md:tracking-[0.15em] font-medium whitespace-nowrap">TRAVEL BEYOND BOUNDARIES</span>
-            </div>
+          <Link href="/" className="flex items-center group flex-shrink-0">
+            <Image
+              src="/logo.svg"
+              alt="TravStaytion - Travel Beyond Boundaries"
+              width={1472}
+              height={704}
+              className="h-8 sm:h-10 md:h-12 lg:h-14 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

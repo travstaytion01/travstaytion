@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,30 +10,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <div className="flex flex-col mb-4">
-              <div className="flex items-center">
-                <span className="text-base sm:text-lg md:text-xl font-black text-white tracking-wide">TRAVST</span>
-                <span className="text-base sm:text-lg md:text-xl font-black text-white tracking-wide relative">
-                  <span className="absolute -top-1.5 sm:-top-2 left-1/2 -translate-x-1/2">
-                    <svg viewBox="0 0 28 12" className="w-4 h-1.5 sm:w-5 sm:h-2 md:w-6 md:h-2.5" aria-hidden="true">
-                      <path d="M2 10 L14 2 L26 10" stroke="#C4915A" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                  A
-                </span>
-                <span className="text-base sm:text-lg md:text-xl font-black text-white tracking-wide">YTI</span>
-                <span className="text-base sm:text-lg md:text-xl font-black text-white tracking-wide relative">
-                  O
-                  <span className="absolute -top-0.5 sm:-top-1 -right-2 sm:-right-3">
-                    <svg viewBox="0 0 24 24" className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 text-white transform -rotate-45" aria-hidden="true">
-                      <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"/>
-                    </svg>
-                  </span>
-                </span>
-                <span className="text-base sm:text-lg md:text-xl font-black text-white tracking-wide ml-0.5 sm:ml-1">N</span>
-              </div>
-              <div className="h-0.5 w-44 sm:w-52 bg-gradient-to-r from-[#C4915A] to-[#D4A574] mt-1" />
-              <span className="text-[8px] sm:text-[9px] md:text-[10px] text-[#C4915A] tracking-[0.15em] sm:tracking-[0.2em] font-medium mt-1">TRAVEL BEYOND BOUNDARIES</span>
+            <div className="mb-4">
+              <Link href="/">
+                <Image
+                  src="/logo.svg"
+                  alt="TravStaytion - Travel Beyond Boundaries"
+                  width={1472}
+                  height={704}
+                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto brightness-0 invert"
+                />
+              </Link>
             </div>
             <p className="text-gray-400 mb-6 max-w-md text-sm sm:text-base leading-relaxed">
               Your trusted partner for unforgettable travel experiences. We craft personalized journeys to the world&apos;s most stunning destinations.
