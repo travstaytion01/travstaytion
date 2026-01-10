@@ -114,8 +114,8 @@ export default function FeedbackPage() {
   }
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-20 pb-16 sm:pt-24 sm:pb-20 bg-gradient-to-br from-blue-50 via-white to-teal-100">
-      <div className="relative w-full max-w-3xl motion-safe:animate-fadein">
+    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-24 pb-12 sm:pt-28 sm:pb-16 bg-gradient-to-br from-blue-50 via-white to-teal-100">
+      <div className="relative w-full max-w-2xl motion-safe:animate-fadein">
         {/* Decorative Icon - positioned above card */}
         <div className="flex justify-center mb-6">
           <div className="bg-white rounded-full p-2 shadow-xl border-4 border-blue-200">

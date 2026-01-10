@@ -85,7 +85,7 @@ export default function DestinationsPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-14 sm:pt-16 h-[40vh] sm:h-[45vh] lg:h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80"

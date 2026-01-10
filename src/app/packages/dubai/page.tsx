@@ -212,7 +212,7 @@ export default function DubaiPackagesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[60vh] md:h-[55vh] flex items-center justify-center overflow-hidden pt-20 sm:pt-24 pb-24 md:pt-16 md:pb-0">
+      <section className="relative pt-24 pb-20 sm:pt-28 sm:pb-24 lg:pt-32 lg:pb-28 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
@@ -221,7 +221,7 @@ export default function DubaiPackagesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
           <span className="inline-block px-4 py-1.5 bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-300 text-sm font-medium mb-4">
             🌴 Most Popular Destination
           </span>
@@ -239,9 +239,11 @@ export default function DubaiPackagesPage() {
           </Link>
         </div>
         
-        {/* Trust Badges */}
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900/95 to-blue-800/95 backdrop-blur-sm py-3 md:py-4">
-          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center gap-4 sm:gap-6 md:gap-16">
+      </section>
+
+      {/* Trust Badges - Moved outside hero for better mobile layout */}
+      <section className="bg-gradient-to-r from-blue-900 to-blue-800 py-4 sm:py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-center gap-6 sm:gap-8 md:gap-16">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-700 rounded-full flex items-center justify-center flex-shrink-0">
                 <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
@@ -278,8 +280,7 @@ export default function DubaiPackagesPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Filters Section */}
       <section className="py-3 sm:py-4 md:py-6 bg-white border-b sticky top-0 z-30 shadow-sm">

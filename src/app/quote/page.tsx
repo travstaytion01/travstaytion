@@ -178,7 +178,7 @@ export default function QuotePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-20 sm:pt-16 min-h-[40vh] sm:h-[40vh] flex items-center justify-center overflow-hidden">
+      <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80"
@@ -187,7 +187,7 @@ export default function QuotePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-0">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
           <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-4">
             📝 Free Personalized Quote
           </span>

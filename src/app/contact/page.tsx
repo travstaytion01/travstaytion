@@ -72,7 +72,7 @@ export default function ContactPage() {
         <div className="max-w-lg mx-auto mt-6 mb-2 text-center text-red-600 font-semibold bg-red-50 border border-red-200 rounded-lg p-2">{error}</div>
       )}
       {/* Hero Section */}
-      <section className="relative pt-20 sm:pt-16 min-h-[40vh] sm:h-[40vh] lg:h-[45vh] flex items-center justify-center overflow-hidden">
+      <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
@@ -81,7 +81,7 @@ export default function ContactPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 to-teal-900/70" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-0">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
           <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-3 sm:mb-4">
             We&apos;re Here to Help
           </span>
@@ -97,9 +97,9 @@ export default function ContactPage() {
       {/* Contact Section */}
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16">
             {/* Contact Info */}
-            <div>
+            <div className="order-2 lg:order-1">
               <span className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Get in Touch</span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 sm:mb-6">
                 Let&apos;s Plan Your Perfect Trip
@@ -206,8 +206,8 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Form */}
-            <div>
-              <form onSubmit={handleSubmit} className="bg-white rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-5 sm:p-8 md:p-10 border border-gray-100">
+            <div className="order-1 lg:order-2">
+              <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-10 border border-gray-100">
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Send us a Message</h3>
                 <div className="space-y-4 sm:space-y-5">
                   <div>
