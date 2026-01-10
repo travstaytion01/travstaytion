@@ -178,7 +178,7 @@ export default function QuotePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative pt-14 sm:pt-16 h-[35vh] sm:h-[40vh] flex items-center justify-center overflow-hidden">
+      <section className="relative pt-20 sm:pt-16 min-h-[40vh] sm:h-[40vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80"
@@ -187,7 +187,7 @@ export default function QuotePage() {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
         </div>
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-0">
           <span className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs sm:text-sm font-medium mb-4">
             📝 Free Personalized Quote
           </span>
@@ -202,7 +202,7 @@ export default function QuotePage() {
 
       {/* Form Section */}
       {error && (
-        <div className="max-w-lg mx-auto mt-4 sm:mt-6 mb-2 text-center text-red-600 font-semibold bg-red-50 border border-red-200 rounded-lg p-2 mx-4 sm:mx-auto text-sm sm:text-base">{error}</div>
+        <div className="max-w-lg mx-4 sm:mx-auto mt-4 sm:mt-6 mb-2 text-center text-red-600 font-semibold bg-red-50 border border-red-200 rounded-lg p-2 text-sm sm:text-base">{error}</div>
       )}
       <section className="py-10 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

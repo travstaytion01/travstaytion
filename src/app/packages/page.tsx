@@ -162,47 +162,47 @@ export default function PackagesPage() {
       </section>
 
       {/* Packages Grid */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-on-scroll">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-wider">Package Types</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2">
+          <div className="text-center mb-8 sm:mb-12 animate-on-scroll">
+            <span className="text-blue-600 font-semibold text-xs sm:text-sm uppercase tracking-wider">Package Types</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2">
               Travel By Interest
             </h2>
-            <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
+            <p className="text-gray-600 mt-3 sm:mt-4 max-w-2xl mx-auto text-sm sm:text-base">
               Choose from our carefully designed packages based on your travel style and interests
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {packages.map((pkg, index) => (
               <div
                 key={pkg.name}
-                className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer animate-on-scroll-stagger hover:-translate-y-2"
+                className="group bg-white rounded-xl sm:rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 cursor-pointer animate-on-scroll-stagger hover:-translate-y-2"
                 style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => { setSelectedPkg(pkg); setOpen(true); }}
               >
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-44 sm:h-56 overflow-hidden">
                   <img
                     src={pkg.image}
                     alt={pkg.name}
                     loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-3 sm:px-4 py-1 rounded-full text-xs sm:text-sm font-semibold">
                     {pkg.duration}
                   </div>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
-                  <p className="text-gray-600 text-sm mb-4">{pkg.description}</p>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1.5 sm:mb-2">{pkg.name}</h3>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{pkg.description}</p>
 
-                  <div className="mb-4">
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Destinations</p>
-                    <div className="flex flex-wrap gap-2">
+                  <div className="mb-3 sm:mb-4">
+                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider mb-1.5 sm:mb-2">Destinations</p>
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
                       {pkg.destinations.map((dest) => (
                         <span
                           key={dest}
-                          className="bg-blue-50 text-blue-700 px-2 py-1 rounded-full text-xs font-medium"
+                          className="bg-blue-50 text-blue-700 px-2 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-medium"
                         >
                           {dest}
                         </span>
@@ -210,28 +210,28 @@ export default function PackagesPage() {
                     </div>
                   </div>
 
-                  <div className="mb-4">
-                    <p className="text-xs text-gray-500 uppercase tracking-wider mb-2">Includes</p>
+                  <div className="mb-3 sm:mb-4">
+                    <p className="text-[10px] sm:text-xs text-gray-500 uppercase tracking-wider mb-1.5 sm:mb-2">Includes</p>
                     <ul className="grid grid-cols-2 gap-1">
                       {pkg.includes.map((item) => (
-                        <li key={item} className="flex items-center text-xs text-gray-600">
-                          <svg className="w-3 h-3 text-teal-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                        <li key={item} className="flex items-center text-[10px] sm:text-xs text-gray-600">
+                          <svg className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-teal-500 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                           </svg>
-                          {item}
+                          <span className="truncate">{item}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t">
+                  <div className="flex items-center justify-between pt-3 sm:pt-4 border-t">
                     <div>
-                      <span className="text-xs text-gray-500">Starting from</span>
-                      <p className="text-2xl font-bold text-blue-600">{pkg.startingPrice}</p>
+                      <span className="text-[10px] sm:text-xs text-gray-500">Starting from</span>
+                      <p className="text-lg sm:text-2xl font-bold text-blue-600">{pkg.startingPrice}</p>
                     </div>
                     <Link
                       href="/quote"
-                      className="bg-gradient-to-r from-blue-600 to-teal-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:shadow-lg transition-all duration-300"
+                      className="bg-gradient-to-r from-blue-600 to-teal-500 text-white px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold hover:shadow-lg transition-all duration-300"
                     >
                       Book Now
                     </Link>
@@ -247,17 +247,17 @@ export default function PackagesPage() {
       <PackageModal open={open} onClose={() => { setOpen(false); setSelectedPkg(null); }} pkg={selectedPkg} />
 
       {/* Custom Package CTA */}
-      <section className="py-16 bg-white overflow-hidden">
+      <section className="py-10 sm:py-16 bg-white overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 text-center animate-on-scroll">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
             Need Something Different?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-base sm:text-xl text-gray-600 mb-6 sm:mb-8">
             Our travel experts can create a completely custom package tailored to your preferences, budget, and schedule.
           </p>
           <Link
             href="/quote"
-            className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
+            className="group inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
           >
             Request Custom Package
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
