@@ -17,7 +17,7 @@ export default function Footer() {
                   alt="TravStaytion - Travel Beyond Boundaries"
                   width={1472}
                   height={704}
-                  className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto brightness-0 invert"
+                  className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto brightness-0 invert"
                 />
               </Link>
             </div>

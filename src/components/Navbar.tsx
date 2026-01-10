@@ -36,7 +36,7 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/98 backdrop-blur-lg shadow-lg' : 'bg-white/95 backdrop-blur-md shadow-sm'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-18 lg:h-20">
+        <div className="flex justify-between items-center h-18 sm:h-20 lg:h-22">
           {/* Logo */}
           <Link href="/" className="flex items-center group flex-shrink-0">
             <Image
@@ -44,7 +44,7 @@ export default function Navbar() {
               alt="TravStaytion - Travel Beyond Boundaries"
               width={1472}
               height={704}
-              className="h-12 sm:h-14 md:h-16 lg:h-18 w-auto"
+              className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto"
               priority
             />
           </Link>
