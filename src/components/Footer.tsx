@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -10,15 +9,31 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <div className="mb-4">
-              <Link href="/">
-                <Image
-                  src="/logo.svg"
-                  alt="TravStaytion - Travel Beyond Boundaries"
-                  width={1472}
-                  height={704}
-                  className="h-[56px] sm:h-16 md:h-[72px] lg:h-20 w-auto brightness-0 invert"
-                />
+            <div className="flex flex-col mb-4">
+              <Link href="/" className="flex flex-col">
+                <div className="flex items-center">
+                  <span className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-wide">TRAVST</span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-wide relative">
+                    <span className="absolute -top-2 sm:-top-2.5 left-1/2 -translate-x-1/2">
+                      <svg viewBox="0 0 28 12" className="w-5 h-2 sm:w-6 sm:h-2.5 md:w-7 md:h-3" aria-hidden="true">
+                        <path d="M2 10 L14 2 L26 10" stroke="#C4915A" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                    A
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-wide">YTI</span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-wide relative">
+                    O
+                    <span className="absolute -top-1 sm:-top-1.5 -right-3 sm:-right-4">
+                      <svg viewBox="0 0 24 24" className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white transform -rotate-45" aria-hidden="true">
+                        <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                  </span>
+                  <span className="text-xl sm:text-2xl md:text-3xl font-black text-white tracking-wide ml-1 sm:ml-1.5">N</span>
+                </div>
+                <div className="h-0.5 w-48 sm:w-56 bg-gradient-to-r from-[#C4915A] to-[#D4A574] mt-1" />
+                <span className="text-[9px] sm:text-[10px] md:text-[11px] text-[#C4915A] tracking-[0.15em] sm:tracking-[0.2em] font-medium mt-1">TRAVEL BEYOND BOUNDARIES</span>
               </Link>
             </div>
             <p className="text-gray-400 mb-6 max-w-md text-sm sm:text-base leading-relaxed">

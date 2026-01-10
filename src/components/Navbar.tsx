@@ -1,6 +1,5 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 
 export default function Navbar() {
@@ -36,17 +35,34 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/98 backdrop-blur-lg shadow-lg' : 'bg-white/95 backdrop-blur-md shadow-sm'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-[72px] sm:h-20 lg:h-24">
+        <div className="flex justify-between items-center h-16 sm:h-18 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center group flex-shrink-0">
-            <Image
-              src="/logo.svg"
-              alt="TravStaytion - Travel Beyond Boundaries"
-              width={1472}
-              height={704}
-              className="h-[56px] sm:h-16 md:h-[72px] lg:h-20 w-auto"
-              priority
-            />
+          <Link href="/" className="flex flex-col group flex-shrink-0">
+            <div className="flex items-center relative">
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1E3A5F] tracking-tight">TRAVST</span>
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1E3A5F] tracking-tight relative">
+                <span className="absolute -top-2 sm:-top-2.5 md:-top-3 left-1/2 -translate-x-1/2">
+                  <svg viewBox="0 0 28 12" className="w-5 h-2 sm:w-6 sm:h-2.5 md:w-7 md:h-3">
+                    <path d="M2 10 L14 2 L26 10" stroke="#C4915A" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+                A
+              </span>
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1E3A5F] tracking-tight">YTI</span>
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1E3A5F] tracking-tight relative">
+                O
+                <span className="absolute -top-1 sm:-top-1.5 -right-3 sm:-right-4 md:-right-5">
+                  <svg viewBox="0 0 24 24" className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-[#1E3A5F] transform -rotate-45">
+                    <path d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z" fill="currentColor"/>
+                  </svg>
+                </span>
+              </span>
+              <span className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1E3A5F] tracking-tight ml-1.5 sm:ml-2">N</span>
+            </div>
+            <div className="flex flex-col">
+              <div className="h-0.5 bg-gradient-to-r from-[#C4915A] to-[#D4A574] mt-0.5" />
+              <span className="text-[7px] sm:text-[8px] md:text-[9px] lg:text-[10px] text-[#8B7355] tracking-[0.1em] sm:tracking-[0.15em] font-medium whitespace-nowrap">TRAVEL BEYOND BOUNDARIES</span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
