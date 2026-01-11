@@ -92,7 +92,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           html: `
             <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
               <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 25px; text-align: center;">
-                <h1 style="color: white; margin: 0;">New Customer Feedback!</h1>
+                <img src="https://travstaytion.com/image.png" alt="TravStaytion" style="max-width: 180px; height: auto; margin-bottom: 10px; filter: brightness(0) invert(1);" />
+                <h1 style="color: white; margin: 0; font-size: 20px;">New Customer Feedback!</h1>
               </div>
               <div style="padding: 25px; background: #f9fafb;">
                 <div style="background: white; border-radius: 12px; padding: 20px; border-left: 4px solid #14b8a6;">
@@ -135,7 +136,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
             <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 30px; text-align: center;">
-              <h1 style="color: white; margin: 0;">TravStaytion</h1>
+              <img src="https://travstaytion.com/image.png" alt="TravStaytion" style="max-width: 180px; height: auto; margin-bottom: 10px; filter: brightness(0) invert(1);" />
               <p style="color: rgba(255,255,255,0.9); margin: 5px 0 0;">Your Journey, Our Passion</p>
             </div>
             <div style="padding: 30px; background: #ffffff;">

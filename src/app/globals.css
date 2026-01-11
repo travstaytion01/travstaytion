@@ -979,3 +979,111 @@ input:focus, textarea:focus, select:focus, button:focus {
 .animate-particleDot {
   animation: particleDot 3s ease-in-out infinite;
 }
+
+/* ============================================
+   LOGO STYLES
+   ============================================ */
+
+/* Navbar Logo Container */
+.navbar-logo-container {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+/* Navbar Logo Styles */
+.navbar-logo {
+  max-height: 64px;
+  min-height: 40px;
+  width: auto;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+/* Responsive navbar logo sizing */
+@media (max-width: 480px) {
+  .navbar-logo {
+    height: 36px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+  .navbar-logo {
+    height: 42px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .navbar-logo {
+    height: 48px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .navbar-logo {
+    height: 54px !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .navbar-logo {
+    height: 60px !important;
+  }
+}
+
+/* Footer Logo Container */
+.footer-logo-container {
+  overflow: hidden;
+}
+
+/* Footer Logo Styles */
+.footer-logo {
+  max-height: 64px;
+  min-height: 48px;
+  width: auto;
+  transition: all 0.3s ease;
+}
+
+/* Responsive footer logo sizing */
+@media (max-width: 480px) {
+  .footer-logo {
+    height: 40px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 640px) {
+  .footer-logo {
+    height: 48px !important;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .footer-logo {
+    height: 52px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .footer-logo {
+    height: 56px !important;
+  }
+}
+
+@media (min-width: 1025px) {
+  .footer-logo {
+    height: 64px !important;
+  }
+}
+
+/* Email Logo Styles (for inline reference) */
+.email-logo {
+  max-width: 180px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .email-logo {
+    max-width: 140px;
+  }
+}
