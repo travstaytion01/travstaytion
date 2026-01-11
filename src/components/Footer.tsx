@@ -4,21 +4,21 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-900 text-white" role="contentinfo">
+    <footer className="bg-[#111827] text-white" role="contentinfo">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 lg:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex flex-col mb-4">
               <Link href="/" className="group inline-block">
-                <div className="footer-logo-container relative p-3 bg-white/10 backdrop-blur-sm rounded-xl inline-block transition-all duration-300 hover:bg-white/20 hover:shadow-lg hover:shadow-white/10">
+                <div className="footer-logo-container relative overflow-hidden rounded-xl inline-block transition-all duration-300 hover:shadow-lg hover:shadow-white/10">
                   <img 
-                    src="/image.png" 
+                    src="/footer.jpg" 
                     alt="TravStaytion Logo" 
                     className="footer-logo h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Shine effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none rounded-xl" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none rounded-xl" />
                 </div>
               </Link>
             </div>
