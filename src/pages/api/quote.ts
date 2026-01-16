@@ -336,28 +336,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     accommodation: detailsObj['accommodation'] || '',
     additionalDetails: detailsObj['additionaldetails'] || '',
   };
-  
-  const client = new Client(clientConfig);
-  
+
+  let emailSent = false;
+  let dbSaved = false;
+
+  // Generate PDF first (needed for email)
+  const pdfBuffer = generateQuotePDF(quoteData);
+
+  // PRIORITY 1: Send emails first (core functionality)
   try {
-    // Save to database
-    await client.connect();
-    await client.query(
-      'INSERT INTO quote (name, email, phone, destination, details) VALUES ($1, $2, $3, $4, $5)',
-      [name, email, phone, destination, details]
-    );
+    const transporter = await createTransporter();
     
-    // Generate PDF
-    const pdfBuffer = generateQuotePDF(quoteData);
-    
-    // Send email with PDF attachment
-    try {
-      const transporter = await createTransporter();
-      
-      if (!transporter) {
-        console.log('Email transporter not available - skipping emails');
-      } else {
-        console.log('Attempting to send emails...');
+    if (transporter) {
+      console.log('Attempting to send emails...');
         
         // Email to owner
         await transporter.sendMail({
@@ -444,18 +435,42 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         ],
       });
       
-        console.log('Emails sent successfully');
-      }
-    } catch (emailError) {
-      console.error('Email sending failed:', emailError);
-      // Don't fail the request if email fails
+      emailSent = true;
+      console.log('Emails sent successfully');
     }
-    
-    res.status(200).json({ success: true });
-  } catch (error) {
-    console.error('Quote submission error:', error);
-    res.status(500).json({ error: 'Database error', details: (error as Error).message });
-  } finally {
-    await client.end();
+  } catch (emailError) {
+    console.error('Email sending failed:', emailError);
   }
+
+  // PRIORITY 2: Try to save to database (secondary)
+  const client = new Client(clientConfig);
+  try {
+    await client.connect();
+    await client.query(
+      'INSERT INTO quote (name, email, phone, destination, details) VALUES ($1, $2, $3, $4, $5)',
+      [name, email, phone, destination, details]
+    );
+    dbSaved = true;
+  } catch (dbError) {
+    console.error('Database save failed:', dbError);
+  } finally {
+    try {
+      await client.end();
+    } catch (e) {
+      // Ignore close errors
+    }
+  }
+
+  // Return success if email was sent OR db saved
+  if (emailSent || dbSaved) {
+    return res.status(200).json({ 
+      success: true, 
+      message: 'Your quote request has been submitted successfully!'
+    });
+  }
+
+  // Both failed
+  return res.status(500).json({ 
+    error: 'Failed to process your request. Please try again or contact us directly at +91 99999 59915'
+  });
 }
