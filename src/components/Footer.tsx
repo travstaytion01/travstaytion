@@ -9,19 +9,6 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
-            <div className="flex flex-col mb-4">
-              <Link href="/" className="group inline-block">
-                <div className="footer-logo-container relative overflow-hidden inline-block transition-all duration-300">
-                  <img 
-                    src="/footer.jpg" 
-                    alt="TravStaytion Logo" 
-                    className="footer-logo h-12 sm:h-14 md:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                  {/* Shine effect overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
-                </div>
-              </Link>
-            </div>
             <p className="text-gray-400 mb-6 max-w-md text-sm sm:text-base leading-relaxed">
               Your trusted partner for unforgettable travel experiences. We craft personalized journeys to the world&apos;s most stunning destinations.
             </p>

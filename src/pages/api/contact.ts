@@ -58,15 +58,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  let emailSent = false;
+  let ownerEmailSent = false;
+  let customerEmailSent = false;
   let dbSaved = false;
 
   // PRIORITY 1: Send emails first (core functionality)
-  try {
-    const transporter = await createTransporter();
-    
-    if (transporter) {
-      // Email to owner
+  const transporter = await createTransporter();
+  
+  if (transporter) {
+    // Email to owner (separate try-catch)
+    try {
       await transporter.sendMail({
         from: '"TravStaytion" <holidays@travstaytion.com>',
         to: 'holidays@travstaytion.com',
@@ -112,11 +113,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           </div>
         `,
       });
+      ownerEmailSent = true;
+      console.log('Owner email sent successfully');
+    } catch (ownerEmailError) {
+      console.error('Owner email failed:', ownerEmailError);
+    }
 
-      // Confirmation email to customer
+    // Confirmation email to customer (separate try-catch - independent of owner email)
+    try {
       await transporter.sendMail({
         from: '"TravStaytion" <holidays@travstaytion.com>',
         to: email,
+        replyTo: 'holidays@travstaytion.com',
         subject: `We've received your message, ${name}!`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -152,12 +160,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           </div>
         `,
       });
-
-      emailSent = true;
-      console.log('Contact emails sent successfully');
+      customerEmailSent = true;
+      console.log('Customer confirmation email sent successfully');
+    } catch (customerEmailError) {
+      console.error('Customer email failed:', customerEmailError);
     }
-  } catch (emailError) {
-    console.error('Email sending failed:', emailError);
   }
 
   // PRIORITY 2: Try to save to database (secondary)
@@ -180,7 +187,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // Return success if email was sent OR db saved
-  if (emailSent || dbSaved) {
+  if (ownerEmailSent || customerEmailSent || dbSaved) {
     return res.status(200).json({ 
       success: true, 
       message: 'Your message has been sent successfully!'

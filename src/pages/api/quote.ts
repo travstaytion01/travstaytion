@@ -337,57 +337,65 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     additionalDetails: detailsObj['additionaldetails'] || '',
   };
 
-  let emailSent = false;
+  let ownerEmailSent = false;
+  let customerEmailSent = false;
   let dbSaved = false;
 
   // Generate PDF first (needed for email)
   const pdfBuffer = generateQuotePDF(quoteData);
 
   // PRIORITY 1: Send emails first (core functionality)
-  try {
-    const transporter = await createTransporter();
-    
-    if (transporter) {
-      console.log('Attempting to send emails...');
-        
-        // Email to owner
-        await transporter.sendMail({
-          from: '"TravStaytion" <holidays@travstaytion.com>',
-          to: 'holidays@travstaytion.com',
-          subject: `📋 New Quote Request: ${name} - ${destination}`,
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 20px; text-align: center;">
-              <img src="https://travstaytion.com/image.png" alt="TravStaytion" style="max-width: 180px; height: auto; margin-bottom: 10px; filter: brightness(0) invert(1);" />
-              <h1 style="color: white; margin: 0; font-size: 20px;">New Quote Request!</h1>
-            </div>
-            <div style="padding: 20px; background: #f9fafb;">
-              <h2 style="color: #1f2937;">Customer Details</h2>
-              <table style="width: 100%; border-collapse: collapse;">
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Name:</strong></td><td>${name}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Email:</strong></td><td>${email}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Phone:</strong></td><td>${phone || 'Not provided'}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Destination:</strong></td><td style="color: #14b8a6; font-weight: bold;">${destination}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Travel Date:</strong></td><td>${formatDate(quoteData.travelDate)}</td></tr>
-                <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Budget:</strong></td><td>${formatBudget(quoteData.budget) || 'Not specified'}</td></tr>
-              </table>
-              <p style="margin-top: 20px; color: #6b7280;">📎 See attached PDF for complete details.</p>
-            </div>
-          </div>
-        `,
-        attachments: [
-          {
-            filename: `TravStaytion_Quote_${name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`,
-            content: pdfBuffer,
-            contentType: 'application/pdf',
-          },
-        ],
-      });
+  const transporter = await createTransporter();
+  
+  if (transporter) {
+    console.log('Attempting to send emails...');
       
-      // Confirmation email to customer
+    // Email to owner (separate try-catch)
+    try {
+      await transporter.sendMail({
+        from: '"TravStaytion" <holidays@travstaytion.com>',
+        to: 'holidays@travstaytion.com',
+        subject: `📋 New Quote Request: ${name} - ${destination}`,
+        html: `
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+            <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 20px; text-align: center;">
+            <img src="https://travstaytion.com/image.png" alt="TravStaytion" style="max-width: 180px; height: auto; margin-bottom: 10px; filter: brightness(0) invert(1);" />
+            <h1 style="color: white; margin: 0; font-size: 20px;">New Quote Request!</h1>
+          </div>
+          <div style="padding: 20px; background: #f9fafb;">
+            <h2 style="color: #1f2937;">Customer Details</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Name:</strong></td><td>${name}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Email:</strong></td><td>${email}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Phone:</strong></td><td>${phone || 'Not provided'}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Destination:</strong></td><td style="color: #14b8a6; font-weight: bold;">${destination}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Travel Date:</strong></td><td>${formatDate(quoteData.travelDate)}</td></tr>
+              <tr><td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;"><strong>Budget:</strong></td><td>${formatBudget(quoteData.budget) || 'Not specified'}</td></tr>
+            </table>
+            <p style="margin-top: 20px; color: #6b7280;">📎 See attached PDF for complete details.</p>
+          </div>
+        </div>
+      `,
+      attachments: [
+        {
+          filename: `TravStaytion_Quote_${name.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`,
+          content: pdfBuffer,
+          contentType: 'application/pdf',
+        },
+      ],
+      });
+      ownerEmailSent = true;
+      console.log('Owner email sent successfully');
+    } catch (ownerEmailError) {
+      console.error('Owner email failed:', ownerEmailError);
+    }
+    
+    // Confirmation email to customer (separate try-catch - independent of owner email)
+    try {
       await transporter.sendMail({
         from: '"TravStaytion" <holidays@travstaytion.com>',
         to: email,
+        replyTo: 'holidays@travstaytion.com',
         subject: `Your Travel Quote Request - ${destination}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -434,12 +442,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           },
         ],
       });
-      
-      emailSent = true;
-      console.log('Emails sent successfully');
+      customerEmailSent = true;
+      console.log('Customer confirmation email sent successfully');
+    } catch (customerEmailError) {
+      console.error('Customer email failed:', customerEmailError);
     }
-  } catch (emailError) {
-    console.error('Email sending failed:', emailError);
   }
 
   // PRIORITY 2: Try to save to database (secondary)
@@ -462,7 +469,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // Return success if email was sent OR db saved
-  if (emailSent || dbSaved) {
+  if (ownerEmailSent || customerEmailSent || dbSaved) {
     return res.status(200).json({ 
       success: true, 
       message: 'Your quote request has been submitted successfully!'

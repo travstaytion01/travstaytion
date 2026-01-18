@@ -67,15 +67,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  let emailSent = false;
+  let ownerEmailSent = false;
+  let customerEmailSent = false;
   let dbSaved = false;
 
   // PRIORITY 1: Send emails first (core functionality)
-  try {
-    const transporter = await createTransporter();
-    
-    if (transporter) {
-      // Email to owner with feedback details
+  const transporter = await createTransporter();
+  
+  if (transporter) {
+    // Email to owner with feedback details (separate try-catch)
+    try {
       await transporter.sendMail({
         from: '"TravStaytion" <holidays@travstaytion.com>',
         to: 'holidays@travstaytion.com',
@@ -117,14 +118,21 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           </div>
         </div>
       `,
-    });
+      });
+      ownerEmailSent = true;
+      console.log('Owner feedback email sent successfully');
+    } catch (ownerEmailError) {
+      console.error('Owner feedback email failed:', ownerEmailError);
+    }
     
-    // Confirmation email to customer
-    await transporter.sendMail({
-      from: '"TravStaytion" <holidays@travstaytion.com>',
-      to: email,
-      subject: `Thank you for your feedback, ${name}!`,
-      html: `
+    // Confirmation email to customer (separate try-catch - independent of owner email)
+    try {
+      await transporter.sendMail({
+        from: '"TravStaytion" <holidays@travstaytion.com>',
+        to: email,
+        replyTo: 'holidays@travstaytion.com',
+        subject: `Thank you for your feedback, ${name}!`,
+        html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%); padding: 30px; text-align: center;">
             <img src="https://travstaytion.com/image.png" alt="TravStaytion" style="max-width: 180px; height: auto; margin-bottom: 10px;" />
@@ -163,12 +171,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         </div>
       `,
       });
-      
-      emailSent = true;
-      console.log('Feedback emails sent successfully');
+      customerEmailSent = true;
+      console.log('Customer confirmation email sent successfully');
+    } catch (customerEmailError) {
+      console.error('Customer email failed:', customerEmailError);
     }
-  } catch (emailError) {
-    console.error('Feedback email sending failed:', emailError);
   }
 
   // PRIORITY 2: Try to save to database (secondary)
@@ -191,7 +198,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   // Return success if email was sent OR db saved
-  if (emailSent || dbSaved) {
+  if (ownerEmailSent || customerEmailSent || dbSaved) {
     return res.status(200).json({ 
       success: true, 
       message: 'Your feedback has been submitted successfully!'
