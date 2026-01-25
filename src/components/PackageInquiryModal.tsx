@@ -152,7 +152,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Request Submitted!</h3>
               <p className="text-gray-600 mb-6">
-                Our travel expert will contact you within 2 hours with a customized quote.
+                Our travel expert will contact you within 24 hours with a customized quote.
               </p>
               <button
                 onClick={onClose}
@@ -237,9 +237,9 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
                     >
                       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                        <option key={num} value={num}>{num} {num === 1 ? "person" : "people"}</option>
+                        <option key={num} value={num}>{num}</option>
                       ))}
-                      <option value="10+">10+ people</option>
+                      <option value="10+">10+</option>
                     </select>
                   </div>
 
