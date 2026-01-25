@@ -283,7 +283,7 @@ export default function DubaiPackagesPage() {
         </section>
 
       {/* Filters Section */}
-      <section className="py-3 sm:py-4 md:py-6 bg-white border-b sticky top-0 z-30 shadow-sm">
+      <section className="py-3 sm:py-4 md:py-6 bg-white border-b sticky top-16 md:top-20 lg:top-24 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
             <select
@@ -317,7 +317,7 @@ export default function DubaiPackagesPage() {
       </section>
 
       {/* Packages List */}
-      <section id="packages" className="py-10 pb-24 md:pb-10 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section id="packages" className="py-10 pb-28 md:pb-10 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
             {filteredPackages.map((pkg) => (
