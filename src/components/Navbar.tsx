@@ -37,11 +37,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0 flex items-center">
             <img 
               src="/image.png" 
               alt="TravStaytion Logo" 
-              className="h-8 sm:h-10 lg:h-14 w-auto object-contain"
+              className="h-8 sm:h-10 lg:h-12 max-h-8 sm:max-h-10 lg:max-h-12 w-auto"
+              style={{ maxWidth: '180px' }}
             />
           </Link>
 
