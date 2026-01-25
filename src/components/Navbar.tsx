@@ -41,7 +41,7 @@ export default function Navbar() {
             <img 
               src="/image.png" 
               alt="TravStaytion Logo" 
-              className="h-10 sm:h-12 lg:h-14 w-auto"
+              className="h-7 sm:h-8 lg:h-10 w-auto"
               style={{ maxWidth: '220px' }}
             />
           </Link>
