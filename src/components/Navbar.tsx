@@ -33,22 +33,16 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/98 backdrop-blur-lg shadow-lg' : 'bg-white/95 backdrop-blur-md shadow-sm'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white shadow-sm'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-18 lg:h-24">
+        <div className="flex justify-between items-center h-14 sm:h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 group relative">
-            <div className="navbar-logo-container relative">
-              <img 
-                src="/image.png" 
-                alt="TravStaytion Logo" 
-                className="navbar-logo h-10 sm:h-14 md:h-16 lg:h-20 w-auto object-contain transition-all duration-300 group-hover:scale-105"
-              />
-              {/* Shine effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none" />
-              {/* Subtle glow on hover */}
-              <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-md bg-blue-400/20 rounded-lg" />
-            </div>
+          <Link href="/" className="flex-shrink-0">
+            <img 
+              src="/image.png" 
+              alt="TravStaytion Logo" 
+              className="h-8 sm:h-10 lg:h-14 w-auto object-contain"
+            />
           </Link>
 
           {/* Desktop Navigation */}
