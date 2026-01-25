@@ -343,7 +343,8 @@ export default function DubaiPackagesPage() {
         </div>
       </section>
 
-      {/* Custom Itinerary CTA */}\n      <section className=\"relative py-16 mb-20 md:mb-0 overflow-hidden\">
+      {/* Custom Itinerary CTA */}
+      <section className="relative py-16 mb-20 md:mb-0 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
