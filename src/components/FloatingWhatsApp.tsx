@@ -46,30 +46,25 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
       <style>{`
         .floating-whatsapp-container {
           position: fixed;
-          bottom: 90px;
-          right: 16px;
-          z-index: 1000;
+          bottom: 100px;
+          right: 12px;
+          z-index: 999;
           display: flex;
           flex-direction: column;
           align-items: center;
-        }
-        @media (min-width: 640px) {
-          .floating-whatsapp-container {
-            bottom: 32px;
-            right: 32px;
-          }
         }
         @media (min-width: 768px) {
           .floating-whatsapp-container {
             bottom: 32px;
             right: 32px;
+            z-index: 1000;
           }
         }
         .floating-whatsapp-btn {
           position: relative;
           border-radius: 50%;
-          width: 56px;
-          height: 56px;
+          width: 50px;
+          height: 50px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -80,7 +75,7 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
           animation: pulse 1.5s infinite;
           backdrop-filter: blur(6px);
         }
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
           .floating-whatsapp-btn {
             width: 68px;
             height: 68px;
@@ -90,13 +85,13 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 48px;
-          height: 48px;
+          width: 42px;
+          height: 42px;
           border-radius: 50%;
           background: rgba(255,255,255,0.18);
           box-shadow: 0 2px 8px rgba(37,211,102,0.10);
         }
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
           .floating-whatsapp-glass {
             width: 60px;
             height: 60px;
@@ -114,7 +109,7 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
         .floating-whatsapp-tooltip {
           display: none;
         }
-        @media (min-width: 640px) {
+        @media (min-width: 768px) {
           .floating-whatsapp-tooltip {
             display: block;
             margin-top: 8px;
