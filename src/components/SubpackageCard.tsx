@@ -28,29 +28,31 @@ export default function SubpackageCard({ package: pkg, onCustomize }: Subpackage
     <div className="bg-white rounded-xl sm:rounded-2xl shadow-md sm:shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
       <div className="flex flex-col md:flex-row">
         {/* Image Section */}
-        <div className="relative md:w-[280px] lg:w-[360px] h-48 sm:h-56 md:h-auto flex-shrink-0">
-          {pkg.isSooperHitPick && (
-            <div className="absolute top-0 left-0 z-10">
-              <div className="bg-gradient-to-r from-lime-400 to-lime-500 text-gray-900 px-2.5 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-bold flex items-center gap-1 rounded-br-lg shadow-md">
-                <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
-                </svg>
-                <span className="hidden sm:inline">SOOPER HIT PICK</span>
-                <span className="sm:hidden">TOP PICK</span>
+        <div className="relative md:w-[280px] lg:w-[360px] flex-shrink-0 overflow-hidden">
+          <div className="aspect-[16/9] md:aspect-auto md:h-full">
+            {pkg.isSooperHitPick && (
+              <div className="absolute top-0 left-0 z-10">
+                <div className="bg-gradient-to-r from-lime-400 to-lime-500 text-gray-900 px-2.5 sm:px-4 py-1 sm:py-1.5 text-xs sm:text-sm font-bold flex items-center gap-1 rounded-br-lg shadow-md">
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                  </svg>
+                  <span className="hidden sm:inline">SOOPER HIT PICK</span>
+                  <span className="sm:hidden">TOP PICK</span>
+                </div>
               </div>
+            )}
+            <img
+              src={pkg.image}
+              alt={pkg.name}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            />
+            {/* Mobile: Show price overlay on image */}
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 md:hidden">
+              <p className="text-2xl font-bold text-white">
+                ₹{pkg.price.toLocaleString('en-IN')}
+              </p>
+              <p className="text-xs text-gray-300">{pkg.nights} nights / person</p>
             </div>
-          )}
-          <img
-            src={pkg.image}
-            alt={pkg.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          {/* Mobile: Show price overlay on image */}
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-3 md:hidden">
-            <p className="text-2xl font-bold text-white">
-              ₹{pkg.price.toLocaleString('en-IN')}
-            </p>
-            <p className="text-xs text-gray-300">{pkg.nights} nights / person</p>
           </div>
         </div>
 
