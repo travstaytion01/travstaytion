@@ -46,14 +46,20 @@ const FloatingWhatsApp: React.FC<FloatingWhatsAppProps> = ({ phoneNumber }) => {
       <style>{`
         .floating-whatsapp-container {
           position: fixed;
-          bottom: 20px;
-          right: 20px;
+          bottom: 90px;
+          right: 16px;
           z-index: 1000;
           display: flex;
           flex-direction: column;
           align-items: center;
         }
         @media (min-width: 640px) {
+          .floating-whatsapp-container {
+            bottom: 32px;
+            right: 32px;
+          }
+        }
+        @media (min-width: 768px) {
           .floating-whatsapp-container {
             bottom: 32px;
             right: 32px;

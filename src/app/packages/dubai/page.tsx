@@ -317,7 +317,7 @@ export default function DubaiPackagesPage() {
       </section>
 
       {/* Packages List */}
-      <section id="packages" className="py-10 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section id="packages" className="py-10 pb-24 md:pb-10 bg-gradient-to-br from-gray-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-6">
             {filteredPackages.map((pkg) => (
@@ -343,8 +343,7 @@ export default function DubaiPackagesPage() {
         </div>
       </section>
 
-      {/* Custom Itinerary CTA */}
-      <section className="relative py-16 overflow-hidden">
+      {/* Custom Itinerary CTA */}\n      <section className=\"relative py-16 mb-20 md:mb-0 overflow-hidden\">
         <div className="absolute inset-0 z-0">
           <img
             src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
