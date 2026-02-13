@@ -9,6 +9,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-2">
+            <Link href="/" className="inline-block mb-4 group">
+              <img 
+                src="/image.png" 
+                alt="TravStaytion Logo" 
+                className="h-10 sm:h-12 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+              />
+            </Link>
             <p className="text-gray-400 mb-6 max-w-md text-sm sm:text-base leading-relaxed">
               Your trusted partner for unforgettable travel experiences. We craft personalized journeys to the world&apos;s most stunning destinations.
             </p>

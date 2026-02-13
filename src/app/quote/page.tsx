@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import type { Metadata } from "next";
 
 const destinations = [
   "Singapore",

@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Immersive Travel Experience */}
-      <section className="relative min-h-screen pt-20 sm:pt-24 lg:pt-28 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-sky-100 via-blue-50 to-cyan-50">
+      <section className="relative min-h-screen pt-16 sm:pt-20 lg:pt-24 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50/80 to-cyan-50/60">
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

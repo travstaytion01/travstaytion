@@ -33,24 +33,24 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-white shadow-sm'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100/50' : 'bg-white/80 backdrop-blur-sm'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-18 lg:h-24">
+        <div className="flex justify-between items-center h-16 sm:h-18 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0 flex items-center h-full">
+          <Link href="/" className="flex-shrink-0 flex items-center group">
             <img 
               src="/image.png" 
               alt="TravStaytion Logo" 
-              className="h-12 sm:h-14 lg:h-20 w-auto object-contain"
+              className="h-9 sm:h-10 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-1">
-            <Link href="/" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+          <div className="hidden lg:flex items-center space-x-0.5">
+            <Link href="/" className="relative px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50/80 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-teal-500 after:rounded-full hover:after:w-2/3 after:transition-all after:duration-300">
               Home
             </Link>
-            <Link href="/destinations" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+            <Link href="/destinations" className="relative px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50/80 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-teal-500 after:rounded-full hover:after:w-2/3 after:transition-all after:duration-300">
               Destinations
             </Link>
             
@@ -59,7 +59,7 @@ export default function Navbar() {
               <button
                 onClick={() => setIsPackagesOpen(!isPackagesOpen)}
                 onMouseEnter={() => setIsPackagesOpen(true)}
-                className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50 flex items-center gap-1"
+                className="relative px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50/80 flex items-center gap-1 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-teal-500 after:rounded-full hover:after:w-2/3 after:transition-all after:duration-300"
               >
                 Packages
                 <svg className={`w-4 h-4 transition-transform ${isPackagesOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,15 +104,15 @@ export default function Navbar() {
               </div>
             </div>
 
-            <Link href="/about" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+            <Link href="/about" className="relative px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50/80 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-teal-500 after:rounded-full hover:after:w-2/3 after:transition-all after:duration-300">
               About Us
             </Link>
-            <Link href="/contact" className="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-colors rounded-lg hover:bg-blue-50">
+            <Link href="/contact" className="relative px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50/80 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-teal-500 after:rounded-full hover:after:w-2/3 after:transition-all after:duration-300">
               Contact
             </Link>
             <Link
               href="/quote"
-              className="ml-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 py-2.5 rounded-full font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="ml-4 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 py-2.5 rounded-full font-semibold shadow-md hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 ring-2 ring-blue-600/20"
             >
               Get a Quote
             </Link>
