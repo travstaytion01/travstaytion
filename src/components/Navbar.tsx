@@ -35,15 +35,15 @@ export default function Navbar() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-lg shadow-lg border-b border-gray-100/50' : 'bg-white/80 backdrop-blur-sm'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16 sm:h-18 lg:h-20">
+        <div className="flex justify-between items-center h-18 sm:h-20 lg:h-24">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center group">
             <img 
               src="/image.png" 
               alt="TravStaytion Logo" 
-              width={200}
-              height={96}
-              className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-9 lg:h-10"
+              width={502}
+              height={230}
+              className="max-h-16 sm:max-h-18 lg:max-h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
