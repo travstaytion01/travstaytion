@@ -41,7 +41,9 @@ export default function Navbar() {
             <img 
               src="/image.png" 
               alt="TravStaytion Logo" 
-              className="h-9 sm:h-10 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              width={200}
+              height={96}
+              className="h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-105 sm:h-9 lg:h-10"
             />
           </Link>
 
