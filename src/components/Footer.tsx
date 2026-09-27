@@ -11,8 +11,10 @@ export default function Footer() {
           <div className="sm:col-span-2 lg:col-span-2">
             <Link href="/" className="inline-block mb-4 group">
               <img 
-                src="/image.png" 
-                alt="TravStaytion Logo" 
+                src="/logo-trimmed.png"
+                alt="TravStaytion Logo"
+                width={370}
+                height={100}
                 className="h-10 sm:h-12 w-auto object-contain brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity duration-300"
               />
             </Link>
@@ -52,14 +54,14 @@ export default function Footer() {
                 <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-teal-400 rounded-full flex items-center justify-center flex-shrink-0">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                 </div>
-                <span className="font-medium text-white text-xs sm:text-sm">GST: 09DPCPK2869P1Z3</span>
+                <span className="text-xs sm:text-sm">GST: 09DPCPK2869P1Z3</span>
               </li>
               <li className="flex items-center space-x-3">
-                <a href="mailto:Holidays@travstaytion.com" className="flex items-center space-x-3 hover:text-white transition-colors">
+                <a href="mailto:holidays@travstaytion.com" className="flex items-center space-x-3 hover:text-white transition-colors">
                   <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-teal-400 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                   </div>
-                  <span className="text-xs sm:text-sm">Holidays@travstaytion.com</span>
+                  <span className="text-xs sm:text-sm">holidays@travstaytion.com</span>
                 </a>
               </li>
               <li className="flex items-center space-x-3">
@@ -70,9 +72,9 @@ export default function Footer() {
                   <span className="text-xs sm:text-sm">+91 99999 59915</span>
                 </a>
               </li>
-              <li className="flex items-start space-x-3">
-                <a href="https://www.google.com/maps/place/NewPinch+Boutique%2FStore/@28.6571289,77.4323323,788m/data=!3m1!1e3!4m6!3m5!1s0x390cf104ee2e2569:0x7817fa950e1c401!8m2!3d28.6571243!4d77.4369457!16s%2Fg%2F11xz50rp43?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="flex items-start space-x-3 hover:text-white transition-colors">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-teal-400 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+              <li className="flex items-center space-x-3">
+                <a href="https://www.google.com/maps/place/NewPinch+Boutique%2FStore/@28.6571289,77.4323323,788m/data=!3m1!1e3!4m6!3m5!1s0x390cf104ee2e2569:0x7817fa950e1c401!8m2!3d28.6571243!4d77.4369457!16s%2Fg%2F11xz50rp43?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 hover:text-white transition-colors">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 bg-gradient-to-br from-blue-500 to-teal-400 rounded-full flex items-center justify-center flex-shrink-0">
                     <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                   </div>
                   <span className="text-xs sm:text-sm">Ghaziabad, Uttar Pradesh, India</span>

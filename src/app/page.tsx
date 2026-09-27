@@ -71,7 +71,7 @@ export default function Home() {
   return (
     <>
       {/* Hero Section - Immersive Travel Experience */}
-      <section className="relative min-h-screen pt-16 sm:pt-20 lg:pt-24 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50/80 to-cyan-50/60">
+      <section className="relative min-h-screen pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 flex flex-col items-center justify-center overflow-hidden bg-gradient-to-b from-sky-50 via-blue-50/80 to-cyan-50/60">
         
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -115,7 +115,7 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="sm:hidden absolute top-[55%] left-1 animate-float-slow-reverse">
+        <div className="sm:hidden absolute top-[55%] left-3 animate-float-slow-reverse">
           <div className="bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 shadow-lg flex items-center gap-1.5 transform rotate-6">
             <div className="w-6 h-6 rounded-full overflow-hidden">
               <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=100&q=80" alt="Bali" className="w-full h-full object-cover" />
@@ -125,7 +125,7 @@ export default function Home() {
           </div>
         </div>
         
-        <div className="sm:hidden absolute top-[60%] right-1 animate-float-medium">
+        <div className="sm:hidden absolute top-[60%] right-3 animate-float-medium">
           <div className="bg-white/95 backdrop-blur-sm rounded-full px-2 py-1 shadow-lg flex items-center gap-1.5 transform -rotate-6">
             <div className="w-6 h-6 rounded-full overflow-hidden">
               <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd?w=100&q=80" alt="Japan" className="w-full h-full object-cover" />

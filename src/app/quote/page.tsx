@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 const destinations = [
   "Singapore",
@@ -151,7 +152,7 @@ export default function QuotePage() {
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a
+                <Link
                   href="/"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-8 py-3.5 rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
                 >
@@ -159,13 +160,13 @@ export default function QuotePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                   Back to Home
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/destinations"
                   className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 border-2 border-blue-600 px-8 py-3.5 rounded-full font-semibold hover:bg-blue-50 transition-all duration-300"
                 >
                   Explore More ✈️
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -277,7 +278,7 @@ export default function QuotePage() {
 
               <div className="md:col-span-2">
                 <label className="block text-sm font-medium text-gray-700 mb-2">Travelers <span className="text-xs text-gray-400">(specify each group)</span></label>
-                <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
+                <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:gap-4">
                   <div className="flex-1 min-w-0">
                     <label className="block text-xs font-medium text-gray-500 mb-1">Adults <span className="text-[10px]">(12+)</span></label>
                     <input

@@ -1,6 +1,7 @@
 
 "use client";
 import React, { useState } from "react";
+import Link from "next/link";
 
 
 export default function FeedbackPage() {
@@ -90,7 +91,7 @@ export default function FeedbackPage() {
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center">
-                <a
+                <Link
                   href="/"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-teal-500 text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:shadow-xl hover:scale-105 transition-all duration-300"
                 >
@@ -98,13 +99,13 @@ export default function FeedbackPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                   </svg>
                   Back to Home
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/quote"
                   className="inline-flex items-center justify-center gap-2 bg-white text-blue-600 border-2 border-blue-600 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-blue-50 transition-all duration-300"
                 >
                   Plan a Trip ✈️
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -114,15 +115,14 @@ export default function FeedbackPage() {
   }
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-24 pb-12 sm:pt-28 sm:pb-16 bg-gradient-to-br from-blue-50 via-white to-teal-100">
+    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 bg-gradient-to-br from-blue-50 via-white to-teal-100">
       <div className="relative w-full max-w-2xl motion-safe:animate-fadein">
         {/* Decorative Icon - positioned above card */}
         <div className="flex justify-center mb-6">
           <div className="bg-white rounded-full p-2 shadow-xl border-4 border-blue-200">
             <div className="bg-gradient-to-tr from-blue-500 via-blue-400 to-teal-400 rounded-full p-3 sm:p-4 flex items-center justify-center">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="12" fill="#fff"/>
-                <path d="M12 7v6l4 2" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round"/>
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
               </svg>
             </div>
           </div>

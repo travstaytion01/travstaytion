@@ -117,12 +117,13 @@ export default function PackagesPage() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Flex rather than grid so a short last row (only Dubai, today) stays centred. */}
+          <div className="flex flex-wrap justify-center gap-6 sm:gap-8">
             {destinationPackages.map((dest, index) => (
               <Link
                 key={dest.name}
                 href={dest.href}
-                className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 animate-on-scroll-stagger"
+                className="group relative w-full sm:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-4rem)/3)] bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 animate-on-scroll-stagger"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="relative h-64 overflow-hidden">

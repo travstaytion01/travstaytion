@@ -39,11 +39,11 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center group">
             <img 
-              src="/image.png" 
-              alt="TravStaytion Logo" 
-              width={502}
-              height={230}
-              className="max-h-16 sm:max-h-18 lg:max-h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              src="/logo-trimmed.png"
+              alt="TravStaytion Logo"
+              width={370}
+              height={100}
+              className="h-10 sm:h-12 lg:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 

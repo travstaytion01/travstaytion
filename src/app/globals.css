@@ -4,6 +4,18 @@
 
 @import "tailwindcss";
 
+/* Tailwind v4 made the default border colour currentColor; keep v3's light
+   grey so bare `border` / `border-b` utilities don't render near-black. */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
 /* Smooth scrolling for all browsers */
 html {
   scroll-behavior: smooth;
@@ -40,13 +52,38 @@ select, select option {
   color: #374151 !important; /* Tailwind gray-700 */
 }
 
+/* Pages with a fixed mobile action bar (e.g. Dubai packages): keep the footer
+   clear of it and lift the floating WhatsApp button above it. */
+@media (max-width: 767px) {
+  body:has(.mobile-action-bar) {
+    padding-bottom: 5.25rem;
+  }
+  body:has(.mobile-action-bar) .floating-whatsapp-container {
+    bottom: 6.5rem;
+  }
+}
+
+/* Single-line selects: drop the native chrome so they match the text inputs
+   beside them (same height via line-height, same chevron on every browser). */
+select:not([multiple]):not([size]) {
+  appearance: none;
+  line-height: 1.5;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.25em 1.25em;
+  padding-right: 2.5rem;
+}
+
 /* ============================================
    GLOBAL RESPONSIVE FIXES
    ============================================ */
 
 /* Prevent horizontal overflow on all devices */
+/* Horizontal overflow is clipped by body's overflow-x-clip class (layout.tsx).
+   Not overflow-x: hidden here: that makes body a scroll container and silently
+   disables position: sticky, and the CSS build lowers a plain `clip` to it. */
 html, body {
-  overflow-x: hidden;
   max-width: 100vw;
 }
 
@@ -66,12 +103,6 @@ html, body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-/* Ensure images don't overflow */
-img {
-  max-width: 100%;
-  height: auto;
 }
 
 /* Fix for mobile viewport issues */

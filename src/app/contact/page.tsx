@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -54,12 +55,12 @@ export default function ContactPage() {
           <p className="text-gray-600 mb-8">
             Thank you for reaching out to us. Our team will get back to you within 24 hours.
           </p>
-          <a
+          <Link
             href="/"
             className="inline-block bg-gradient-to-r from-blue-600 to-teal-500 text-white px-8 py-3.5 rounded-full font-semibold hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
             Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     );
@@ -136,7 +137,7 @@ export default function ContactPage() {
                     <div className="min-w-0">
                       <p className="text-xs sm:text-sm text-gray-500 font-medium">Email Us</p>
                       <a href="mailto:holidays@travstaytion.com" className="text-sm sm:text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors block truncate">
-                        Holidays@travstaytion.com
+                        holidays@travstaytion.com
                       </a>
                     </div>
                   </div>

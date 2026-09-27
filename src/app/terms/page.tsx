@@ -2,15 +2,14 @@ import React from "react";
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-24 pb-12 sm:pt-28 sm:pb-16 bg-gradient-to-br from-blue-50 via-white to-teal-100">
+    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 bg-gradient-to-br from-blue-50 via-white to-teal-100">
       <div className="relative w-full max-w-3xl motion-safe:animate-fadein">
         {/* Decorative Icon - positioned above card */}
         <div className="flex justify-center mb-6">
           <div className="bg-white rounded-full p-2 shadow-xl border-4 border-blue-200">
             <div className="bg-gradient-to-tr from-blue-500 via-blue-400 to-teal-400 rounded-full p-3 sm:p-4 flex items-center justify-center">
-              <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 24 24" fill="none">
-                <circle cx="12" cy="12" r="12" fill="#fff"/>
-                <path d="M7 12h10M12 7v10" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round"/>
+              <svg className="w-10 h-10 sm:w-12 sm:h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </div>
           </div>
@@ -41,7 +40,7 @@ export default function TermsPage() {
               <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
             </h2>
             <ul className="list-disc pl-5 sm:pl-6 text-sm sm:text-base text-gray-700 space-y-1.5">
-              <li>Cancellations must be made in writing via email to <a href='mailto:Holidays@travstaytion.com' className='text-blue-600 underline'>Holidays@travstaytion.com</a>.</li>
+              <li>Cancellations must be made in writing via email to <a href='mailto:holidays@travstaytion.com' className='text-blue-600 underline'>holidays@travstaytion.com</a>.</li>
               <li>Refunds are subject to the terms of the service providers (airlines, hotels, etc.).</li>
               <li>Cancellation charges may apply as per the package and supplier policies.</li>
               <li>No refunds for cancellations made within 7 days of departure or for no-shows.</li>
@@ -63,7 +62,7 @@ export default function TermsPage() {
               <span>Contact</span>
               <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
             </h2>
-            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">For any questions regarding these terms, please contact us at <a href="mailto:Holidays@travstaytion.com" className="text-blue-600 underline">Holidays@travstaytion.com</a>.</p>
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed">For any questions regarding these terms, please contact us at <a href="mailto:holidays@travstaytion.com" className="text-blue-600 underline">holidays@travstaytion.com</a>.</p>
           </section>
         </div>
       </div>

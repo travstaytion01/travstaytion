@@ -17,7 +17,7 @@ const destinations = [
   },
   {
     name: "Hong Kong",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&q=80",
     description: "Explore dazzling skyscrapers, bustling street markets, Victoria Peak views, and a unique blend of Eastern and Western cultures.",
     price: "₹57,999",
     rating: 5,
@@ -41,7 +41,7 @@ const destinations = [
   },
   {
     name: "Malaysia",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
     description: "Visit the iconic Petronas Towers, explore lush rainforests, and enjoy a melting pot of cultures and cuisines in Malaysia.",
     price: "₹47,999",
     rating: 5,

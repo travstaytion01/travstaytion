@@ -222,7 +222,7 @@ export default function DubaiPackagesPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
         </div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
-          <span className="inline-block px-4 py-1.5 bg-emerald-500/20 backdrop-blur-sm border border-emerald-400/30 rounded-full text-emerald-300 text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full text-white text-sm font-medium mb-4">
             🌴 Most Popular Destination
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
@@ -283,10 +283,12 @@ export default function DubaiPackagesPage() {
         </section>
 
       {/* Filters Section */}
-      <section className="py-3 sm:py-4 md:py-6 bg-white border-b sticky top-14 sm:top-16 lg:top-20 z-30 shadow-sm">
+      <section className="py-3 sm:py-4 md:py-6 bg-white border-b sticky top-18 sm:top-20 lg:top-24 z-30 shadow-sm">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex items-center gap-2 sm:gap-3 md:gap-4 overflow-x-auto pb-2 sm:pb-0 scrollbar-hide">
             <select
+              id="budget-filter"
+              aria-label="Filter by budget"
               value={filterBudget}
               onChange={(e) => setFilterBudget(e.target.value)}
               className="flex-shrink-0 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:border-emerald-500 bg-white"
@@ -372,9 +374,23 @@ export default function DubaiPackagesPage() {
       </section>
 
       {/* Floating Request Callback Button */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-40">
+      <div className="mobile-action-bar fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 md:hidden z-40">
         <div className="flex gap-3">
-          <button className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-full text-gray-700">
+          <button
+            type="button"
+            onClick={() => {
+              const select = document.getElementById("budget-filter") as HTMLSelectElement | null;
+              if (!select) return;
+              select.scrollIntoView({ behavior: "smooth", block: "nearest" });
+              select.focus({ preventScroll: true });
+              try {
+                select.showPicker?.();
+              } catch {
+                // showPicker needs a user gesture and isn't supported everywhere; focus is enough.
+              }
+            }}
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 border border-gray-300 rounded-full text-gray-700"
+          >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
