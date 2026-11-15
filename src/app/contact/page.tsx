@@ -1,4 +1,6 @@
 "use client";
+import FormConsent from "@/components/FormConsent";
+import { NOTICE_VERSION } from "@/lib/enquiry-consent";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -21,13 +23,14 @@ export default function ContactPage() {
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const consent = new FormData(e.currentTarget as HTMLFormElement).has("consent");
     setIsSubmitting(true);
     setError("");
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, consent, noticeVersion: NOTICE_VERSION }),
       });
       if (res.ok) {
         setIsSubmitted(true);
@@ -53,7 +56,7 @@ export default function ContactPage() {
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4">Message Sent!</h2>
           <p className="text-gray-600 mb-8">
-            Thank you for reaching out to us. Our team will get back to you within 24 hours.
+            Thank you for reaching out to us. Our team will get back to you.
           </p>
           <Link
             href="/"
@@ -75,8 +78,8 @@ export default function ContactPage() {
       <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1920&q=80"
-            alt="Contact us"
+            src="/couples-maldives.jpg"
+            alt=""
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/85 to-teal-900/70" />
@@ -125,7 +128,7 @@ export default function ContactPage() {
                       </a>
                     </div>
                   </div>
-                </div>  
+                </div>
                 {/* Email Card */}
                 <div className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
                   <div className="flex items-center gap-3 sm:gap-5">
@@ -154,14 +157,7 @@ export default function ContactPage() {
                     </div>
                     <div className="min-w-0">
                       <p className="text-xs sm:text-sm text-gray-500 font-medium">Visit Us</p>
-                      <a
-                        href="https://www.google.com/maps/place/NewPinch+Boutique%2FStore/@28.6571289,77.4323323,788m/data=!3m1!1e3!4m6!3m5!1s0x390cf104ee2e2569:0x7817fa950e1c401!8m2!3d28.6571243!4d77.4369457!16s%2Fg%2F11xz50rp43?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm sm:text-xl font-bold text-gray-900 hover:text-blue-600 transition-colors block truncate"
-                      >
-                        Ghaziabad, Uttar Pradesh, India
-                      </a>
+                      <span>Ghaziabad, Uttar Pradesh, India</span>
                     </div>
                   </div>
                 </div>
@@ -211,22 +207,22 @@ export default function ContactPage() {
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Send us a Message</h3>
                 <div className="space-y-4 sm:space-y-5">
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Full Name *</label>
-                    <input
+                    <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Name (optional)</label>
+                    <input id="name"
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      required
+
                       className="w-full px-3 sm:px-4 py-3 sm:py-3.5 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm sm:text-base"
-                      placeholder="Your full name"
+                      placeholder="Your name"
                     />
                   </div>
 
                   <div className="grid grid-cols-1 gap-4 sm:gap-5">
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email *</label>
-                      <input
+                      <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email *</label>
+                      <input id="email"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -237,8 +233,8 @@ export default function ContactPage() {
                       />
                     </div>
                     <div>
-                      <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Phone</label>
-                      <input
+                      <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Phone</label>
+                      <input id="phone"
                         type="tel"
                         name="phone"
                         value={formData.phone}
@@ -250,8 +246,8 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Subject *</label>
-                    <select
+                    <label htmlFor="subject" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Subject *</label>
+                    <select id="subject"
                       name="subject"
                       value={formData.subject}
                       onChange={handleChange}
@@ -268,8 +264,8 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Message *</label>
-                    <textarea
+                    <label htmlFor="message" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Message *</label>
+                    <textarea id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
@@ -280,7 +276,8 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <button
+                  <FormConsent purpose="contact" />
+                <button
                     type="submit"
                     disabled={isSubmitting}
                     className="w-full bg-gradient-to-r from-blue-600 to-teal-500 text-white py-3 sm:py-4 rounded-lg sm:rounded-xl font-semibold text-base sm:text-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
@@ -316,7 +313,7 @@ export default function ContactPage() {
             Ready to Start Planning?
           </h2>
           <p className="text-base sm:text-xl text-blue-100 mb-6 sm:mb-8">
-            Call us directly or fill out the form above. We&apos;ll get back to you within 24 hours.
+            Call us directly or fill out the form above. We&apos;ll get back to you.
           </p>
           <a
             href="tel:+919999959915"

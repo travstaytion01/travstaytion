@@ -1,85 +1,11 @@
+import { destinationCards as destinations } from "@/lib/destinations";
 import type { Metadata } from "next";
 import DestinationCard from "@/components/DestinationCard";
 
 export const metadata: Metadata = {
   title: "Destinations | TravStaytion - Explore Amazing Travel Destinations",
-  description: "Explore our handpicked travel destinations including Singapore, Bali, Maldives, Thailand, Japan, and more. Find your perfect vacation spot with TravStaytion.",
+  description: "Explore our handpicked travel destinations: Dubai, Maldives, and Thailand. Find your perfect vacation spot with TravStaytion.",
 };
-
-const destinations = [
-  {
-    name: "Singapore",
-    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
-    description: "Marvel at the futuristic skyline of Marina Bay, enjoy thrilling attractions at Sentosa, and savor diverse cuisine in this vibrant city-state.",
-    price: "₹54,999",
-    rating: 5,
-    days: "5 Days / 4 Nights",
-  },
-  {
-    name: "Hong Kong",
-    image: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=800&q=80",
-    description: "Explore dazzling skyscrapers, bustling street markets, Victoria Peak views, and a unique blend of Eastern and Western cultures.",
-    price: "₹57,999",
-    rating: 5,
-    days: "5 Days / 4 Nights",
-  },
-  {
-    name: "Maldives",
-    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
-    description: "Relax in luxury overwater villas, snorkel in turquoise lagoons, and enjoy romantic sunsets on pristine white-sand beaches.",
-    price: "₹84,999",
-    rating: 5,
-    days: "5 Days / 4 Nights",
-  },
-  {
-    name: "Thailand",
-    image: "https://images.unsplash.com/photo-1528181304800-259b08848526?w=800&q=80",
-    description: "Discover golden temples in Bangkok, relax on Phuket’s beaches, and taste world-famous Thai street food and hospitality.",
-    price: "₹49,999",
-    rating: 5,
-    days: "5 Days / 4 Nights",
-  },
-  {
-    name: "Malaysia",
-    image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
-    description: "Visit the iconic Petronas Towers, explore lush rainforests, and enjoy a melting pot of cultures and cuisines in Malaysia.",
-    price: "₹47,999",
-    rating: 5,
-    days: "6 Days / 5 Nights",
-  },
-  {
-    name: "Dubai, UAE",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
-    description: "See the Burj Khalifa, shop in grand malls, go desert dune bashing, and enjoy luxury in the Middle East’s most dynamic city.",
-    price: "₹39,999",
-    rating: 5,
-    days: "5 Days / 4 Nights",
-  },
-  {
-    name: "Goa",
-    image: "https://i.pinimg.com/736x/4a/6e/65/4a6e6598e8c9c1389d6b10fd08d836ab.jpg",
-    description: "Unwind on sun-kissed beaches, party at beach clubs, and discover the unique blend of Indian and Portuguese culture in Goa.",
-    price: "₹19,999",
-    rating: 5,
-    days: "5 Days / 4 Nights",
-  },
-  {
-    name: "Sikkim",
-    image: "https://i.pinimg.com/736x/82/0d/5f/820d5f79056469316e0bbe76134e70db.jpg",
-    description: "Marvel at snow-capped mountains, visit peaceful monasteries, and enjoy the natural beauty and adventure of Sikkim.",
-    price: "₹27,999",
-    rating: 5,
-    days: "6 Days / 5 Nights",
-  },
-  {
-    name: "Rajasthan",
-    image: "https://i.pinimg.com/1200x/9e/c0/dc/9ec0dcc384d6e8c437e3aecd2e7ac37d.jpg",
-    description: "Tour majestic forts and palaces, ride camels in the Thar Desert, and experience the vibrant colors and traditions of Rajasthan.",
-    price: "₹17,999",
-    rating: 5,
-    days: "4 Days / 3 Nights",
-  },
-];
 
 export default function DestinationsPage() {
   return (
@@ -88,8 +14,8 @@ export default function DestinationsPage() {
       <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1920&q=80"
-            alt="Travel destinations"
+            src="/couples-thailand.jpg"
+            alt=""
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
@@ -129,13 +55,13 @@ export default function DestinationsPage() {
           <div className="absolute top-0 left-0 w-40 h-40 bg-white rounded-full -translate-x-1/2 -translate-y-1/2 animate-pulse-slow" />
           <div className="absolute bottom-0 right-0 w-60 h-60 bg-white rounded-full translate-x-1/3 translate-y-1/3 animate-pulse-slow" />
         </div>
-        
+
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10 animate-on-scroll">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
-            Can&apos;t Find Your Dream Destination?
+            Plan Your Perfect Getaway
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto">
-            We offer custom travel packages to over 100 destinations worldwide. Contact us to plan your perfect trip!
+            We offer custom travel packages to Dubai, Maldives, and Thailand. Contact us to plan your perfect trip!
           </p>
           <a
             href="/quote"

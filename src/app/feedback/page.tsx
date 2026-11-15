@@ -1,5 +1,7 @@
 
 "use client";
+import FormConsent from "@/components/FormConsent";
+import { NOTICE_VERSION } from "@/lib/enquiry-consent";
 import React, { useState } from "react";
 import Link from "next/link";
 
@@ -16,13 +18,14 @@ export default function FeedbackPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const consent = new FormData(e.currentTarget as HTMLFormElement).has("consent");
     setIsSubmitting(true);
     setError("");
     try {
       const res = await fetch("/api/feedback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, consent, noticeVersion: NOTICE_VERSION }),
       });
       if (res.ok) {
         setIsSubmitted(true);
@@ -39,14 +42,14 @@ export default function FeedbackPage() {
 
   if (isSubmitted) {
     return (
-      <main className="min-h-screen w-full flex items-center justify-center px-4 pt-20 pb-12 bg-gradient-to-br from-blue-50 via-white to-teal-50">
+      <section className="min-h-screen w-full flex items-center justify-center px-4 pt-20 pb-12 bg-gradient-to-br from-blue-50 via-white to-teal-50">
         <div className="max-w-lg w-full">
           {/* Success Card */}
           <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-6 sm:p-8 md:p-10 text-center border border-blue-100 relative overflow-hidden">
             {/* Decorative Background */}
             <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-gradient-to-bl from-yellow-100 to-orange-100 rounded-full translate-x-12 sm:translate-x-16 -translate-y-12 sm:-translate-y-16 opacity-60" />
             <div className="absolute bottom-0 left-0 w-32 sm:w-40 h-32 sm:h-40 bg-gradient-to-tr from-blue-100 to-teal-100 rounded-full -translate-x-16 sm:-translate-x-20 translate-y-16 sm:translate-y-20 opacity-60" />
-            
+
             <div className="relative z-10">
               {/* Animated Heart Icon */}
               <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-4 sm:mb-6 relative">
@@ -57,7 +60,7 @@ export default function FeedbackPage() {
                   </svg>
                 </div>
               </div>
-              
+
               {/* Thank You Message */}
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-600 mb-2 sm:mb-3">
                 We Love Your Feedback! 💝
@@ -68,7 +71,7 @@ export default function FeedbackPage() {
               <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed">
                 Your feedback means the world to us! It helps us create better travel experiences for everyone.
               </p>
-              
+
               {/* Appreciation Box */}
               <div className="bg-gradient-to-r from-rose-50 to-pink-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8 border border-rose-100">
                 <div className="flex items-center justify-center gap-1.5 sm:gap-3 mb-2 sm:mb-3">
@@ -82,13 +85,13 @@ export default function FeedbackPage() {
                   Your voice matters! We read every piece of feedback to improve our services.
                 </p>
               </div>
-              
+
               {/* Ready for Next Trip */}
               <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl sm:rounded-2xl p-4 sm:p-5 mb-6 sm:mb-8 border border-blue-100">
                 <p className="text-blue-800 font-medium mb-1.5 sm:mb-2 text-sm sm:text-base">Ready for your next adventure? 🌍</p>
                 <p className="text-gray-600 text-xs sm:text-sm">Let us help you plan your dream vacation!</p>
               </div>
-              
+
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 justify-center">
                 <Link
@@ -110,12 +113,12 @@ export default function FeedbackPage() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     );
   }
 
   return (
-    <main className="min-h-screen w-full flex items-center justify-center px-4 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 bg-gradient-to-br from-blue-50 via-white to-teal-100">
+    <section className="min-h-screen w-full flex items-center justify-center px-4 pt-28 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 bg-gradient-to-br from-blue-50 via-white to-teal-100">
       <div className="relative w-full max-w-2xl motion-safe:animate-fadein">
         {/* Decorative Icon - positioned above card */}
         <div className="flex justify-center mb-6">
@@ -127,30 +130,31 @@ export default function FeedbackPage() {
             </div>
           </div>
         </div>
-        
+
         <div className="bg-white/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl shadow-2xl border border-blue-100 p-6 sm:p-10 lg:p-14">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 sm:mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-500 text-center tracking-tight">Feedback</h1>
           <p className="mb-6 sm:mb-8 text-sm sm:text-base text-gray-700 text-center">We value your feedback! Please let us know about your experience with TravStaytion. Your suggestions help us improve our services.</p>
           {error && <div className="mb-4 text-red-600 text-center font-semibold text-sm sm:text-base">{error}</div>}
           <form className="bg-white/80 rounded-xl sm:rounded-2xl shadow-lg p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 border border-blue-100" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Name</label>
-              <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="Your name" required />
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Name (optional)</label>
+              <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="Your name"  />
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">Email</label>
-              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="you@email.com" required />
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">Email for a reply (optional)</label>
+              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="you@email.com" />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">Feedback</label>
               <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 resize-none" placeholder="Share your experience or suggestions..." required></textarea>
             </div>
-            <button type="submit" disabled={isSubmitting} className="bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold py-3 rounded-lg sm:rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-60">
+            <FormConsent purpose="feedback" />
+                <button type="submit" disabled={isSubmitting} className="bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold py-3 rounded-lg sm:rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-60">
               {isSubmitting ? "Submitting..." : "Submit Feedback"}
             </button>
           </form>
         </div>
       </div>
-    </main>
+    </section>
   );
 }

@@ -28,8 +28,9 @@ export default function Navbar() {
   }, []);
 
   const destinationPackages = [
-    { name: "Dubai Packages", href: "/packages/dubai", icon: "🏙️", badge: "Popular" },
-    // Add more destinations here as needed
+    { name: "Dubai Packages", href: "/packages/dubai", icon: "🏙️", badge: "" },
+    { name: "Maldives Packages", href: "/packages/maldives", icon: "🏝️", badge: "" },
+    { name: "Thailand Packages", href: "/packages/thailand", icon: "🌴", badge: "" },
   ];
 
   return (
@@ -60,7 +61,7 @@ export default function Navbar() {
             <div className="relative" ref={packagesRef}>
               <button
                 onClick={() => setIsPackagesOpen(!isPackagesOpen)}
-                onMouseEnter={() => setIsPackagesOpen(true)}
+                aria-expanded={isPackagesOpen}
                 className="relative px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all duration-200 rounded-lg hover:bg-blue-50/80 flex items-center gap-1 after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r after:from-blue-600 after:to-teal-500 after:rounded-full hover:after:w-2/3 after:transition-all after:duration-300"
               >
                 Packages
@@ -140,7 +141,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <div 
-          id="mobile-menu"
+          id="mobile-menu" inert={!isOpen}
           className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}
           aria-hidden={!isOpen}
         >

@@ -1,19 +1,10 @@
 "use client";
-import { useState } from "react";
+import FormConsent from "@/components/FormConsent";
+import { NOTICE_VERSION } from "@/lib/enquiry-consent";
+import { useEffect, useState } from "react";
+import { collections } from "@/lib/collections";
 import Link from "next/link";
-
-const destinations = [
-  "Singapore",
-  "Bali, Indonesia",
-  "Maldives",
-  "Thailand",
-  "Japan",
-  "Dubai, UAE",
-  "Goa, India",
-  "Sikkim, India",
-  "Rajasthan, India",
-  "Other",
-];
+import { DESTINATIONS as destinations, isDestination } from "@/lib/destinations";
 
 export default function QuotePage() {
   const [formData, setFormData] = useState({
@@ -33,6 +24,17 @@ export default function QuotePage() {
     additionalDetails: "",
   });
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const destination = params.get("destination");
+    if (isDestination(destination)) {
+      const collection = destination === "Maldives" ? collections.maldives : destination === "Thailand" ? collections.thailand : null;
+      const itinerary = collection?.trips.find(trip => trip.name === params.get("itinerary"));
+      const couples = params.get("trip") === "couples";
+      setFormData((previous) => ({ ...previous, destination, ...(itinerary && { additionalDetails: "Preferred itinerary: " + itinerary.name }), ...(couples && { adults: "2", tripType: "couples" }) }));
+    }
+  }, []);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
@@ -48,6 +50,7 @@ export default function QuotePage() {
   const [error, setError] = useState("");
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const consent = new FormData(e.currentTarget as HTMLFormElement).has("consent");
     setIsSubmitting(true);
     setError("");
     // Map frontend fields to backend expected fields
@@ -62,7 +65,7 @@ export default function QuotePage() {
       const res = await fetch("/api/quote", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, consent, noticeVersion: NOTICE_VERSION }),
       });
       if (res.ok) {
         setIsSubmitted(true);
@@ -86,7 +89,7 @@ export default function QuotePage() {
             {/* Decorative Background Elements */}
             <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-blue-100 to-teal-100 rounded-full -translate-x-16 -translate-y-16 opacity-50" />
             <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-teal-100 to-blue-100 rounded-full translate-x-20 translate-y-20 opacity-50" />
-            
+
             <div className="relative z-10">
               {/* Animated Checkmark */}
               <div className="w-24 h-24 mx-auto mb-6 relative">
@@ -97,18 +100,18 @@ export default function QuotePage() {
                   </svg>
                 </div>
               </div>
-              
+
               {/* Success Message */}
               <h2 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-500 to-emerald-600 mb-3">
                 Awesome! 🎉
               </h2>
               <p className="text-xl text-gray-800 font-semibold mb-2">
-                Your Trip Request is Confirmed!
+                Your quote request was received
               </p>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 We&apos;ve received your travel quote request. Our expert travel planners are already working on crafting the perfect itinerary for you!
               </p>
-              
+
               {/* What's Next Box */}
               <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-2xl p-6 mb-8 border border-blue-100">
                 <h3 className="font-bold text-blue-800 mb-3 flex items-center justify-center gap-2">
@@ -125,11 +128,11 @@ export default function QuotePage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-green-500 mt-0.5">✓</span>
-                    <span>Receive a personalized quote within 24 hours</span>
+                    <span>Receive a personalized quote</span>
                   </li>
                 </ul>
               </div>
-              
+
               {/* Contact Info */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
                 <a href="tel:+919999959915" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors">
@@ -149,7 +152,7 @@ export default function QuotePage() {
                   <span className="font-medium">WhatsApp</span>
                 </a>
               </div>
-              
+
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
@@ -181,8 +184,8 @@ export default function QuotePage() {
       <section className="relative pt-24 pb-12 sm:pt-28 sm:pb-16 lg:pt-32 lg:pb-20 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80"
-            alt="Travel planning"
+            src="/couples-maldives.jpg"
+            alt=""
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-teal-900/60" />
@@ -217,21 +220,21 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Full Name *</label>
-                <input
+                <label htmlFor="fullName" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Name (optional)</label>
+                <input id="fullName"
                   type="text"
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  required
+
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
                   placeholder="John Doe"
                 />
               </div>
 
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email Address *</label>
-                <input
+                <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email Address *</label>
+                <input id="email"
                   type="email"
                   name="email"
                   value={formData.email}
@@ -244,8 +247,8 @@ export default function QuotePage() {
 
 
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Phone Number</label>
-                <input
+                <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Phone Number</label>
+                <input id="phone"
                   type="tel"
                   name="phone"
                   value={formData.phone}
@@ -256,9 +259,9 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Preferred Contact Method</label>
+                <label htmlFor="contactMethod" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Preferred Contact Method</label>
                 <div className="relative">
-                  <select
+                  <select id="contactMethod"
                     name="contactMethod"
                     value={formData.contactMethod}
                     onChange={handleChange}
@@ -280,8 +283,8 @@ export default function QuotePage() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Travelers <span className="text-xs text-gray-400">(specify each group)</span></label>
                 <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-row sm:gap-4">
                   <div className="flex-1 min-w-0">
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Adults <span className="text-[10px]">(12+)</span></label>
-                    <input
+                    <label htmlFor="adults" className="block text-xs font-medium text-gray-500 mb-1">Adults <span className="text-[10px]">(12+)</span></label>
+                    <input id="adults"
                       type="number"
                       name="adults"
                       min="1"
@@ -293,8 +296,8 @@ export default function QuotePage() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Children <span className="text-[10px]">(2-12)</span></label>
-                    <input
+                    <label htmlFor="children" className="block text-xs font-medium text-gray-500 mb-1">Children <span className="text-[10px]">(2-12)</span></label>
+                    <input id="children"
                       type="number"
                       name="children"
                       min="0"
@@ -305,8 +308,8 @@ export default function QuotePage() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Infants <span className="text-[10px]">(0-2)</span></label>
-                    <input
+                    <label htmlFor="infants" className="block text-xs font-medium text-gray-500 mb-1">Infants <span className="text-[10px]">(0-2)</span></label>
+                    <input id="infants"
                       type="number"
                       name="infants"
                       min="0"
@@ -317,9 +320,9 @@ export default function QuotePage() {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <label className="block text-xs font-medium text-gray-500 mb-1">Total</label>
+                    <label className="block text-xs font-medium text-gray-500 mb-1" htmlFor="total-travellers">Total</label>
                     <input
-                      type="number"
+                      id="total-travellers" type="number"
                       value={(
                         parseInt(formData.adults || "0", 10) +
                         parseInt(formData.children || "0", 10) +
@@ -342,9 +345,9 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Destination *</label>
+                <label htmlFor="destination" className="block text-sm font-medium text-gray-700 mb-2">Destination *</label>
                 <div className="relative">
-                  <select
+                  <select id="destination"
                     name="destination"
                     value={formData.destination}
                     onChange={handleChange}
@@ -364,9 +367,9 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Trip Type</label>
+                <label htmlFor="tripType" className="block text-sm font-medium text-gray-700 mb-2">Trip Type</label>
                 <div className="relative">
-                  <select
+                  <select id="tripType"
                     name="tripType"
                     value={formData.tripType}
                     onChange={handleChange}
@@ -374,6 +377,7 @@ export default function QuotePage() {
                     aria-label="Trip Type"
                   >
                     <option value="">Select trip type</option>
+                    <option value="couples">Couples getaway</option>
                     <option value="honeymoon">Honeymoon</option>
                     <option value="family">Family Vacation</option>
                     <option value="adventure">Adventure Travel</option>
@@ -388,21 +392,21 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="travelDate" className="block text-sm font-medium text-gray-700 mb-2">
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    Departure Date *
+                    Departure date (optional)
                   </span>
                 </label>
                 <div className="date-input-wrapper">
-                  <input
+                  <input id="travelDate"
                     type="date"
                     name="travelDate"
                     value={formData.travelDate}
                     onChange={handleChange}
-                    required
+
                     min={new Date().toISOString().split('T')[0]}
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 hover:border-blue-400"
                   />
@@ -410,7 +414,7 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="returnDate" className="block text-sm font-medium text-gray-700 mb-2">
                   <span className="flex items-center gap-2">
                     <svg className="w-4 h-4 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -419,7 +423,7 @@ export default function QuotePage() {
                   </span>
                 </label>
                 <div className="date-input-wrapper">
-                  <input
+                  <input id="returnDate"
                     type="date"
                     name="returnDate"
                     value={formData.returnDate}
@@ -431,9 +435,9 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Budget (per person)</label>
+                <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">Budget (per person)</label>
                 <div className="relative">
-                  <select
+                  <select id="budget"
                     name="budget"
                     value={formData.budget}
                     onChange={handleChange}
@@ -453,9 +457,9 @@ export default function QuotePage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Accommodation Preference</label>
+                <label htmlFor="accommodation" className="block text-sm font-medium text-gray-700 mb-2">Accommodation Preference</label>
                 <div className="relative">
-                  <select
+                  <select id="accommodation"
                     name="accommodation"
                     value={formData.accommodation}
                     onChange={handleChange}
@@ -485,19 +489,20 @@ export default function QuotePage() {
               </div>
 
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Special Requests or Questions</label>
-                <textarea
+                <label htmlFor="additionalDetails" className="block text-sm font-medium text-gray-700 mb-2">Special Requests or Questions</label>
+                <textarea id="additionalDetails"
                   name="additionalDetails"
                   value={formData.additionalDetails}
                   onChange={handleChange}
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="Tell us about any special requirements, activities you'd like to include, dietary restrictions, etc."
+                  placeholder="For example, a preferred itinerary or activity. Leave out sensitive personal information."
                 />
               </div>
 
               {/* Submit Button */}
               <div className="md:col-span-2 mt-6">
+                <FormConsent purpose="quote" />
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -516,26 +521,13 @@ export default function QuotePage() {
                   )}
                 </button>
                 <p className="text-center text-sm text-gray-500 mt-4">
-                  We&apos;ll get back to you within 24 hours with a personalized travel package.
+                  We&apos;ll get back to you with a personalized travel package.
                 </p>
               </div>
             </div>
           </form>
 
-          {/* Trust Badges */}
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { icon: "🔒", text: "Secure & Private" },
-              { icon: "⚡", text: "Quick Response" },
-              { icon: "💰", text: "Best Price Guarantee" },
-              { icon: "🌟", text: "5-Star Service" },
-            ].map((badge) => (
-              <div key={badge.text} className="bg-white rounded-xl p-4 shadow-sm">
-                <span className="text-2xl">{badge.icon}</span>
-                <p className="text-sm font-medium text-gray-700 mt-2">{badge.text}</p>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
     </>

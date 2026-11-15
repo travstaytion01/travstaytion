@@ -9,16 +9,16 @@ const dubaiPackages = [
   {
     id: 1,
     name: "Best of Dubai",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    image: "/dubai-skyline.jpg",
     nights: 3,
     itinerary: "Dubai (3N)",
     hotelRating: 4,
     activities: 3,
     hasSharedTransfer: true,
-    has24x7Concierge: true,
+    has24x7Concierge: false,
     price: 47126,
     pricePerNight: true,
-    isSooperHitPick: true,
+    isSooperHitPick: false,
     highlights: [
       "Burj Khalifa observation deck visit",
       "Desert Safari with BBQ dinner",
@@ -36,13 +36,13 @@ const dubaiPackages = [
   {
     id: 2,
     name: "Weekend Getaway to Dubai",
-    image: "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=800&q=80",
+    image: "/dubai-skyline.jpg",
     nights: 3,
     itinerary: "Dubai (3N)",
     hotelRating: 4,
     activities: 4,
     hasSharedTransfer: true,
-    has24x7Concierge: true,
+    has24x7Concierge: false,
     price: 57621,
     pricePerNight: true,
     isSooperHitPick: false,
@@ -63,13 +63,13 @@ const dubaiPackages = [
   {
     id: 3,
     name: "Glimpses of Dubai",
-    image: "https://images.unsplash.com/photo-1582672060674-bc2bd808a8b5?w=800&q=80",
+    image: "/dubai-skyline.jpg",
     nights: 5,
     itinerary: "Dubai (4N) › Atlantis (1N)",
     hotelRating: 4,
     activities: 5,
     hasSharedTransfer: true,
-    has24x7Concierge: true,
+    has24x7Concierge: false,
     price: 50171,
     pricePerNight: true,
     isSooperHitPick: false,
@@ -91,13 +91,13 @@ const dubaiPackages = [
   {
     id: 4,
     name: "Dubai Essentials Getaway",
-    image: "https://images.unsplash.com/photo-1546412414-e1885259563a?w=800&q=80",
+    image: "/dubai-skyline.jpg",
     nights: 4,
     itinerary: "Dubai (4N)",
     hotelRating: 3,
     activities: 3,
     hasSharedTransfer: true,
-    has24x7Concierge: true,
+    has24x7Concierge: false,
     price: 52176,
     pricePerNight: true,
     isSooperHitPick: false,
@@ -118,17 +118,17 @@ const dubaiPackages = [
   {
     id: 5,
     name: "Dubai Luxury Escape",
-    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    image: "/dubai-skyline.jpg",
     nights: 5,
     itinerary: "Dubai (5N)",
     hotelRating: 5,
     activities: 6,
     hasSharedTransfer: false,
     hasPrivateTransfer: true,
-    has24x7Concierge: true,
+    has24x7Concierge: false,
     price: 89999,
     pricePerNight: true,
-    isSooperHitPick: true,
+    isSooperHitPick: false,
     highlights: [
       "5-star luxury accommodation",
       "Private desert safari",
@@ -148,13 +148,13 @@ const dubaiPackages = [
   {
     id: 6,
     name: "Dubai Family Fun",
-    image: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80",
+    image: "/dubai-skyline.jpg",
     nights: 6,
     itinerary: "Dubai (6N)",
     hotelRating: 4,
     activities: 7,
     hasSharedTransfer: true,
-    has24x7Concierge: true,
+    has24x7Concierge: false,
     price: 75499,
     pricePerNight: true,
     isSooperHitPick: false,
@@ -215,21 +215,21 @@ export default function DubaiPackagesPage() {
       <section className="relative pt-24 pb-20 sm:pt-28 sm:pb-24 lg:pt-32 lg:pb-28 flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
-            alt="Dubai skyline with Burj Khalifa"
+            src="/dubai-skyline.jpg"
+            alt=""
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
         </div>
         <div className="relative z-10 text-center max-w-4xl mx-auto px-4 sm:px-6">
           <span className="inline-block px-4 py-1.5 bg-white/15 backdrop-blur-sm border border-white/30 rounded-full text-white text-sm font-medium mb-4">
-            🌴 Most Popular Destination
+            Dubai itineraries
           </span>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
             Dubai Vacation Packages
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-6 md:mb-8 px-4">
-            Customise your Dubai holiday, get insider tips from real travellers!
+            Compare sample routes. Request a written quotation for current prices, inclusions and availability.
           </p>
           <Link
             href="#packages"
@@ -238,49 +238,10 @@ export default function DubaiPackagesPage() {
             Explore Packages
           </Link>
         </div>
-        
+
       </section>
 
-      {/* Trust Badges - Moved outside hero for better mobile layout */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-800 py-4 sm:py-5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-center gap-6 sm:gap-8 md:gap-16">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-700 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-              </div>
-              <div>
-                <p className="text-white font-bold text-sm sm:text-base flex items-center gap-1">
-                  4.8 <span className="text-yellow-400">★</span>
-                </p>
-                <p className="text-blue-200 text-[10px] sm:text-xs">1425+ reviews</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-                <span className="text-lg sm:text-xl font-bold text-blue-600">G</span>
-              </div>
-              <div>
-                <p className="text-white font-bold text-sm sm:text-base flex items-center gap-1">
-                  4.6 <span className="text-yellow-400">★</span>
-                </p>
-                <p className="text-blue-200 text-[10px] sm:text-xs">8250+ reviews</p>
-              </div>
-            </div>
-            <div className="hidden sm:flex items-center gap-2">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <svg className="w-4 h-4 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-white font-bold text-sm sm:text-base">Trusted</p>
-                <p className="text-blue-200 text-[10px] sm:text-xs">50K+ customers</p>
-              </div>
-            </div>
-          </div>
-        </section>
+
 
       {/* Filters Section */}
       <section className="py-3 sm:py-4 md:py-6 bg-white border-b sticky top-18 sm:top-20 lg:top-24 z-30 shadow-sm">
@@ -300,6 +261,7 @@ export default function DubaiPackagesPage() {
             </select>
 
             <select
+              aria-label="Filter packages by number of nights"
               value={filterNights}
               onChange={(e) => setFilterNights(e.target.value)}
               className="flex-shrink-0 px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-full text-gray-700 focus:outline-none focus:border-emerald-500 bg-white"
@@ -349,8 +311,8 @@ export default function DubaiPackagesPage() {
       <section className="relative py-16 mb-20 md:mb-0 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1920&q=80"
-            alt="Dubai at night"
+            src="/dubai-skyline.jpg"
+            alt=""
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />

@@ -1124,3 +1124,31 @@ input:focus, textarea:focus, select:focus {
     max-width: 140px;
   }
 }
+
+.collection,.policy {color:#203c3a;background:#faf9f5;padding:7rem max(5vw,1.25rem) 4rem}
+.collection-hero,.collection-list,.policy>div {max-width:74rem;margin:auto}
+.collection-hero {display:grid;grid-template-columns:1fr 1.2fr;align-items:center;gap:4vw}
+.collection-hero img {width:100%;height:clamp(18rem,35vw,32rem);object-fit:cover;border-radius:1.25rem}
+.collection h1,.policy h1 {font:500 clamp(2.8rem,6vw,5rem)/1.04 Georgia,serif;margin:.7rem 0 1rem}
+.collection h2,.collection h3,.policy h2 {font:500 2rem/1.2 Georgia,serif;margin:1rem 0}
+.collection h3 {font-size:1.65rem}
+.collection p,.policy p {line-height:1.7}
+.collection-list {padding-top:3rem}
+.eyebrow {font-size:.78rem;font-weight:700;letter-spacing:.08em;color:#475951}
+.collection-hero .eyebrow {margin-top:2.5rem}
+.trip-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:1.5rem}
+.trip-grid article {display:flex;flex-direction:column;align-items:flex-start;background:white;padding:1.5rem;border:1px solid #cdd8d2;border-radius:1rem}
+.trip-grid details {padding:1rem 0;margin-bottom:auto}
+.trip-grid summary {cursor:pointer;text-decoration:underline}
+.trip-grid ol {list-style:decimal;padding-left:1.4rem;line-height:1.65}
+.trip-link {display:inline-block;background:#164e46;color:white;padding:.7rem 1rem;border-radius:.5rem;margin-top:1rem;font-weight:600}
+.policy>div {max-width:46rem}.policy h2 {margin-top:2rem;font-size:1.5rem}.policy a,.collection-hero a {text-decoration:underline}
+:where(a,button,input,textarea,select,summary):focus-visible {outline:3px solid #172554!important;outline-offset:3px;box-shadow:0 0 0 6px white!important}
+@media(max-width:760px){.collection-hero,.trip-grid{grid-template-columns:1fr}.collection-hero img{height:15rem}}
+
+/* Keep small text and actions readable on light surfaces. */
+form .text-gray-400,form .text-gray-500,form .text-emerald-600 {color:#475569}
+form :is(input,textarea)::placeholder {color:#526073;opacity:1}
+:is(a,button)[class*="from-"][class*="text-white"],button[type="submit"] {background:#15554b;color:white}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+html[data-reduce-motion="true"] *,html[data-reduce-motion="true"] *::before,html[data-reduce-motion="true"] *::after {animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}

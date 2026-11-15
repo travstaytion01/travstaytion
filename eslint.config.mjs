@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // The CRM is a separate project with its own eslint config.
+    "travstaytion crm/**",
+    "windows-package/**",
   ]),
 ]);
 

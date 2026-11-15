@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "TravStaytion | Your Dream Vacation Awaits",
-  description: "Discover amazing destinations and get personalized travel packages. TravStaytion is your trusted partner for unforgettable travel experiences to Singapore, Bali, Maldives, and more.",
-  keywords: "travel, vacation, holiday, Singapore, Bali, Maldives, travel packages, luxury travel, adventure travel, honeymoon destinations",
+  description: "Discover amazing destinations and get personalized travel packages. Compare sample itineraries for Dubai, Maldives, and Thailand.",
+  keywords: "travel, vacation, holiday, Dubai, Maldives, Thailand, travel packages, luxury travel, adventure travel, honeymoon destinations",
   authors: [{ name: "TravStaytion" }],
   creator: "TravStaytion",
   publisher: "TravStaytion",
@@ -33,12 +33,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "TravStaytion | Your Dream Vacation Awaits",
-    description: "Discover amazing destinations and get personalized travel packages. Your trusted partner for unforgettable travel experiences.",
+    description: "Discover amazing destinations and get personalized travel packages. Explore Dubai, Maldives and Thailand.",
     url: "https://travstaytion.com",
     siteName: "TravStaytion",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/couples-maldives.jpg",
         width: 1200,
         height: 630,
         alt: "TravStaytion - Your Dream Vacation Awaits",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TravStaytion | Your Dream Vacation Awaits",
     description: "Discover amazing destinations and get personalized travel packages.",
-    images: ["/og-image.jpg"],
+    images: ["/couples-maldives.jpg"],
   },
   robots: {
     index: true,
@@ -82,8 +82,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900 overflow-x-clip`}
       >
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:p-3">Skip to content</a>
         <Navbar />
-        <main className="min-h-screen">
+        <main id="main-content" tabIndex={-1} className="min-h-screen">
           {children}
         </main>
         <Footer />

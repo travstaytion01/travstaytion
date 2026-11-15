@@ -1,4 +1,6 @@
 "use client";
+import FormConsent from "@/components/FormConsent";
+import { NOTICE_VERSION } from "@/lib/enquiry-consent";
 import React, { useState, useRef, useEffect } from "react";
 
 interface PackageInquiryModalProps {
@@ -17,7 +19,7 @@ interface PackageInquiryModalProps {
 }
 
 export default function PackageInquiryModal({ isOpen, onClose, packageData }: PackageInquiryModalProps) {
-  const modalRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDialogElement>(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -30,27 +32,12 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  // Close on outside click
   useEffect(() => {
-    if (!isOpen) return;
-    function handleClickOutside(event: MouseEvent) {
-      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        onClose();
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isOpen, onClose]);
-
-  // Close on escape key
-  useEffect(() => {
-    if (!isOpen) return;
-    function handleEscape(event: KeyboardEvent) {
-      if (event.key === "Escape") onClose();
-    }
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [isOpen, onClose]);
+    const dialog = modalRef.current;
+    if (!isOpen || !dialog) return;
+    dialog.showModal();
+    return () => dialog.close();
+  }, [isOpen]);
 
   // Reset form when modal closes
   useEffect(() => {
@@ -74,6 +61,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const consent = new FormData(e.currentTarget as HTMLFormElement).has("consent");
     setIsSubmitting(true);
     setError("");
 
@@ -92,7 +80,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
       const res = await fetch("/api/package-inquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, consent, noticeVersion: NOTICE_VERSION }),
       });
       if (res.ok) {
         setIsSubmitted(true);
@@ -110,10 +98,8 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
   if (!isOpen || !packageData) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
-      <div
-        ref={modalRef}
-        className="relative bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fadein"
+    <dialog aria-label="Dubai package enquiry" onCancel={onClose} ref={modalRef}
+        className="fixed inset-0 m-auto backdrop:bg-black/50 bg-white rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fadein"
       >
         {/* Close button */}
         <button
@@ -152,7 +138,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-2">Request Submitted!</h3>
               <p className="text-gray-600 mb-6">
-                Our travel expert will contact you within 24 hours with a customized quote.
+                Our travel expert will contact you with a customized quote.
               </p>
               <button
                 onClick={onClose}
@@ -173,38 +159,35 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
                     </p>
                     <p className="text-xs text-gray-500">per person</p>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm text-emerald-600 font-medium">✓ Best Price Guarantee</p>
-                    <p className="text-sm text-emerald-600 font-medium">✓ Free Cancellation</p>
-                  </div>
+
                 </div>
               </div>
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 {error && (
-                  <div className="text-red-600 text-center bg-red-50 border border-red-200 rounded-lg p-2">
+                  <div role="alert" className="text-red-600 text-center bg-red-50 border border-red-200 rounded-lg p-2">
                     {error}
                   </div>
                 )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
-                    <input
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name (optional)</label>
+                    <input id="name"
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      required
+
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
                       placeholder="John Doe"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
-                    <input
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                    <input id="email"
                       type="email"
                       name="email"
                       value={formData.email}
@@ -216,21 +199,21 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone *</label>
-                    <input
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone (optional)</label>
+                    <input id="phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      required
+
                       className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all"
                       placeholder="+91 98765 43210"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Number of Travelers</label>
-                    <select
+                    <label htmlFor="travelers" className="block text-sm font-medium text-gray-700 mb-1">Number of Travelers</label>
+                    <select id="travelers"
                       name="travelers"
                       value={formData.travelers}
                       onChange={handleChange}
@@ -244,7 +227,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="travelDate" className="block text-sm font-medium text-gray-700 mb-1">
                       <span className="flex items-center gap-2">
                         <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -253,7 +236,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
                       </span>
                     </label>
                     <div className="date-input-wrapper">
-                      <input
+                      <input id="travelDate"
                         type="date"
                         name="travelDate"
                         value={formData.travelDate}
@@ -265,8 +248,8 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
                   </div>
 
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Special Requests (Optional)</label>
-                    <textarea
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Special Requests (Optional)</label>
+                    <textarea id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
@@ -277,6 +260,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
                   </div>
                 </div>
 
+                <FormConsent purpose="package-inquiry" />
                 <button
                   type="submit"
                   disabled={isSubmitting}
@@ -303,7 +287,6 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
             </>
           )}
         </div>
-      </div>
-    </div>
+    </dialog>
   );
 }
