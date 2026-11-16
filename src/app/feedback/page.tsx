@@ -138,15 +138,15 @@ export default function FeedbackPage() {
           <form className="bg-white/80 rounded-xl sm:rounded-2xl shadow-lg p-5 sm:p-8 flex flex-col gap-5 sm:gap-6 border border-blue-100" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">Name (optional)</label>
-              <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="Your name"  />
+              <input type="text" id="name" name="name" autoComplete="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="Your preferred name"  />
             </div>
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">Email for a reply (optional)</label>
-              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="you@email.com" />
+              <input type="email" id="email" name="email" autoComplete="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900" placeholder="Email if you’d like a reply" />
             </div>
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">Feedback</label>
-              <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 resize-none" placeholder="Share your experience or suggestions..." required></textarea>
+              <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={5} className="w-full px-4 py-3 rounded-lg border border-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-900 resize-none" placeholder="What worked well, or what could we improve?" required></textarea>
             </div>
             <FormConsent purpose="feedback" />
                 <button type="submit" disabled={isSubmitting} className="bg-gradient-to-r from-blue-600 to-teal-500 text-white font-semibold py-3 rounded-lg sm:rounded-full shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 disabled:opacity-60">

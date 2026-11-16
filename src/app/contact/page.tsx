@@ -210,12 +210,12 @@ export default function ContactPage() {
                     <label htmlFor="name" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Name (optional)</label>
                     <input id="name"
                       type="text"
-                      name="name"
+                      name="name" autoComplete="name"
                       value={formData.name}
                       onChange={handleChange}
 
                       className="w-full px-3 sm:px-4 py-3 sm:py-3.5 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm sm:text-base"
-                      placeholder="Your name"
+                      placeholder="Your preferred name"
                     />
                   </div>
 
@@ -224,23 +224,23 @@ export default function ContactPage() {
                       <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email *</label>
                       <input id="email"
                         type="email"
-                        name="email"
+                        name="email" autoComplete="email"
                         value={formData.email}
                         onChange={handleChange}
                         required
                         className="w-full px-3 sm:px-4 py-3 sm:py-3.5 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm sm:text-base"
-                        placeholder="you@example.com"
+                        placeholder="Where can we reply?"
                       />
                     </div>
                     <div>
                       <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Phone</label>
                       <input id="phone"
                         type="tel"
-                        name="phone"
+                        name="phone" autoComplete="tel"
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-3 sm:px-4 py-3 sm:py-3.5 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white text-sm sm:text-base"
-                        placeholder="+91 00000 00000"
+                        placeholder="Include your country code"
                       />
                     </div>
                   </div>
@@ -272,7 +272,7 @@ export default function ContactPage() {
                       required
                       rows={4}
                       className="w-full px-3 sm:px-4 py-3 sm:py-3.5 border border-gray-200 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none bg-gray-50 focus:bg-white text-sm sm:text-base"
-                      placeholder="Tell us how we can help you..."
+                      placeholder="What would you like help with?"
                     />
                   </div>
 

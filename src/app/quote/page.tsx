@@ -223,12 +223,12 @@ export default function QuotePage() {
                 <label htmlFor="fullName" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Name (optional)</label>
                 <input id="fullName"
                   type="text"
-                  name="fullName"
+                  name="fullName" autoComplete="name"
                   value={formData.fullName}
                   onChange={handleChange}
 
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
-                  placeholder="John Doe"
+                  placeholder="Your preferred name"
                 />
               </div>
 
@@ -236,12 +236,12 @@ export default function QuotePage() {
                 <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Email Address *</label>
                 <input id="email"
                   type="email"
-                  name="email"
+                  name="email" autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
-                  placeholder="john@example.com"
+                  placeholder="Where should we send your quote?"
                 />
               </div>
 
@@ -250,11 +250,11 @@ export default function QuotePage() {
                 <label htmlFor="phone" className="block text-xs sm:text-sm font-medium text-gray-700 mb-1.5 sm:mb-2">Phone Number</label>
                 <input id="phone"
                   type="tel"
-                  name="phone"
+                  name="phone" autoComplete="tel"
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg sm:rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-sm sm:text-base"
-                  placeholder="+91 98765 43210"
+                  placeholder="Include your country code"
                 />
               </div>
 
@@ -496,7 +496,7 @@ export default function QuotePage() {
                   onChange={handleChange}
                   rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
-                  placeholder="For example, a preferred itinerary or activity. Leave out sensitive personal information."
+                  placeholder="Any places or experiences you’d like us to include?"
                 />
               </div>
 
