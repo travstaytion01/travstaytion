@@ -1,3 +1,5 @@
+import { THAILAND_ITINERARIES } from "./thailand-itineraries";
+
 export const collections = {
   maldives: {
     name: "Maldives", image: "/couples-maldives.jpg", alt: "Illustration of a couple on a jetty beside Maldivian water villas at sunset",
@@ -11,10 +13,9 @@ export const collections = {
   thailand: {
     name: "Thailand", image: "/couples-thailand.jpg", alt: "Illustration of a couple in a longtail boat below limestone cliffs in Krabi",
     region: "Southeast Asia", intro: "Pair Bangkok’s food and riverside neighbourhoods with time on the Andaman coast, or make the islands the whole trip.",
-    trips: [
-      {name: "Krabi by longtail", image: "/itineraries/krabi.webp", alt: "Longtail boat beneath Krabi’s limestone cliffs", nights: 4, route: "Ao Nang · Railay", description: "A coastal base for limestone bays and quiet evenings.", days: ["Arrive in Krabi and settle near Ao Nang.", "Plan a weather-dependent longtail outing and a Railay beach day.", "Leave a morning free before departure."]},
-      {name: "River to reef", image: "/itineraries/river.webp", alt: "Temple beside the river in Bangkok", nights: 6, route: "Bangkok → Phuket", description: "Two city nights followed by four on the coast.", days: ["Explore Bangkok’s riverside neighbourhoods and temples.", "Fly to Phuket for beach time and an optional cooking class.", "Spend a final evening in the old town."]},
-      {name: "Northern table for two", image: "/itineraries/chiang-mai.webp", alt: "Produce stalls at a northern Thai market", nights: 5, route: "Bangkok → Chiang Mai", description: "Markets, regional food and mountain scenery.", days: ["Start with two nights in Bangkok.", "Travel north for three nights in Chiang Mai.", "Choose a guided market walk and a day in the surrounding hills."]},
-    ],
+    trips: THAILAND_ITINERARIES.map(trip => ({
+      ...trip,
+      days: trip.days.map(day => `${day.title}: ${day.details.join(" ")}`),
+    })),
   },
 } as const;

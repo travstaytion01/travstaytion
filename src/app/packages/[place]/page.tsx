@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThailandCollection from "@/components/ThailandCollection";
 import { notFound } from "next/navigation";
 import { collections } from "@/lib/collections";
 
@@ -15,6 +16,7 @@ export async function generateMetadata(props: Props) {
 }
 export default async function CollectionPage(props: Props) {
   const place = await collection(props);
+  if (place.name === "Thailand") return <ThailandCollection />;
   return <article className="collection">
     <header className="collection-hero">
       <div><Link href="/packages#couples-special">← Couples Special</Link>

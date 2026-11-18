@@ -1152,3 +1152,82 @@ form :is(input,textarea)::placeholder {color:#526073;opacity:1}
 :is(a,button)[class*="from-"][class*="text-white"],button[type="submit"] {background:#15554b;color:white}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
 html[data-reduce-motion="true"] *,html[data-reduce-motion="true"] *::before,html[data-reduce-motion="true"] *::after {animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+
+/* Thailand couples collection */
+.thailand-collection{background:#f8f7f2;color:#173d35;padding:7rem max(1.25rem,5vw) 4rem}
+.thailand-hero,.thailand-itineraries{max-width:78rem;margin-inline:auto}
+.thailand-hero{display:grid;grid-template-columns:.9fr 1.15fr;gap:clamp(2rem,5vw,5rem);align-items:center;padding-block:1.25rem 3.5rem}
+.thailand-back{font-size:.8rem;text-decoration:underline;text-underline-offset:4px}
+.thailand-kicker{font-family:Arial,sans-serif;font-size:.65rem;font-weight:600;text-transform:uppercase;letter-spacing:.17em;line-height:1.6}
+.thailand-hero-copy>.thailand-kicker{margin-top:3rem}
+.thailand-hero h1{font-family:Georgia,serif;font-size:clamp(3.5rem,6.6vw,6.8rem);font-weight:400;letter-spacing:-.055em;line-height:.98;margin:1rem 0 1.4rem}
+.thailand-hero h1 em{font-weight:400;color:#66816a}
+.thailand-hero-copy>p:not(.thailand-kicker){max-width:28rem;font-size:.9rem;line-height:1.8;color:#566b61}
+.thailand-hero-copy>.thailand-intro{font-size:1.2rem!important;color:#244a3c!important;line-height:1.55!important;margin-bottom:.8rem}
+.thailand-explore{display:inline-flex;align-items:center;gap:2.3rem;margin-top:1.5rem;background:#234f42;color:#fff;padding:.9rem 1.1rem;border-radius:.25rem;font-size:.82rem;font-weight:600}
+.thailand-hero-facts{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;border-top:1px solid #d9dfd5;padding-top:1.2rem;margin-top:2rem;font-family:Arial,sans-serif;font-size:.67rem;color:#5c7165}
+.thailand-hero-visual{position:relative;isolation:isolate;overflow:hidden;border-radius:12rem 12rem .6rem .6rem;min-height:36rem;width:100%;text-align:left;background:#1d534c;cursor:pointer;color:white}
+.thailand-hero-visual:after,.thailand-trip-picture:after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 45%,#082e35b8);pointer-events:none}
+.thailand-hero-visual>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.thailand-hero-visual:hover>img,.thailand-trip-picture:hover>img{transform:scale(1.035)}
+.thailand-visual-top{position:absolute;top:4rem;left:0;right:0;text-align:center;z-index:1;font-family:Arial,sans-serif;text-transform:uppercase;letter-spacing:.15em;font-size:.65rem;text-shadow:0 1px 12px #092e32}
+.thailand-hero-play{position:absolute;bottom:2rem;left:2rem;right:2rem;display:flex;align-items:center;gap:1rem;z-index:1;font-family:Georgia,serif;font-size:1.35rem}
+.thailand-hero-play small{display:block;font-family:Arial,sans-serif;font-size:.65rem;letter-spacing:.04em;margin-top:.3rem;color:#eff5ee}
+.thailand-play-circle{display:grid;place-items:center;width:3rem;height:3rem;border:1px solid #ffffffa8;border-radius:50%;background:#ffffff12;backdrop-filter:blur(8px)}
+.thailand-section-heading{display:flex;justify-content:space-between;align-items:end;gap:2rem;border-top:1px solid #d4ddd4;padding-top:2.5rem;margin-bottom:2rem;scroll-margin-top:7rem}
+.thailand-section-heading h2{font-family:Georgia,serif;font-weight:400;font-size:clamp(2rem,3vw,3rem);letter-spacing:-.035em;margin-top:.4rem}
+.thailand-section-heading>p{max-width:23rem;font-size:.85rem;line-height:1.7;color:#627166}
+.thailand-itineraries{scroll-margin-top:6rem}
+.thailand-trip-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem;align-items:start}
+.thailand-trip{overflow:hidden;border:1px solid #d7dfd5;border-radius:.8rem;background:#fff}
+.thailand-trip-picture{position:relative;display:block;width:100%;aspect-ratio:16/10;overflow:hidden;background:#b6ccc0;cursor:pointer;color:#fff;text-align:left}
+.thailand-trip-picture>img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.thailand-duration{position:absolute;left:1.2rem;top:1.2rem;z-index:1;background:#fffef5ed;color:#274b3b;border-radius:.2rem;padding:.45rem .6rem;font-family:Arial,sans-serif;font-size:.68rem;letter-spacing:.04em}
+.thailand-picture-play{position:absolute;bottom:1.1rem;right:1.2rem;display:flex;align-items:center;gap:.5rem;z-index:1;font-size:.75rem;background:#123d3f8a;backdrop-filter:blur(6px);border:1px solid #ffffff8a;border-radius:2rem;padding:.5rem .8rem}
+.thailand-trip-content{padding:1.6rem 1.6rem 1.5rem}
+.thailand-trip-topline{display:flex;align-items:center;justify-content:space-between;color:#627464;margin-bottom:.5rem}
+.thailand-trip-topline>span{font-family:Georgia,serif;font-size:1.2rem;color:#8b9c8e}
+.thailand-trip h3{font-family:Georgia,serif;font-weight:400;font-size:clamp(1.6rem,2.4vw,2.25rem);letter-spacing:-.035em;line-height:1.15;margin:0 0 .8rem}
+.thailand-trip-description{color:#5f7066;font-size:.88rem;line-height:1.75;min-height:3.1rem}
+.thailand-highlights{display:flex;flex-wrap:wrap;gap:.45rem;margin-block:1rem 1.25rem;list-style:none;padding:0}
+.thailand-highlights li{font-family:Arial,sans-serif;font-size:.62rem;padding:.4rem .5rem;border:1px solid #dbe3d9;border-radius:.25rem;color:#496350;background:#f8faf6}
+.thailand-rock-preview{display:flex;align-items:center;gap:.8rem;width:100%;background:#f3f5ee;border:1px solid #e0e5d8;border-radius:.35rem;padding:.5rem;text-align:left;cursor:pointer;margin-bottom:1.2rem}
+.thailand-rock-preview>img{width:3.8rem;height:2.8rem;object-fit:cover;border-radius:.2rem}
+.thailand-rock-preview>span{flex:1;font-size:.85rem;font-weight:600}
+.thailand-rock-preview small{display:block;font-size:.68rem;font-weight:400;color:#627464;margin-top:.15rem}
+.thailand-rock-preview>svg{margin-right:.5rem;width:1rem}
+.thailand-trip-details{border-top:1px solid #dce3db;border-bottom:1px solid #dce3db}
+.thailand-trip-details>summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;cursor:pointer;font-family:Arial,sans-serif;font-size:.77rem;font-weight:600;list-style:none}
+.thailand-trip-details>summary::-webkit-details-marker{display:none}
+.thailand-details-plus{font-size:1.3rem;font-weight:400;transition:transform .2s ease}
+.thailand-trip-details[open] .thailand-details-plus{transform:rotate(45deg)}
+.thailand-stay,.thailand-package-notes{padding:1rem;background:#f7f8f3;border-radius:.3rem;margin-bottom:1.25rem}
+.thailand-trip h4{font-size:.8rem;font-weight:600;line-height:1.5;margin-bottom:.4rem}
+.thailand-stay ul,.thailand-package-notes ul,.thailand-timeline ul{list-style:disc;padding-left:1rem;font-size:.77rem;line-height:1.8;color:#596c5f}
+.thailand-timeline{list-style:none;padding:0;margin:1.5rem 0}
+.thailand-timeline>li{display:flex;align-items:start;gap:.8rem;position:relative;padding-bottom:1.4rem}
+.thailand-timeline>li:last-child{padding-bottom:0}
+.thailand-day-number{flex-shrink:0;display:grid;place-items:center;border:1px solid #c9d8c9;width:1.8rem;height:1.8rem;border-radius:50%;font-family:Arial,sans-serif;font-size:.65rem;background:#f6f8f2}
+.thailand-quote-link{display:flex;align-items:center;justify-content:space-between;background:#214e40;color:#fff;padding:.9rem 1rem;margin-top:1.25rem;border-radius:.3rem;font-size:.8rem;font-weight:600;gap:.5rem}
+.thailand-quote-link:hover,.thailand-explore:hover{background:#16392e}
+.thailand-booking-note{display:grid;grid-template-columns:1fr 2fr;gap:2rem;padding:2rem 0;margin-top:2rem;border-top:1px solid #d4ddd4;border-bottom:1px solid #d4ddd4}
+.thailand-booking-note>p{color:#5f7066;font-size:.8rem;line-height:1.8}
+.thailand-media-credits{font-size:.7rem;color:#68776b;margin-top:1.2rem;line-height:1.8}
+.thailand-media-credits summary{cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.thailand-media-credits p{max-width:60rem;padding-top:.5rem}.thailand-media-credits a{text-decoration:underline}
+.thailand-film-dialog{position:fixed;inset:0;margin:auto;border:0;border-radius:.75rem;width:min(58rem,calc(100% - 2rem));max-height:90dvh;overflow:auto;background:#f8f7f2;padding:0;color:#173d35;box-shadow:0 2rem 6rem #0005}
+.thailand-film-dialog::backdrop{background:#082b26d9;backdrop-filter:blur(8px)}
+.thailand-film-header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.2rem 1.5rem}
+.thailand-film-header h2{font-family:Georgia,serif;font-size:1.6rem;margin-top:.2rem}
+.thailand-film-close{flex-shrink:0;border:1px solid #c7d4c7;border-radius:2rem;padding:.5rem .8rem;font-size:.75rem;cursor:pointer}
+.thailand-film-inner>video,.thailand-film-inner>iframe{display:block;width:100%;aspect-ratio:16/9;background:#071d1a;object-fit:contain;border:0}
+.thailand-film-caption{font-size:.72rem;line-height:1.7;padding:1rem 1.5rem;color:#5f7066}.thailand-film-caption a{text-decoration:underline}
+.thailand-external-preview{display:grid;grid-template-columns:1fr 1fr;background:#e6eadf;align-items:center;gap:1.5rem;padding:1.5rem}
+.thailand-external-preview>img{width:100%;height:auto;border-radius:.4rem}
+.thailand-external-preview p{font-family:Georgia,serif;font-size:1.3rem;line-height:1.5}
+.thailand-load-video{display:flex;align-items:center;justify-content:center;gap:.5rem;background:#214e40;color:white;border-radius:.3rem;padding:.7rem .8rem;font-size:.75rem;cursor:pointer;margin-top:1rem}
+.thailand-external-preview small{display:block;color:#5f7066;font-size:.65rem;margin-top:.6rem;line-height:1.6}
+@media(max-width:800px){.thailand-hero{grid-template-columns:1fr;gap:2rem}.thailand-hero-copy>.thailand-kicker{margin-top:2rem}.thailand-hero h1{font-size:4.8rem}.thailand-hero-visual{min-height:26rem;border-radius:9rem 9rem .6rem .6rem}.thailand-hero-copy>p:not(.thailand-kicker){max-width:35rem}.thailand-section-heading{align-items:start;flex-direction:column;gap:1rem}.thailand-section-heading>p{max-width:30rem}.thailand-trip-grid{gap:1.25rem}.thailand-trip-content{padding:1.1rem}.thailand-trip h3{font-size:1.65rem}.thailand-rock-preview{gap:.5rem}.thailand-booking-note{grid-template-columns:1fr;gap:.75rem}}
+@media(max-width:580px){.thailand-collection{padding-top:6rem}.thailand-trip-grid{grid-template-columns:1fr}.thailand-trip-content{padding:1.4rem}.thailand-trip h3{font-size:1.95rem}.thailand-hero-visual{min-height:25rem}.thailand-hero-play{left:1.3rem;bottom:1.5rem}.thailand-visual-top{top:3rem}.thailand-hero-facts{gap:.5rem .8rem}.thailand-trip-description{min-height:0}.thailand-external-preview{grid-template-columns:1fr}.thailand-film-header{padding:1rem}.thailand-film-header h2{font-size:1.2rem}.thailand-film-header .thailand-kicker{font-size:.55rem}}
+@media(prefers-reduced-motion:reduce){.thailand-hero-visual>img,.thailand-trip-picture>img,.thailand-details-plus{transition:none}}
+html[data-reduce-motion="true"] .thailand-hero-visual>img,html[data-reduce-motion="true"] .thailand-trip-picture>img,html[data-reduce-motion="true"] .thailand-details-plus{transition:none}
