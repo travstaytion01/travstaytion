@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import DubaiFilmPreview from "./DubaiFilmPreview";
+import { getDubaiPackageMedia } from "@/lib/dubai-media";
 import PackageInquiryModal from "./PackageInquiryModal";
 import { DUBAI_ITINERARIES, type DubaiItinerary } from "@/lib/dubai-itineraries";
 
@@ -33,24 +35,27 @@ export default function DubaiPackageList() {
       </div>}
       <div className="mt-6 grid items-start gap-6 md:grid-cols-2">
         {packages.map(trip => (
-          <article key={trip.id} id={trip.id} className="rounded-2xl border border-stone-300 bg-white p-6 sm:p-8">
-            <p className="eyebrow">{trip.days.length - 1} nights / {trip.days.length} days · {trip.hotel} hotel</p>
-            <h3>{trip.name}</h3>
-            <p>{trip.description}</p>
-            <details className="mt-5 border-y border-stone-200">
-              <summary className="cursor-pointer py-3 font-semibold">View day-by-day itinerary</summary>
-              <h4 className="mt-2 font-semibold">Your stay</h4>
-              <ul className="mt-1 list-disc space-y-1 pl-5">{trip.accommodation.map(line => <li key={line}>{line}</li>)}</ul>
-              <ol className="my-5 space-y-4 border-l border-stone-200 pl-4">
-                {trip.days.map((day, index) => <li key={day.title}>
-                  <h4 className="font-semibold">Day {index + 1} · {day.title}</h4>
-                  <p>{day.details.join(" ")}</p>
-                </li>)}
-              </ol>
-              <h4 className="font-semibold">Good to know</h4>
-              <ul className="mb-5 mt-1 list-disc space-y-1 pl-5">{trip.notes.map(note => <li key={note}>{note}</li>)}</ul>
-            </details>
-            <button className="trip-link" onClick={() => setSelected(trip)}>Request a quote<span className="sr-only"> for {trip.name}</span></button>
+          <article key={trip.id} id={trip.id} className="overflow-hidden rounded-2xl border border-stone-300 bg-white">
+            <DubaiFilmPreview media={getDubaiPackageMedia(trip.id)} />
+            <div className="p-6 sm:p-8">
+              <p className="eyebrow">{trip.days.length - 1} nights / {trip.days.length} days · {trip.hotel} hotel</p>
+              <h3>{trip.name}</h3>
+              <p>{trip.description}</p>
+              <details className="mt-5 border-y border-stone-200">
+                <summary className="cursor-pointer py-3 font-semibold">View day-by-day itinerary</summary>
+                <h4 className="mt-2 font-semibold">Your stay</h4>
+                <ul className="mt-1 list-disc space-y-1 pl-5">{trip.accommodation.map(line => <li key={line}>{line}</li>)}</ul>
+                <ol className="my-5 space-y-4 border-l border-stone-200 pl-4">
+                  {trip.days.map((day, index) => <li key={day.title}>
+                    <h4 className="font-semibold">Day {index + 1} · {day.title}</h4>
+                    <p>{day.details.join(" ")}</p>
+                  </li>)}
+                </ol>
+                <h4 className="font-semibold">Good to know</h4>
+                <ul className="mb-5 mt-1 list-disc space-y-1 pl-5">{trip.notes.map(note => <li key={note}>{note}</li>)}</ul>
+              </details>
+              <button className="trip-link" onClick={() => setSelected(trip)}>Request a quote<span className="sr-only"> for {trip.name}</span></button>
+            </div>
           </article>
         ))}
       </div>

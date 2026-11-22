@@ -1,6 +1,7 @@
 "use client";
 import FormConsent from "@/components/FormConsent";
 import { NOTICE_VERSION } from "@/lib/enquiry-consent";
+import { getDubaiPackageMedia } from "@/lib/dubai-media";
 import type { DubaiItinerary } from "@/lib/dubai-itineraries";
 import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
@@ -89,7 +90,7 @@ export default function PackageInquiryModal({ onClose, packageData }: PackageInq
         {/* Package Header */}
         <div className="relative h-48 overflow-hidden rounded-t-3xl">
           <Image
-            src="/dubai-skyline.jpg"
+            src={getDubaiPackageMedia(packageData.id).photo}
             alt=""
             fill sizes="(max-width: 672px) 100vw, 672px"
             className="w-full h-full object-cover"
