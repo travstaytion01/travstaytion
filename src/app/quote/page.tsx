@@ -30,8 +30,8 @@ export default function QuotePage() {
     if (isDestination(destination)) {
       const collection = destination === "Maldives" ? collections.maldives : destination === "Thailand" ? collections.thailand : null;
       const itinerary = collection?.trips.find(trip => trip.name === params.get("itinerary"));
-      const couples = params.get("trip") === "couples";
-      setFormData((previous) => ({ ...previous, destination, ...(itinerary && { additionalDetails: "Preferred itinerary: " + itinerary.name }), ...(couples && { adults: "2", tripType: "couples" }) }));
+      const tripType = params.get("trip");
+      setFormData((previous) => ({ ...previous, destination, ...(itinerary && { additionalDetails: "Preferred itinerary: " + itinerary.name }), ...((tripType === "couples" || tripType === "honeymoon") && { adults: "2", tripType }) }));
     }
   }, []);
 

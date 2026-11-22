@@ -1,24 +1,16 @@
 "use client";
 import FormConsent from "@/components/FormConsent";
 import { NOTICE_VERSION } from "@/lib/enquiry-consent";
+import type { DubaiItinerary } from "@/lib/dubai-itineraries";
+import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 
 interface PackageInquiryModalProps {
-  isOpen: boolean;
   onClose: () => void;
-  packageData: {
-    id: number;
-    name: string;
-    image: string;
-    nights: number;
-    itinerary: string;
-    price: number;
-    highlights: string[];
-    inclusions: string[];
-  } | null;
+  packageData: DubaiItinerary;
 }
 
-export default function PackageInquiryModal({ isOpen, onClose, packageData }: PackageInquiryModalProps) {
+export default function PackageInquiryModal({ onClose, packageData }: PackageInquiryModalProps) {
   const modalRef = useRef<HTMLDialogElement>(null);
   const [formData, setFormData] = useState({
     name: "",
@@ -34,26 +26,10 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
 
   useEffect(() => {
     const dialog = modalRef.current;
-    if (!isOpen || !dialog) return;
+    if (!dialog) return;
     dialog.showModal();
     return () => dialog.close();
-  }, [isOpen]);
-
-  // Reset form when modal closes
-  useEffect(() => {
-    if (!isOpen) {
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        travelDate: "",
-        travelers: "2",
-        message: "",
-      });
-      setIsSubmitted(false);
-      setError("");
-    }
-  }, [isOpen]);
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -69,8 +45,8 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
-      packageName: packageData?.name || "Dubai Package",
-      packageId: packageData?.id || 0,
+      packageName: packageData.name,
+      packageId: packageData.enquiryId,
       travelDate: formData.travelDate,
       travelers: formData.travelers,
       message: formData.message,
@@ -88,14 +64,12 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
         const data = await res.json();
         setError(data.error || "Something went wrong.");
       }
-    } catch (err) {
+    } catch {
       setError("Network error. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  if (!isOpen || !packageData) return null;
 
   return (
     <dialog aria-label="Dubai package enquiry" onCancel={onClose} ref={modalRef}
@@ -114,16 +88,17 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
 
         {/* Package Header */}
         <div className="relative h-48 overflow-hidden rounded-t-3xl">
-          <img
-            src={packageData.image}
-            alt={packageData.name}
+          <Image
+            src="/dubai-skyline.jpg"
+            alt=""
+            fill sizes="(max-width: 672px) 100vw, 672px"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
           <div className="absolute bottom-4 left-6 right-6">
             <h2 className="text-2xl font-bold text-white">{packageData.name}</h2>
             <p className="text-gray-200 text-sm mt-1">
-              {packageData.nights} nights • {packageData.itinerary}
+              {packageData.days.length - 1} nights / {packageData.days.length} days · {packageData.hotel} hotel
             </p>
           </div>
         </div>
@@ -149,19 +124,7 @@ export default function PackageInquiryModal({ isOpen, onClose, packageData }: Pa
             </div>
           ) : (
             <>
-              {/* Package Summary */}
-              <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-4 mb-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-gray-600">Starting from</p>
-                    <p className="text-2xl font-bold text-gray-900">
-                      ₹{packageData.price.toLocaleString('en-IN')}
-                    </p>
-                    <p className="text-xs text-gray-500">per person</p>
-                  </div>
-
-                </div>
-              </div>
+              <p className="mb-6 text-sm text-gray-700">Tell us your travel dates so we can confirm hotel availability and prepare a written quote.</p>
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">

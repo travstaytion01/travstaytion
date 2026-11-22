@@ -10,7 +10,7 @@ export const destinationCards = [
   {
     name: DESTINATIONS[0],
     image: "/dubai-skyline.jpg",
-    description: "See the Burj Khalifa, shop in grand malls, go desert dune bashing, and enjoy a luxury city escape.",
+    description: "Compare four Dubai honeymoons of four to six nights, with desert safaris, city tours and breakfast for two.",
   },
   {
     name: DESTINATIONS[1],
