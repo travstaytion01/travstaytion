@@ -3,6 +3,7 @@ import FormConsent from "@/components/FormConsent";
 import { NOTICE_VERSION } from "@/lib/enquiry-consent";
 import { useEffect, useState } from "react";
 import { collections } from "@/lib/collections";
+import { maldivesResorts } from "@/lib/maldives-resorts";
 import Link from "next/link";
 import { DESTINATIONS as destinations, isDestination } from "@/lib/destinations";
 
@@ -30,8 +31,13 @@ export default function QuotePage() {
     if (isDestination(destination)) {
       const collection = destination === "Maldives" ? collections.maldives : destination === "Thailand" ? collections.thailand : null;
       const itinerary = collection?.trips.find(trip => trip.name === params.get("itinerary"));
+      const resort = destination === "Maldives" ? maldivesResorts.find(resort => resort.slug === params.get("resort")) : undefined;
+      const additionalDetails = [
+        itinerary && "Preferred itinerary: " + itinerary.name,
+        resort && "Preferred resort: " + resort.name,
+      ].filter(Boolean).join("\n");
       const tripType = params.get("trip");
-      setFormData((previous) => ({ ...previous, destination, ...(itinerary && { additionalDetails: "Preferred itinerary: " + itinerary.name }), ...((tripType === "couples" || tripType === "honeymoon") && { adults: "2", tripType }) }));
+      setFormData((previous) => ({ ...previous, destination, ...(additionalDetails && { additionalDetails }), ...((tripType === "couples" || tripType === "honeymoon") && { adults: "2", tripType }) }));
     }
   }, []);
 

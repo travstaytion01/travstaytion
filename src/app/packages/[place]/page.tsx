@@ -1,4 +1,5 @@
 import Link from "next/link";
+import MaldivesResorts from "@/components/MaldivesResorts";
 import ThailandCollection from "@/components/ThailandCollection";
 import { notFound } from "next/navigation";
 import { collections } from "@/lib/collections";
@@ -12,7 +13,8 @@ async function collection(props: Props) {
   return collections[place];
 }
 export async function generateMetadata(props: Props) {
-  return {title: (await collection(props)).name + " couples packages | TravStaytion"};
+  const { name } = await collection(props);
+  return {title: name === "Maldives" ? "Maldives resorts and couples packages | TravStaytion" : "Thailand couples packages | TravStaytion"};
 }
 export default async function CollectionPage(props: Props) {
   const place = await collection(props);
@@ -20,10 +22,12 @@ export default async function CollectionPage(props: Props) {
   return <article className="collection">
     <header className="collection-hero">
       <div><Link href="/packages#couples-special">← Couples Special</Link>
-        <p className="eyebrow">{place.region}</p><h1>{place.name} for two</h1><p>{place.intro}</p>
+        <p className="eyebrow">{place.region}</p><h1>{place.name} resorts and itineraries</h1><p>{place.intro}</p>
+        <Link className="trip-link" href="#resorts">Explore Maldives resorts</Link>
       </div><img src={place.image} alt={place.alt} />
     </header>
-    <section className="collection-list"><h2>Choose an itinerary</h2>
+    <MaldivesResorts />
+    <section className="collection-list"><h2>Choose an itinerary for two</h2>
       <p>Suggested routes for two. Ask for a written quote covering dates, transfers, accommodation and cancellation terms.</p>
       <div className="trip-grid">{place.trips.map(trip => <article key={trip.name}>
         <img className="mb-4 aspect-[3/2] w-full rounded-lg object-cover" src={trip.image} alt={trip.alt} width={600} height={400} loading="lazy" />
