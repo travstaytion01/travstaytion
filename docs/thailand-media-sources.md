@@ -19,3 +19,7 @@ Videos are 12-second, silent H.264 destination previews, compressed to 1280 × 7
 ## Rock Beach Swing
 
 The separate attraction preview embeds [Review Rock Beach Swing / Phuket by Zabzaa พาเที่ยว](https://www.youtube.com/watch?v=EeFx9_4_bFw). This is an attributed external video, not a locally copied or licensed stock film. The local `rock-beach-video-preview.jpg` is its contextual YouTube thumbnail, used only to identify and link to that video. It is not presented as a TravStaytion photograph. The `youtube-nocookie.com` iframe is loaded only after a second explicit Play action, with a direct YouTube fallback link. Playback is subject to YouTube and the creator's embedding settings.
+
+## Koh Samui
+
+`public/thailand/chaweng-beach.webp` is a cropped WebP of [Chaweng Beach on Ko Samui by Wipkinger](https://commons.wikimedia.org/wiki/File:Chaweng_Beach_on_Ko_Samui.JPG), released into the public domain.

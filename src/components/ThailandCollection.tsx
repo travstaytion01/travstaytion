@@ -29,9 +29,9 @@ export default function ThailandCollection() {
         <p className="thailand-kicker">Southeast Asia · Made for two</p>
         <h1>Thailand<br /><em>for two.</em></h1>
         <p className="thailand-intro">Island mornings. River-lit evenings. A little more time together.</p>
-        <p>Four journeys through Phuket, Krabi, Bangkok and Pattaya, with hotel options and the day-by-day details already mapped out.</p>
+        <p>Explore Phuket, Krabi, Bangkok, Pattaya and Koh Samui with day-by-day itineraries and hotel options.</p>
         <a className="thailand-explore" href="#thailand-itineraries">Find your itinerary <span aria-hidden="true">↘</span></a>
-        <div className="thailand-hero-facts"><span>4 couple escapes</span><span>4–6 nights</span><span>3★ / 4★ hotel options</span></div>
+        <div className="thailand-hero-facts"><span>{THAILAND_ITINERARIES.length} couple escapes</span><span>4–6 nights</span><span>3★ / 4★ hotel options</span></div>
       </div>
       <button className="destination-hero-visual" onClick={() => watch(THAILAND_ITINERARIES[0])} aria-label="Watch Phuket coastline film">
         <Image src="/thailand/phuket-beach.webp" alt="Longtail boats and palms beside a beach in Phuket, photographed from above" width={1200} height={2133} sizes="(max-width: 800px) 100vw, 55vw" priority />
@@ -42,12 +42,18 @@ export default function ThailandCollection() {
 
     <section className="thailand-itineraries" id="thailand-itineraries" aria-labelledby="thailand-itinerary-heading">
       <div className="thailand-section-heading"><div><p className="thailand-kicker">Pick your pace</p><h2 id="thailand-itinerary-heading">Choose an itinerary</h2></div><p>Start with a journey you love. We’ll confirm your hotels, dates, availability and written quote with you.</p></div>
-      <div className="thailand-trip-grid">{THAILAND_ITINERARIES.map((trip, index) => <article className="thailand-trip" key={trip.id} id={trip.id}>
-        <button className="destination-trip-picture" onClick={() => watch(trip)} aria-label={`Watch destination film for ${trip.name}`}>
+      <div className="thailand-trip-grid">{THAILAND_ITINERARIES.map((trip, index) => {
+        const media = <>
           <Image src={trip.image} alt={trip.alt} width={1200} height={750} sizes="(max-width: 580px) 100vw, 50vw" loading="lazy" />
           <span className="thailand-duration">{trip.nights} nights / {trip.days.length} days</span>
-          <span className="destination-picture-play"><PlayIcon /> Watch film</span>
-        </button>
+        </>;
+        return <article className="thailand-trip" key={trip.id} id={trip.id}>
+        {trip.film ? (
+          <button className="destination-trip-picture" onClick={() => watch(trip)} aria-label={`Watch destination film for ${trip.name}`}>
+            {media}
+            <span className="destination-picture-play"><PlayIcon /> Watch film</span>
+          </button>
+        ) : <div className="destination-trip-picture">{media}</div>}
         <div className="thailand-trip-content">
           <div className="thailand-trip-topline"><p className="thailand-kicker">{trip.route}</p><span aria-hidden="true">0{index + 1}</span></div>
           <h3>{trip.name}</h3><p className="thailand-trip-description">{trip.description}</p>
@@ -60,7 +66,8 @@ export default function ThailandCollection() {
           </details>
           <Link className="thailand-quote-link" href={"/quote?" + new URLSearchParams({ destination: "Thailand", trip: "couples", itinerary: trip.name })}>Request this itinerary <span aria-hidden="true">↗</span><span className="sr-only">: {trip.name}</span></Link>
         </div>
-      </article>)}</div>
+      </article>;
+      })}</div>
       <div className="thailand-booking-note"><span className="thailand-kicker">A trip that fits you</span><p>Hotel choices depend on your dates, preference and budget. Excursions are subject to operating schedules, weather and availability. Ask for a written quote covering inclusions, exclusions, transfers and cancellation terms before booking.</p></div>
       <details className="thailand-media-credits"><summary>Photography &amp; film credits</summary><p>Destination photography and aerial footage from <a href="https://www.pexels.com/license/" target="_blank" rel="noopener noreferrer">Pexels</a>: <a href="https://www.pexels.com/video/aerial-view-of-the-coastline-of-phuket-12762055/" target="_blank" rel="noopener noreferrer">Maksim Romashkin</a> (Phuket film), <a href="https://www.pexels.com/photo/aerial-view-of-phuket-beach-with-boats-and-forest-34429705/" target="_blank" rel="noopener noreferrer">Phuket beach photograph</a>, <a href="https://www.pexels.com/video/aerial-view-of-bangkok-s-chao-phraya-river-32587783/" target="_blank" rel="noopener noreferrer">LayG Traveller</a> (Bangkok), <a href="https://www.pexels.com/photo/pristine-beach-at-maya-bay-thailand-31311672/" target="_blank" rel="noopener noreferrer">Maya Bay photograph</a> and <a href="https://www.pexels.com/photo/wat-arun-temple-in-bangkok-thailand-11392617/" target="_blank" rel="noopener noreferrer">Wat Arun photograph</a>. Rock Beach Swing video by <a href="https://www.youtube.com/watch?v=EeFx9_4_bFw" target="_blank" rel="noopener noreferrer">Zabzaa พาเที่ยว</a>. Destination films show the area and do not depict every included service or hotel.</p></details>
     </section>

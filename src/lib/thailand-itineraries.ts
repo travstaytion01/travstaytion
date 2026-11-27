@@ -6,9 +6,9 @@ export interface ThailandItinerary {
   description: string;
   image: string;
   alt: string;
-  film: string;
-  filmPoster: string;
-  filmLabel: string;
+  film?: string;
+  filmPoster?: string;
+  filmLabel?: string;
   rockBeachSwing: boolean;
   highlights: string[];
   accommodation: string[];
@@ -113,6 +113,26 @@ export const THAILAND_ITINERARIES: ThailandItinerary[] = [
       { title: "Bangkok to Pattaya", details: ["Check out and take a private sedan transfer to your Pattaya hotel.", "Enjoy the rest of the day at leisure."] },
       { title: "Coral Island Tour", details: ["Travel to Coral Island by shared speedboat for a day on the beach.", "Indian lunch and seat-in-coach transfers included."] },
       { title: "Departure", details: ["Check out of your Pattaya hotel.", "Private sedan transfer to Bangkok (BKK) Airport for your onward journey."] },
+    ],
+  },
+  {
+    id: "koh-samui-4n",
+    name: "Koh Samui",
+    nights: 4,
+    route: "Koh Samui",
+    description: "Stay near Chaweng Beach, explore the island’s Big Buddha and Na Muang Waterfall, and spend a day snorkelling at Ang Thong Marine Park.",
+    image: "/thailand/chaweng-beach.webp",
+    alt: "Chaweng Beach on Koh Samui",
+    rockBeachSwing: false,
+    highlights: ["Big Buddha & Na Muang Waterfall", "Ang Thong Marine Park", "Chaweng Beach"],
+    accommodation: ["4 nights at a hotel in the Chaweng Beach area for 2 adults."],
+    notes: ["Ang Thong Marine Park entrance fees are excluded."],
+    days: [
+      { title: "Arrival in Koh Samui", details: ["Private transfer in one sedan for 2 adults from Koh Samui Airport (USM) to your Chaweng Beach hotel."] },
+      { title: "Samui City Tour", details: ["Visit Big Buddha and Na Muang Waterfall, 8:30 am–1:00 pm.", "Shared seat-in-coach transfers for 2 adults."] },
+      { title: "Ang Thong Marine Park", details: ["Big-boat excursion from 7:30 am to 4:30 pm, with snorkelling and lunch.", "Shared seat-in-coach transfers for 2 adults. National park fees are excluded."] },
+      { title: "Chaweng Beach at leisure", details: ["Relax at Chaweng Beach, explore beachfront cafés and browse local shops."] },
+      { title: "Departure from Koh Samui", details: ["Private transfer in one sedan for 2 adults from your Chaweng Beach hotel to Koh Samui Airport (USM)."] },
     ],
   },
 ];
